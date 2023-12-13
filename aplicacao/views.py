@@ -12,6 +12,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from aplicacao.serializers import UsuarioSerializer
+from django.contrib.auth import authenticate, login
 
 import cx_Oracle
 
@@ -122,7 +123,7 @@ def login_view(request, *args):
     if request.method == "POST":
         username = request.POST['login']
         password = request.POST['senha']
-        user = authenticate(username=login, password=senha)
+        user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
         else:
@@ -130,7 +131,8 @@ def login_view(request, *args):
         
 
     if request.user.is_authenticated:
-        return redirect("pages/teste.html")    
+        return render(request, 'pages/teste.html')
+        #return redirect("aplicacao/teste.html")    
 
     return render(request, 'login.html', context)
     
