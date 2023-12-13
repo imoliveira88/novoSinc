@@ -1,0 +1,50 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <div class="lista">
+        <h2>Queries cadastradas</h2>
+        <table id="datatable">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>&nbsp;</th>
+                <th><a href="{% url 'inclui_query' %}">{% bs_icon 'plus-lg' color='white' %}</a></th>
+                <th>&nbsp;</th>
+            </tr>
+            {% for query in queries %}
+            <tr>
+                <td>{{ query.id }}</td>
+                <td>{{ query.nome }}</td>
+                <td>{{ query.descricao }}</td>
+                <td><a href="{% url 'exibe_query' query.id %}">{% bs_icon 'search' color='blue' %}</a></td>
+                <td><a href="{% url 'edita_query' query.id %}">{% bs_icon 'pencil' color='green' %}</a></td>
+                <td><a href="{% url 'deleta_query' query.id %}">{% bs_icon 'trash' color='red' %}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if queries.has_previous %}
+                    <a href="?page=1">&laquo; Primeiro</a>
+                    <a href="?page={{ queries.previous_page_number }}">Anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    Página {{ queries.number }} de {{ queries.paginator.num_pages }}.
+                </span>
+
+                {% if queries.has_next %}
+                    <a href="?page={{ queries.next_page_number }}">Próximo</a>
+                    <a href="?page={{ queries.paginator.num_pages }}">Último &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+
+        <table>
+            <tr><td>&nbsp;</td></tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <div class="lista">
+        <h2>Queries por Sistema</h2>
+
+        <br>
+        <form method="get">
+            <table class="table-filtro" align="center">
+                <tr>
+                    <th>Descrição contém</th>
+                    <th>Sistema</th>
+                    <th>Módulo</th>
+                </tr>
+                <tr>
+                    <td>{{filtro.form.filtro_descricao}}</td>
+                    <td>{{filtro.form.filtro_sistema}}</td>
+                    <td>{{filtro.form.filtro_modulo}}</td>
+                </tr>
+            </table>
+            <button class="btn btn-primary" type="submit">Pesquisar</button>
+        </form>
+
+        </br>
+
+        <table id="datatable">
+            <tr>
+	            <th>ID</th>
+                <th>Nome</th>
+                <th>Sistema</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+            {% for query in filtro.qs %}
+            <tr>
+	            <td>{{query.id}}</td>
+                <td>{{query.nome}}</td>
+                <td>{{query.sistema.nome}}</td>
+                <td><a href="{% url 'exibe_query' query.id %}">{% bs_icon 'search' color='blue' %}</a></td>
+                <td><a href="{% url 'deleta_query' query.id %}">{% bs_icon 'trash' color='red' %}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+</div>

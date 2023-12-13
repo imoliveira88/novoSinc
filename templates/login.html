@@ -1,0 +1,38 @@
+{% extends 'base-login.html' %}
+{% load static %}
+{% load bootstrap_icons %}
+
+{% block content %}
+<div class="main-content-login" >
+    {% if aviso %}
+    <script>
+        alert("{{aviso}}");
+    </script>
+    {% endif %}
+    <div class="login-conteiner">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="login">
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <div class="container-footer">
+                            <img src="{% static 'images/copergas-sinc-sf.png' %}" width="300px" heigth="100px" alt="logo-coper">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Login</td>
+                    <td>{{form.login}}</td>
+                </tr>
+                <tr>
+                    <td>Senha</td>
+                    <td>{{form.senha}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><button class="btn btn-primary" type="submit">Entrar</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock content %}

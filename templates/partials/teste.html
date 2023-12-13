@@ -1,0 +1,15 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <div class="lista">
+        <h1>Data from Oracle Database</h1>
+        <ul>
+            {% for item in data %}
+            <li>{{ item.column1 }} - {{ item.column2 }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</div>

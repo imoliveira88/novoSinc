@@ -1,0 +1,29 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <div class="lista">
+        <h2>Detalhamento de query</h2>
+        <table class="table-filtro" align="center">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+            </tr>
+            <tr>
+                <td>{{query.id}}</td>
+                <td>{{query.nome}}</td>
+                <td>{{query.descricao}}</td>
+            </tr>
+        </table>
+        <h3>Query</h3>
+        <table class="exibe-query">
+            <tr>
+	            <td>{{query.query}}</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+
+
+</div>

@@ -1,0 +1,267 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    color: black;
+}
+
+.container {
+    max-width: 144rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+table.menu {
+    background: #061aef;
+    box-shadow: 5px 5px 5px #9295e0;
+    width: 60%;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    flex-flow: nowrap;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 0;
+    margin: auto;
+    padding: 0;
+    border-radius: 5px;
+}
+
+table.menu td{
+    border-collapse: collapse;
+    margin: auto;
+    width: 50rem;
+    height: 5rem;
+    padding: 0;
+}
+
+table.menu td:hover {
+    background: white;
+    color: #061aef;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+}
+
+table.login {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px 5px #8c8c8d;
+    width: 25%;
+    font-size: 2rem;
+    color: rgb(24, 11, 145);
+    text-decoration: none;
+    flex-flow: nowrap;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 1 #64d987;
+    margin: auto;
+    padding: 0;
+    margin-top: 20rem;
+    border-radius: 5px;
+}
+
+table.login td{
+    border-collapse: collapse;
+    margin: auto;
+    width: 50rem;
+    height: 5rem;
+    padding: 1rem;
+    text-align: left;
+    opacity: 1;
+}
+
+table.sobre {
+    background: #061aef;
+    box-shadow: 5px 5px 5px #079e41;
+    width: 60%;
+    font-size: 2rem;
+    color: #ac9e1f;
+    text-decoration: none;
+    flex-flow: nowrap;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 0;
+    margin: auto;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.main-content-login {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 1;
+}
+
+.messages {
+    background: #64d987;
+    width: 40%;
+    font-size: 1.5rem;
+    text-decoration: none;
+    flex-flow: nowrap;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 0;
+    margin: auto;
+    padding: 0;
+}
+
+button {
+    background: rgb(58, 121, 193);
+    color: white;
+}
+
+.adicionar{
+    background: rgb(58, 121, 193);
+    color: white;
+    border-radius: 5px;
+    margin-top: 1rem;
+    width: 150px;
+    margin: auto;
+}
+
+.main-logo {
+    font-size: 4rem;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-flow: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.main-logo-icon {
+    margin: 2rem;
+}
+
+.main-content{
+    height: 80vh; /* Set the height to 80% of the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+.main-content {
+    background: white;
+    padding-top: 2rem;
+    margin-top: 1rem;
+}
+
+.container-lista {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 2rem;
+    background: white;
+}
+
+table.table-filtro{
+    padding: 2rem;
+    margin: auto;
+    border: 10px;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+.sobre{
+    width: 40%;
+    padding: 2rem;
+    margin: auto;
+    border: 1px;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+table.table-filtro th {
+    padding-top: 6px;
+    background-color: #061aef;
+    color: white;
+    padding: 2rem;
+  }
+
+  table.table-filtro td {
+    padding: 2rem;
+    word-wrap: break-word;
+  }
+
+.lista {
+    display: flex;
+    width: 80%;
+    flex-flow: column nowrap;
+    flex-shrink: 1;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.table-query {
+    width: 30%;
+    margin: auto;
+    border: 1px;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+.exibe-query {
+    width: 50%;
+    margin: auto;
+    border: 1px;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+#datatable {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50%;
+    margin: auto;
+  }
+
+#datatable td, #datatable th {
+    border: 0px;
+    padding: 8px;
+    text-align: center;
+}
+
+#datatable tr:nth-child(even){background-color: #f2f2f2;}
+
+#datatable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #061aef;
+    color: white;
+    padding: 2rem;
+  }
+
+.main-footer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    background: white;
+    color: white;
+    padding: 2rem;
+    margin: auto 0;
+    position: fixed;
+    bottom: 0;
+}
+
+.main-footer a {
+    color: white;
+    text-decoration: none;
+    transition: all 300ms ease-in-out;
+}
+
+.container-footer {
+    margin: auto;
+}

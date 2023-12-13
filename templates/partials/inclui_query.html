@@ -1,0 +1,29 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <div class="lista">
+        <h2>Adicionar query</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table-filtro" align="center">
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <td>{{form.nome}}</td>
+                    <td>{{form.descricao}}</td>
+                </tr>
+            </table>
+            <table class="table-filtro" align="center">
+                <tr>
+                    <td>{{form.query}}</td>
+                </tr>
+            </table>
+            <button class="btn btn-primary" type="submit">Adicionar</button>
+        </form>
+    </div>
+
+
+</div>
