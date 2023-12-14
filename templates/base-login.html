@@ -1,7 +1,6 @@
 {% include 'partials/head.html' %}
 {% load static %}
-<body style="background-image: url('{% static 'images/fundo-coper.jpg' %}'); background-size: cover; background-position: center; background-color: #000; background-repeat: no-repeat;">
-    {% include 'partials/header.html' %}
+<body style="background-image: url('{% static 'images/fundo-coper.jpg' %}'); height: 100%; margin:0; padding: 0; background-size: cover; background-position: center; background-color: #000; background-repeat: no-repeat;">
     <div class="container-login" >
         {% block content %}{% endblock content %}
     </div>

@@ -1,8 +1,32 @@
+{% load static %}
+{% load bootstrap_icons %}
+
 <header class="main-header-container">
-        <table class="menu">
-            <tr>
-                <td><a href="{% url 'queries' %}">Queries</a></td>
-                <td><a href="{% url 'sobre' %}">Sobre</a></td>
-            </tr>
-        </table>
+    <table align="center" width="80%">
+        <tr>
+            <td align="right">
+                <table class="logo" align="right">
+                    <tr>
+                        <td style="text-align: right;">
+                            <div class="container-footer">
+                                <img src="{% static 'images/copergas-sinc-sf.png' %}" height="50px"
+                                    alt="logo-coper">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td align="center">
+                <table class="menu" align="center">
+                    <tr>
+                        <td><a href="{% url 'queries' %}">Queries</a></td>
+                        <td><a href="{% url 'sobre' %}">Sobre</a></td>
+                    </tr>
+                </table>
+            </td>
+            <td align="right" style="text-align: right;">
+                <a href="{% url 'logout' %}">Logout</a>
+            </td>
+        </tr>
+    </table>
 </header>

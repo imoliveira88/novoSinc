@@ -2,14 +2,18 @@
 {% load bootstrap_icons %}
 
 <div class="container-lista">
-    <div class="lista">
-        <h1>Data from Oracle Database</h1>
-        <ul>
-            {% for item in data %}
-            <li>{{ item.column1 }} - {{ item.column2 }}</li>
-            {% endfor %}
-        </ul>
-    </div>
 
+    <table id="datatable">
+        <tr>
+            <th>NUMPEDC</th>
+            <th>CODPROD</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.0 }}</td>
+            <td>{{ row.1 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 
 </div>

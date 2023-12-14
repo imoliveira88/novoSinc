@@ -12,11 +12,12 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from aplicacao.serializers import UsuarioSerializer
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 import cx_Oracle
 
 from aplicacao.models import Query
+from aplicacao.queries import faturas_vencidas, faturas_proximas_vencer
 
 # Create your views here.
 def app_view(request):
@@ -90,33 +91,6 @@ def deleta_query(request, id):
 
     return HttpResponseRedirect('/aplicacao/lista_queries')
 
-def query_oracle_database(request):
-    # Connect to the Oracle database
-    connection = cx_Oracle.connect(
-        user="SINC_INADIPLENTES",
-        password="AN4LISYS_IN4D1",
-        dsn="192.168.1.46:1521/piramide.intranet.copergas.com.br"
-    )
-
-    # Create a cursor
-    cursor = connection.cursor()
-
-    # Execute a sample query (replace with your actual query)
-    query = "SELECT NUMPEDC, CODPROD FROM ITENS_PED_COMPRA FETCH FIRST 10 ROWS ONLY"
-    cursor.execute(query)
-
-    # Fetch all rows
-    rows = cursor.fetchall()
-
-    # Close the cursor and connection
-    cursor.close()
-    connection.close()
-
-    # Process the data or pass it to a template
-    data = [{'column1': row[0], 'column2': row[1]} for row in rows]
-
-    return render(request, 'pages/teste.html', {'data': data})
-
 def login_view(request, *args):    
     context={}
 
@@ -140,3 +114,29 @@ def login_view(request, *args):
 def logout_view(request):
     logout(request)
     return redirect("/")
+
+def query_oracle_database(request):
+    # Connect to the Oracle database
+    connection = cx_Oracle.connect(
+        user="SINC_INADIPLENTES",
+        password="AN4LISYS_IN4D1",
+        dsn="192.168.1.46:1521/piramide.intranet.copergas.com.br"
+    )
+
+    # Create a cursor
+    cursor = connection.cursor()
+
+    # Execute a sample query (replace with your actual query)
+    query = "SELECT NUMPEDC, CODPROD FROM ITENS_PED_COMPRA FETCH FIRST 10 ROWS ONLY"
+    cursor.execute(query)
+
+    # Fetch all rows
+    rows = cursor.fetchall()
+
+    # Close the cursor and connection
+    cursor.close()
+    connection.close()
+
+    print(faturas_proximas_vencer())
+
+    return render(request, 'pages/teste.html', {'data': rows})

@@ -40,10 +40,17 @@ table.menu {
 
 table.menu td{
     border-collapse: collapse;
+    color: white;
     margin: auto;
     width: 50rem;
     height: 5rem;
     padding: 0;
+}
+
+table.menu a {
+    color: white;
+    text-decoration: none;
+    transition: all 300ms ease-in-out;
 }
 
 table.menu td:hover {
@@ -67,7 +74,7 @@ table.login {
     border: 1 #64d987;
     margin: auto;
     padding: 0;
-    margin-top: 20rem;
+    margin-top: 15rem;
     border-radius: 5px;
 }
 

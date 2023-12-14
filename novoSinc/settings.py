@@ -96,7 +96,15 @@ DATABASES = {
         'PASSWORD': 'AN4LISYS_IN4D1',
         'HOST': '192.168.1.46',
         'PORT': '1521',
-    }
+    },
+    'ggas': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'GGASP',
+        'USER': 'GGAS_ADMIN',
+        'PASSWORD': 'GGAS_ADMIN',
+        'HOST': '192.168.0.20',
+        'PORT': '1521',
+    },
 }
 
 STATIC_URL = '/static/'
