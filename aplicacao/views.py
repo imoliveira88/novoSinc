@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from aplicacao.emails import enviar_email
 from aplicacao.forms import QueryForm
 from django.urls import reverse
 from django.contrib import messages
@@ -11,7 +12,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from aplicacao.serializers import UsuarioSerializer
 from django.contrib.auth import authenticate, login, logout
 
 import cx_Oracle
@@ -117,7 +117,7 @@ def logout_view(request):
 
 def query_oracle_database(request):
     # Connect to the Oracle database
-    connection = cx_Oracle.connect(
+    """ connection = cx_Oracle.connect(
         user="SINC_INADIPLENTES",
         password="AN4LISYS_IN4D1",
         dsn="192.168.1.46:1521/piramide.intranet.copergas.com.br"
@@ -135,8 +135,12 @@ def query_oracle_database(request):
 
     # Close the cursor and connection
     cursor.close()
-    connection.close()
-
-    print(faturas_proximas_vencer())
+    connection.close() """
+    
+    rows = faturas_proximas_vencer()
+    
+    cliente = rows[0]
+    print(cliente)
+    enviar_email(2,"igor.oliveira@copergas.com.br","pablo.logiquesistemas@copergas.com.br",cliente)
 
     return render(request, 'pages/teste.html', {'data': rows})

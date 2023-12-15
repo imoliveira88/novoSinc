@@ -1,9 +1,6 @@
+from aplicacao.date import get_data
 import mysql.connector
 from datetime import datetime, timedelta
-
-mysql				= require('mysql')
-date_CTRL 		= require('./../controllers/date-ctrl')
-oracledb_CTRL 	= require('./oracle_db-ctrl')
 
 # TABELAS
 TABELA_CLIENTES = "sinc_clientes"
@@ -67,9 +64,8 @@ def set_ultima_matricula_servico(cliente, tipo):
         cursor.close()
         conn_mysql.close()
 
-def salvar_protocolos(dados): #Era salvarProtocolos
-
-	conn_mysql = db()
+def salvar_protocolos(dados):
+    conn_mysql = db()
     posts = dados['result']
     sql_grava_protocolos = "INSERT INTO " + TABELA_PROTOCOLOS + " SET %s"
 
@@ -95,8 +91,7 @@ def salvar_protocolos(dados): #Era salvarProtocolos
     conn_mysql.close()
     return result
 	
-
-def salvar_detalhes_protocolos(id_protocolo, dados): # Era salvarDetalhesProtocolos
+def salvar_detalhes_protocolos(id_protocolo, dados):
     conn_mysql = db()
     posts = dados['result']
     sql_grava_protocolos = "INSERT INTO " + TABELA_DETALHES_PROTOCOLOS + " SET %s"
@@ -169,91 +164,6 @@ def consultar_protocolos(datafiltro):
     finally:
         cursor.close()
         conn_mysql.close()
-
-import mysql.connector
-
-def atualizar_status_titulos_por_protocolo(protocolo):
-    conn_mysql = db()
-
-    sql_get_detalhes_protocolos = (
-        "SELECT "
-        "titulo_fatura, "
-        "condominio_torre_apt, "
-        "valor_fatura, "
-        "nome_cliente, "
-        "id_status, "
-        "descricao_status "
-        "FROM " + TABELA_DETALHES_PROTOCOLOS +
-        ' WHERE id_protocolo = %s AND id_status <> 4'
-    )
-
-    cursor = conn_mysql.cursor(dictionary=True)
-    cursor.execute(sql_get_detalhes_protocolos, (protocolo,))
-    result = cursor.fetchall()
-
-    if result:
-        array_result = result
-        for detalhes in array_result:
-            resp = oracledb_CTRL.get_titulo_em_atraso(detalhes['titulo_fatura'])
-            if len(resp['result']) == 0:
-                conn = db()
-                data_atual = date_CTRL.get_data(0, '-')
-                conn.cursor().execute(
-                    'UPDATE ' + TABELA_DETALHES_PROTOCOLOS +
-                    ' SET id_status = %s, data_assinatura = %s WHERE titulo_fatura = %s',
-                    (4, data_atual, detalhes['titulo_fatura'])
-                )
-                conn.commit()
-                conn.close()
-
-        return('ok')
-
-    else:
-        print(f'Protocolo: {protocolo} sem detalhes')
-
-    cursor.close()
-    conn_mysql.close()
-
-import mysql.connector
-
-def consultar_detalhes_protocolos(protocolo):
-    conn_mysql = db()
-
-    sql_get_detalhes_protocolos = (
-        "SELECT "
-        "titulo_fatura, "
-        "condominio_torre_apt, "
-        "valor_fatura, "
-        "nome_cliente, "
-        "id_status, "
-        "descricao_status, "
-        "DATE_FORMAT(data_assinatura, '%d/%m/%Y') as data_assinatura "
-        "FROM " + TABELA_DETALHES_PROTOCOLOS +
-        ' WHERE id_protocolo = %s'
-    )
-
-    print(sql_get_detalhes_protocolos)
-
-    atualizar_status_titulos_por_protocolo(protocolo, lambda resp: print('LOG_SiNC: STATUS ATUALIZADO') if resp == 'ok' else None)
-
-    conn_mysql.commit()  # Committing any pending transactions from the previous function
-
-    def query_detalhes_protocolos():
-        cursor = conn_mysql.cursor(dictionary=True)
-        cursor.execute(sql_get_detalhes_protocolos, (protocolo,))
-        result = cursor.fetchall()
-
-        if result:
-            return({'status': 'OK', 'result': result})
-        else:
-            return({'status': 'ERRO', 'result': {'message': 'Nenhum detalhe de protocolo encontrado'}})
-
-        cursor.close()
-        conn_mysql.close()
-
-    conn_mysql.commit()  # Committing any changes before executing the query
-    conn_mysql.ping(reconnect=True)  # Reconnecting in case the connection was closed
-    query_detalhes_protocolos()
 
 def validar_gravacao_protocolos(data_vencimento):
     conn_mysql = db()

@@ -1,163 +1,188 @@
+import os
+import time
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from aplicacao.date import formatar_data_por_extenso, get_data
+from aplicacao.queries import salva_ultima_notificacao
+from jinja2 import Environment, FileSystemLoader
+from aplicacao.queries import faturas_proximas_vencer, faturas_vencidas
+from novoSinc.settings import BASE_DIR
+
+GFIN = ['sinc@copergas.com.br', 'caixa.sinc@copergas.com.br']
+
+# COLABORADORES QUE VÃO RECEBER UMA CÓPIA POR ESTAREM NO GRUPO DE EMAIL 
+COLABORADORES_COMERCIAL =   ['sinc.comercial@copergas.com.br']
+COLABORADORES_RESIDENCIAL = ['sinc.residencial@copergas.com.br']
+COLABORADORES_VEICULAR =    ['sinc.veicular@copergas.com.br']
+COLABORADORES_INDUSTRIAL =  ['sinc.industrial@copergas.com.br']
+
+TAG_FATURA_DISPONIVEL = 1
+TAG_FATURA_PROX_VENCER = 2
+TAG_FATURA_VENCIDA = 3
+TAG_AVISO_SUSPENSAO = 4
+
+def notifica_cliente(tag, cliente, espera):
+    espera_atual = 0
+    if (tag != 2 and (validar_valor_no_array(cliente.IDPERFILFATURAMENTO, ['30000009', '3']) )):
+        #console.log("ADICIONANDO GRUPO DE COLABORADORES COMERCIAL!")
+        colaboradores = GFIN + COLABORADORES_COMERCIAL
+    elif (tag != 2 and (validar_valor_no_array(cliente.IDPERFILFATURAMENTO,[ '30000010', '2', '1']) )):
+        #console.log("ADICIONANDO GRUPO DE COLABORADORES RESIDENCIAL!")
+        colaboradores = GFIN + COLABORADORES_RESIDENCIAL
+    elif (tag != 2 and (cliente.IDPERFILFATURAMENTO == '10020000' )):
+        #console.log("ADICIONANDO GRUPO DE COLABORADORES VEICULAR!")
+        colaboradores = GFIN + COLABORADORES_VEICULAR
+    elif (tag != 2 and (validar_valor_no_array(cliente.IDPERFILFATURAMENTO, ['20020329', '30000007', '30000028', '30000016', '5', '9']) )):
+        #console.log("ADICIONANDO GRUPO DE COLABORADORES INDUSTRIAL!")
+        colaboradores = GFIN + COLABORADORES_INDUSTRIAL
+    else:
+        #console.log("NENHUM GRUPO DE COLABORADOR ADICIONADO!")
+        colaboradores = GFIN
+    if  (cliente.NOT == 'EMAIL'):
+        # Refatorar enviar_email de modo a fazer um tratamento de exceção que fará o papel do callback; "err" é booleano
+        err = enviar_email(tag, cliente.CONTATO,  colaboradores, cliente)
+
+        if err:
+            print(err)
+            print('OVERSENDING: AGUARDANDO 20 SEGUNDOS PARA CONTINUAR')
+            time.sleep(15) # Aguarda 15 segundos antes de tentar reenviar
+            espera_atual = espera + 15
+            notifica_cliente(tag, cliente, espera_atual)
+            if espera_atual > 45:
+                return # Caso tenha falhado três vezes, passa para o próximo cliente, evitando loop infinito
+        else:
+            salva_ultima_notificacao(cliente, tag)
+        #console.log("CLIENTE SEM E-MAIL PARA CONTATO - " + cliente.TITULO);
+
+#Retirada a condicional referente ao envio de SMS
 def notificar_clientes(tag, clientes): # Era notificarClientes
-
-    //Adicionado por Igor Magalhães em 23OUT2023 - O SINC agora gera log diário, salvo na pasta sinc/controllers
-    var fs = require('fs');
-    var util = require('util');
-    let date_time = new Date();
-    let day = ("0" + date_time.getDate()).slice(-2);
-    let month = ("0" + (date_time.getMonth() + 1)).slice(-2);
-    let year = date_time.getFullYear();
-    var log_file = fs.createWriteStream(__dirname + '/' + day +'-' + month + '-' + year + '-sinc.log', {flags : 'w'}); //Variável que armazena o nome do arquivo de log
-    var log_stdout = process.stdout;
-
-    console.log = function(d) { //
-        log_file.write(util.format(d) + '\n');
-        log_stdout.write(util.format(d) + '\n');
-    };
-
-    rel_CTRL.buildRelatorio(tag, clientes);
-
-    console.log(JSON.stringify(clientes));
-
+    for cliente in clientes:
+        notifica_cliente(tag,cliente)
+    # E-mails enviados
     
-    notificar(0); // FUNCAO PARA NOTIFICAR 
+def trata_array(contatos):
+    def is_excecao(email):
+        email_excecao = ['fulano@gmail.com']
+        email = email.split('; ')
+
+        # Compare if all exceptions are in some client's email
+        for excecao in email_excecao:
+            if excecao in email:
+                return True
+        return False
+
+    for contato in contatos:
+        if contato['EMAIL'] is not None and not is_excecao(contato['EMAIL']):
+            contato['NOT'] = 'EMAIL'
+            contato['CONTATO'] = contato['EMAIL']
+        else:
+            contato['NOT'] = 'NULL'
+
+    return contatos
+
+def validar_valor_no_array(val, array):
+    for a in array:
+        if(a == val):
+            return True
+    return False
+
+def enviar_email(tag, destinatario, cco, contexto):
+    assunto = ''
     
-    function notificar (i) {
-        var cliente = clientes[i];  
+    if tag == 1:
+        assunto = 'Copergás - Fatura Disponível'
+    elif tag == 3:
+        assunto = 'Copergás - Aviso de Débito'
+    elif tag == 2:
+        assunto = 'Copergás - Fatura Próxima a Vencer'
+    elif tag == 4:
+        assunto = 'Copergás - Aviso de Suspensão'
 
-        if (!cliente) {
-            return console.log("EMAILS ENVIADOS!");
-        }
+    contexto['DATA_EXTENSA'] = formatar_data_por_extenso(get_data(0, '/'))
 
-        //encaminhamento por segmento 
-        if (tag != 2 and (validarValorNoArray(cliente.IDPERFILFATURAMENTO, ['30000009', '3']) )):
-            console.log("ADICIONANDO GRUPO DE COLABORADORES COMERCIAL!")
-            var colaboradores = GFIN.concat(COLABORADORES_COMERCIAL)
+    caminho = f'{BASE_DIR}/aplicacao/static/images/logo-coper2.png'
 
-        elif (tag != 2 and (validarValorNoArray(cliente.IDPERFILFATURAMENTO,[ '30000010', '2', '1']) )):
-            console.log("ADICIONANDO GRUPO DE COLABORADORES RESIDENCIAL!")
-            var colaboradores = GFIN.concat(COLABORADORES_RESIDENCIAL)
-
-        }elif (tag != 2 and (cliente.IDPERFILFATURAMENTO == '10020000' )):
-            console.log("ADICIONANDO GRUPO DE COLABORADORES VEICULAR!")
-            var colaboradores = GFIN.concat(COLABORADORES_VEICULAR)
-
-        }elif (tag != 2 and (validarValorNoArray(cliente.IDPERFILFATURAMENTO, ['20020329', '30000007', '30000028', '30000016', '5', '9']) )):
-            console.log("ADICIONANDO GRUPO DE COLABORADORES INDUSTRIAL!")
-            var colaboradores = GFIN.concat(COLABORADORES_INDUSTRIAL)
-
-        }else {
-            console.log("NENHUM GRUPO DE COLABORADOR ADICIONADO!")
-            var colaboradores = GFIN;
-        }
-
-        if  (cliente.NOT == 'EMAIL') {
-            console.log("ENVIANDO EMAIL PARA " + cliente.MATRICULA + " (" + cliente.CONTATO + ")" + " AS " + date_CTRL.getDataAtual());
-            email_CTRL.enviarEmail(tag, cliente.CONTATO,  colaboradores, cliente, function (err) {if(err){console.log(err);console.log('OVERSENDING: AGUARDANDO 20 SEGUNDOS PARA CONTINUAR');setTimeout(notificar, 20000, i);}else{notificar(++i); console.log("Sucesso ! (" + cliente.MATRICULA + ")"); salvaUltimaNotificacao(cliente, tag);} });
-        }else if (cliente.NOT == 'SMS') {
-            console.log("ENVIANDO SMS PARA " + cliente.MATRICULA + " (" + cliente.CONTATO + ")" + " AS " + date_CTRL.getDataAtual());
-            console.log('CONTATO: ' + cliente.CONTATO);
-            console.log('NUMERO COMPLETO: ' + cliente.TELEFONE); 
-            smser.enviarSMS(tag, cliente);
-            salvaUltimaNotificacao(cliente, tag);
-            notificar(++i);
-        }else {
-            console.log("CLIENTE SEM INFORMACAO PARA CONTATO - " + cliente.TITULO);
-            notificar(++i);
-        }
-    }
-}
-
-#AVISO DE FATURA VENCIDA
-
-
-    console.log({LOG_SINC: "ROBO VERIFICANDO FATURAS VENCIDAS EM " + date_CTRL.getDataAtual()});
-    oracledb_CTRL.getFaturasVencidas(function (resp) {
-        console.log({LOG_SINC: "Status da response " + resp.status});
-        console.log({LOG_SINC: "Resultado da response " + resp.result});
-        if (resp.status == 'success') {
-            if (resp.result.length > 0) {
-                var clientes = resp.result;
-                var numberes = resp.result.length;
-                console.log(numberes + ' FATURA(S)');
-                not_CTRL.notificarClientes(TAG_FATURA_VENCIDA, trataArray (clientes));
-            }else {
-                console.log("NENHUMA FATURA VENCIDA ENCONTRADA.");
-                rel_CTRL.buildRelatorioSemNot(TAG_FATURA_VENCIDA,'NENHUMA FATURA A SER NOTIFICADA.');
-            }
-        }else {
-            console.log("ERRO AO CONSULTAR FATURAS VENCIDAS.");
-            relatorioValido = 0;
-            msgErro += '</br></br> Erro na consulta de faturas VENCIDAS';
-        }
-    }); 
-    flag_not_faturas_vencidas = 1;
-
-
-//ENVIO DO RELATORIO DIARIO
-// enviarRelatorio = cron.schedule('30 16 * * *', function () {  
-    console.log({LOG_SINC: "ROBO ENVIANDO RELATORIO EM " + date_CTRL.getDataAtual()});
-    rel_CTRL.enviarRelatorio(relatorioValido, msgErro);
-    msgErro='';
-    relatorioValido=1;
-    notificaErroFuncao(flag_not_faturas_prox, flag_not_faturas_vencidas, flag_not_aviso_suspensao);
-// }, true); //true liga cron e false desliga 
-
-function trataArray(contatos,tag=0) {  
-    
-    //indetificar que são exceções por emails
-    function isExcecao (email) {
-        const emailExcecao = ['fulano@gmail.com'];
-        email = email.split('; ');
-
-        //comparar se todos de exceção estão em algum email do cliente
-        for (var i_excecao = 0; i_excecao < emailExcecao.length; i_excecao++) {
-            for (let i_email = 0; i_email < email.length; i_email++) {
-                if (email[i_email] == emailExcecao[i_excecao]){
-                    return true;
-                }    
-            }
-        }
-        return false;
-    }
-
-    contatos.map(function(contato) {
+    with open(caminho, 'rb') as file:
+        logo_content = file.read()
         
+    caminho2 = f'{BASE_DIR}/aplicacao/static/images/logo-coper2.png'
+    with open(caminho2, 'rb') as file:
+        icon_content = file.read()
 
-        if(contato.EMAIL != null && !isExcecao(contato.EMAIL)) {
-            contato.NOT = 'EMAIL';
-            contato.CONTATO = contato.EMAIL;
-        }else {
-            if (contato.TIPO_TELEFONE == 'CELULAR'){
-                contato.NOT = 'SMS';
-                contato.CONTATO = '' + contato.TELEFONE;
-            }else {
-                contato.NOT = 'NULL';
-            }
-        }
-    });
-    return contatos;
-}
+    message = MIMEMultipart()
+    message['From'] = 'sinc@copergas.com.br'
+    message['To'] = destinatario
+    message['Bcc'] = ', '.join(cco)
+    message['Subject'] = assunto
 
+    message.attach(MIMEText(''))  # Text content
 
-def notificaErroFuncao (flag1,flag2,flag3) {
-    msgErro = "";
-    if (not flag1 or not flag2 or not flag3):
+    # HTML content
+    html_content = render_email_template(tag, contexto)
 
-        msgErro += "" if flag1 else "O SiNC não executou a função de notificação de Faturas Próximas a Vencer</br></br>"
-        msgErro += "" if flag2 else "O SiNC não executou a função de notificação de Faturas Vencidas </br></br>"
+    message.attach(MIMEText(html_content, 'html'))
 
-        email_CTRL.notificarErroFuncaoNotificacao(msgErro);
-        console.log( msgErro);
+    # Attachments
+    message.attach(MIMEImage(logo_content, name='logo-coper2.png'))
+    message.attach(MIMEImage(icon_content, name='2-via-ico.png'))
+
+    # Headers
+    message['Return-Receipt-To'] = 'sinc@copergas.com.br'
+    message['Disposition-Notification-To'] = 'sinc@copergas.com.br'
+
+    # DSN settings
+    message['DSN'] = 'SiNC 0'
+    message['Return'] = 'headers'
+    message['Notify'] = 'success, failure, delay'
+    message['Recipient'] = 'sinc@copergas.com.br'
+
+    try:
+        # Setup the SMTP server
+        with smtplib.SMTP('mail.copergas.com.br', 25) as server:
+            server.starttls()
+            # Login to the server
+            server.login('sinc', 'Ks9xKi5CClBMqAPr1iyu')
+            # Send the email
+            server.send_message(message)
+        return True
+    except Exception as e:
+        return False
+
+def define_tipo_not(tag):
+    models = {
+        1: 'fatura-disp',
+        3: 'fatura-venc',
+        2: 'fatura-prox',
+        4: 'aviso-susp',
+        5: 'aptos-para-corte'
     }
-    flag_not_faturas_prox = 0;
-    flag_not_faturas_vencidas = 0;
-    flag_not_aviso_suspensao = 0;
-}
 
+    return models.get(tag)
 
-def validarValorNoArray(val, array):
-    for(a in array){
-        if(array[a] == val):
-            return true
-    return false;
+def render_email_template(tag, contexto):
+    modelos_path = os.path.join(BASE_DIR, 'aplicacao/modelos')
+    templates_env = Environment(loader=FileSystemLoader(modelos_path))
+    template_name = f'email_{define_tipo_not(tag)}.htm'
+    template = templates_env.get_template(template_name)
+    html_content = template.render(contexto)
+    return html_content
+
+# AVISO DE PROX A VENCER
+
+def avisar_prox_vencer():
+    rows = faturas_proximas_vencer()
+    if rows.len > 0:
+        clientes = rows
+        afetadas = rows.len
+        notificar_clientes(TAG_FATURA_PROX_VENCER, trata_array(clientes))
+
+# AVISO DE FATURA VENCIDA
+
+def avisar_faturas_vencidas():
+    rows = faturas_vencidas()
+    if rows.len > 0:
+        clientes = rows
+        afetadas = rows.len
+        notificar_clientes(TAG_FATURA_VENCIDA, trata_array(clientes))
