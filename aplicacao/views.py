@@ -140,7 +140,7 @@ def query_oracle_database(request):
     rows = faturas_proximas_vencer()
     
     cliente = rows[0]
-    print(cliente)
-    enviar_email(2,"igor.oliveira@copergas.com.br","pablo.logiquesistemas@copergas.com.br",cliente)
+    print("pouco antes do envio de e-mail, no método de teste na view")
+    enviar_email(2,'igor.oliveira@copergas.com.br',['pablo.logiquesistemas@copergas.com.br'],cliente)
 
     return render(request, 'pages/teste.html', {'data': rows})

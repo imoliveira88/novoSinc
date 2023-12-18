@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'rest_framework',
+    'django_jinja',
     'aplicacao',
     'django_bootstrap_icons',
     'django_filters'
@@ -70,6 +72,13 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+        },
+    },
+    {
+        'BACKEND': 'django_jinja.backend.Jinja2',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
         },
     },
 ]
@@ -109,6 +118,7 @@ DATABASES = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = f'{BASE_DIR}/aplicacao/static/'
+
 #STATIC_ROOT = '/app/aplicacao/static/'
 #STATIC_ROOT = /aplicacao/static/'
 #STATIC_URL = '/static/'

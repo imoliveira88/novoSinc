@@ -88,6 +88,10 @@ def validar_valor_no_array(val, array):
             return True
     return False
 
+def read_file_content(file_path):
+    with open(file_path, 'rb') as file:
+        return file.read()
+
 def enviar_email(tag, destinatario, cco, contexto):
     assunto = ''
     
@@ -102,31 +106,15 @@ def enviar_email(tag, destinatario, cco, contexto):
 
     contexto['DATA_EXTENSA'] = formatar_data_por_extenso(get_data(0, '/'))
 
-    caminho = f'{BASE_DIR}/aplicacao/static/images/logo-coper2.png'
-
-    with open(caminho, 'rb') as file:
-        logo_content = file.read()
-        
-    caminho2 = f'{BASE_DIR}/aplicacao/static/images/logo-coper2.png'
-    with open(caminho2, 'rb') as file:
-        icon_content = file.read()
-
+    # Create MIME message
     message = MIMEMultipart()
     message['From'] = 'sinc@copergas.com.br'
     message['To'] = destinatario
     message['Bcc'] = ', '.join(cco)
     message['Subject'] = assunto
 
-    message.attach(MIMEText(''))  # Text content
-
-    # HTML content
-    html_content = render_email_template(tag, contexto)
-
-    message.attach(MIMEText(html_content, 'html'))
-
-    # Attachments
-    message.attach(MIMEImage(logo_content, name='logo-coper2.png'))
-    message.attach(MIMEImage(icon_content, name='2-via-ico.png'))
+    # Text content
+    message.attach(MIMEText(render_email_template(tag, contexto), 'html'))
 
     # Headers
     message['Return-Receipt-To'] = 'sinc@copergas.com.br'
@@ -141,13 +129,17 @@ def enviar_email(tag, destinatario, cco, contexto):
     try:
         # Setup the SMTP server
         with smtplib.SMTP('mail.copergas.com.br', 25) as server:
-            server.starttls()
             # Login to the server
             server.login('sinc', 'Ks9xKi5CClBMqAPr1iyu')
             # Send the email
             server.send_message(message)
+            print("e-mail enviado")
         return True
+    except smtplib.SMTPException as e:
+        print(f"SMTP Exception: {e}")
+        return False
     except Exception as e:
+        print(f"An unexpected error occurred: {e}")
         return False
 
 def define_tipo_not(tag):
@@ -162,9 +154,9 @@ def define_tipo_not(tag):
     return models.get(tag)
 
 def render_email_template(tag, contexto):
-    modelos_path = os.path.join(BASE_DIR, 'aplicacao/modelos')
+    modelos_path = os.path.join(BASE_DIR, 'templates/modelos')
     templates_env = Environment(loader=FileSystemLoader(modelos_path))
-    template_name = f'email_{define_tipo_not(tag)}.htm'
+    template_name = f'email_{define_tipo_not(tag)}.html'
     template = templates_env.get_template(template_name)
     html_content = template.render(contexto)
     return html_content
