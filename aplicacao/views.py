@@ -19,6 +19,11 @@ import cx_Oracle
 from aplicacao.models import Query
 from aplicacao.queries import faturas_vencidas, faturas_proximas_vencer
 
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 # Create your views here.
 def app_view(request):
     return render(request, 'pages/queries.html')
@@ -115,7 +120,7 @@ def logout_view(request):
     logout(request)
     return redirect("/")
 
-def query_oracle_database(request):
+def testa_envio(request):
     # Connect to the Oracle database
     """ connection = cx_Oracle.connect(
         user="SINC_INADIPLENTES",
@@ -141,6 +146,9 @@ def query_oracle_database(request):
     
     cliente = rows[0]
     print("pouco antes do envio de e-mail, no método de teste na view")
-    enviar_email(2,'igor.oliveira@copergas.com.br',['pablo.logiquesistemas@copergas.com.br'],cliente)
+    logger.info('pouco antes do envio de e-mail, no método de teste na view')
+    enviar_email(2,'igor.oliveira@copergas.com.br','',cliente)
 
     return render(request, 'pages/teste.html', {'data': rows})
+
+    #['pablo.logiquesistemas@copergas.com.br']

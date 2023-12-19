@@ -8,7 +8,12 @@ from aplicacao.date import formatar_data_por_extenso, get_data
 from aplicacao.queries import salva_ultima_notificacao
 from jinja2 import Environment, FileSystemLoader
 from aplicacao.queries import faturas_proximas_vencer, faturas_vencidas
-from novoSinc.settings import BASE_DIR
+from novoSinc.settings import BASE_DIR, STATIC_ROOT
+
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 GFIN = ['sinc@copergas.com.br', 'caixa.sinc@copergas.com.br']
 
@@ -46,7 +51,7 @@ def notifica_cliente(tag, cliente, espera):
 
         if err:
             print(err)
-            print('OVERSENDING: AGUARDANDO 20 SEGUNDOS PARA CONTINUAR')
+            print('Oversending: aguardando 15 segundos para tentar novamente.')
             time.sleep(15) # Aguarda 15 segundos antes de tentar reenviar
             espera_atual = espera + 15
             notifica_cliente(tag, cliente, espera_atual)
@@ -93,6 +98,16 @@ def read_file_content(file_path):
         return file.read()
 
 def enviar_email(tag, destinatario, cco, contexto):
+    caminho1_path = f'{STATIC_ROOT}/images/logo-coper2.png'
+    caminho2_path = f'{STATIC_ROOT}/images/2-via-ico.png'
+
+    with open(caminho1_path, 'rb') as caminho1_file:
+        caminho1_content = caminho1_file.read()
+
+    with open(caminho2_path, 'rb') as caminho2_file:
+        caminho2_content = caminho2_file.read()
+
+
     assunto = ''
     
     if tag == 1:
@@ -105,6 +120,8 @@ def enviar_email(tag, destinatario, cco, contexto):
         assunto = 'Copergás - Aviso de Suspensão'
 
     contexto['DATA_EXTENSA'] = formatar_data_por_extenso(get_data(0, '/'))
+    contexto['CAMINHO1'] = 'cid:logo-coper2.png'
+    contexto['CAMINHO2'] = 'cid:2-via-ico.png'
 
     # Create MIME message
     message = MIMEMultipart()
@@ -113,18 +130,26 @@ def enviar_email(tag, destinatario, cco, contexto):
     message['Bcc'] = ', '.join(cco)
     message['Subject'] = assunto
 
-    # Text content
-    message.attach(MIMEText(render_email_template(tag, contexto), 'html'))
+    # Attach HTML content with inline images
+    html_content = render_email_template(tag, contexto)
+    message.attach(MIMEText(html_content, 'html'))
 
-    # Headers
+    # Attach inline images
+    image1 = MIMEImage(caminho1_content)
+    image1.add_header('Content-ID', '<logo-coper2.png>')
+    message.attach(image1)
+
+    image2 = MIMEImage(caminho2_content)
+    image2.add_header('Content-ID', '<2-via-ico.png>')
+    message.attach(image2)
+
     message['Return-Receipt-To'] = 'sinc@copergas.com.br'
     message['Disposition-Notification-To'] = 'sinc@copergas.com.br'
-
-    # DSN settings
     message['DSN'] = 'SiNC 0'
     message['Return'] = 'headers'
     message['Notify'] = 'success, failure, delay'
     message['Recipient'] = 'sinc@copergas.com.br'
+
 
     try:
         # Setup the SMTP server
@@ -133,6 +158,7 @@ def enviar_email(tag, destinatario, cco, contexto):
             server.login('sinc', 'Ks9xKi5CClBMqAPr1iyu')
             # Send the email
             server.send_message(message)
+            logger.info(f'E-mail enviado para {destinatario}')
             print("e-mail enviado")
         return True
     except smtplib.SMTPException as e:
@@ -150,7 +176,6 @@ def define_tipo_not(tag):
         4: 'aviso-susp',
         5: 'aptos-para-corte'
     }
-
     return models.get(tag)
 
 def render_email_template(tag, contexto):
