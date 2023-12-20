@@ -9,6 +9,7 @@ from aplicacao.queries import salva_ultima_notificacao
 from jinja2 import Environment, FileSystemLoader
 from aplicacao.queries import faturas_proximas_vencer, faturas_vencidas
 from novoSinc.settings import BASE_DIR, STATIC_ROOT
+from datetime import datetime
 
 import logging
 
@@ -45,9 +46,11 @@ def notifica_cliente(tag, cliente, espera):
     else:
         #console.log("NENHUM GRUPO DE COLABORADOR ADICIONADO!")
         colaboradores = GFIN
-    if  (cliente.NOT == 'EMAIL'):
+    print(f'Cliente atual -> {cliente}')
+    if  (cliente['EMAIL'] != None):
         # Refatorar enviar_email de modo a fazer um tratamento de exceção que fará o papel do callback; "err" é booleano
-        err = enviar_email(tag, cliente.CONTATO,  colaboradores, cliente)
+        #err = enviar_email(tag, cliente.CONTATO, colaboradores, cliente) # Produção
+        err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
 
         if err:
             print(err)
@@ -56,15 +59,26 @@ def notifica_cliente(tag, cliente, espera):
             espera_atual = espera + 15
             notifica_cliente(tag, cliente, espera_atual)
             if espera_atual > 45:
-                return # Caso tenha falhado três vezes, passa para o próximo cliente, evitando loop infinito
+                salva_ultima_notificacao(cliente, tag) # Caso tenha falhado três vezes, passa para o próximo cliente, evitando loop infinito
         else:
-            salva_ultima_notificacao(cliente, tag)
-        #console.log("CLIENTE SEM E-MAIL PARA CONTATO - " + cliente.TITULO);
+            cliente['STATUS'] = 'Enviado' # E-mail enviado com sucesso
+            salva_ultima_notificacao(cliente, tag) # Persistirá na tabela de envios independente do status do envio
+    else:
+        salva_ultima_notificacao(cliente, tag)
 
 #Retirada a condicional referente ao envio de SMS
 def notificar_clientes(tag, clientes): # Era notificarClientes
     for cliente in clientes:
         notifica_cliente(tag,cliente)
+    # E-mails enviados
+
+#Retirada a condicional referente ao envio de SMS
+def notificar_clientes_teste(tag, clientes): # Era notificarClientes
+    for cliente in clientes:
+        cliente['DATA'] = datetime.now().strftime('%Y-%m-%d')
+        cliente['STATUS'] = 'Não enviado'
+        cliente['EMAIL'] = 'igor.oliveira@copergas.com.br'
+        notifica_cliente(tag,cliente,0)
     # E-mails enviados
     
 def trata_array(contatos):
@@ -79,11 +93,13 @@ def trata_array(contatos):
         return False
 
     for contato in contatos:
+        contato['STATUS'] = False # Valor da key STATUS inicialmente setada para False
         if contato['EMAIL'] is not None and not is_excecao(contato['EMAIL']):
             contato['NOT'] = 'EMAIL'
             contato['CONTATO'] = contato['EMAIL']
         else:
             contato['NOT'] = 'NULL'
+            contato['CONTATO'] = contato['']
 
     return contatos
 
@@ -106,7 +122,6 @@ def enviar_email(tag, destinatario, cco, contexto):
 
     with open(caminho2_path, 'rb') as caminho2_file:
         caminho2_content = caminho2_file.read()
-
 
     assunto = ''
     
@@ -149,7 +164,6 @@ def enviar_email(tag, destinatario, cco, contexto):
     message['Return'] = 'headers'
     message['Notify'] = 'success, failure, delay'
     message['Recipient'] = 'sinc@copergas.com.br'
-
 
     try:
         # Setup the SMTP server

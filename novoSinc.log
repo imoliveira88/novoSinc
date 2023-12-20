@@ -11052,3 +11052,609 @@ Watching for file changes with StatReloader
 C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2423
+"GET /static/css/styles.css HTTP/1.1" 200 5128
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"POST / HTTP/1.1" 200 1990
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 1959
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 1959
+"GET / HTTP/1.1" 200 1959
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 1959
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2423
+"GET /static/css/styles.css HTTP/1.1" 200 5128
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"POST / HTTP/1.1" 200 1959
+"GET / HTTP/1.1" 200 1958
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 1958
+"GET /static/css/styles.css HTTP/1.1" 200 5128
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 2423
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /aplicacao/tese_envio_todos
+"GET /aplicacao/tese_envio_todos HTTP/1.1" 404 4152
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4107
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'notificar_clientes_teste' is not defined
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 71554
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 75, in notificar_clientes_teste
+    notifica_cliente(tag,cliente)
+TypeError: notifica_cliente() missing 1 required positional argument: 'espera'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 80632
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 75, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 48, in notifica_cliente
+    if  (cliente.NOT == 'EMAIL'):
+         ^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'NOT'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 86179
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 76, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 49, in notifica_cliente
+    if  (cliente.NOT == 'EMAIL'):
+         ^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'NOT'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 86144
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 76, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 49, in notifica_cliente
+    if  (cliente.EMAIL != None):
+         ^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'EMAIL'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 86134
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 76, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 52, in notifica_cliente
+    err = enviar_email(tag, cliente.CONTATO,'', cliente) # Teste
+                            ^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'CONTATO'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 86531
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 76, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 64, in notifica_cliente
+    salva_ultima_notificacao(cliente, tag) # Persistirá na tabela de envios independente do status do envio
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\queries.py", line 75, in salva_ultima_notificacao
+    mysql.set_ultima_matricula_servico(cliente, tag)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'mysql' has no attribute 'set_ultima_matricula_servico'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 91761
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\queries.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\queries.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 76, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 64, in notifica_cliente
+    salva_ultima_notificacao(cliente, tag) # Persistirá na tabela de envios independente do status do envio
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\queries.py", line 75, in salva_ultima_notificacao
+    set_ultima_matricula_servico(cliente, tag)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py", line 23, in set_ultima_matricula_servico
+    item = Envio(contrato=cliente['MATRICULA'],email=cliente['CONTATO'],titulo=cliente['TITULO'],data_envio=datetime.now().strftime('%Y-%m-%d'),status_envio=cliente['STATUS'])
+                                                     ~~~~~~~^^^^^^^^^^^
+KeyError: 'CONTATO'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 96673
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 76, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 64, in notifica_cliente
+    salva_ultima_notificacao(cliente, tag) # Persistirá na tabela de envios independente do status do envio
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\queries.py", line 80, in salva_ultima_notificacao
+    return afetadas
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'afetadas' where it is not associated with a value
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 91998
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\queries.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view aplicacao.views.testa_envio_todos didn't return an HttpResponse object. It returned None instead.
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 69024
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 163, in testa_envio_todos
+    return render(request, 'pages/teste.html', {'data': rows})
+                                                        ^^^^
+NameError: name 'rows' is not defined
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 72149
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2041
+"GET /static/css/styles.css HTTP/1.1" 200 5128
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 163, in testa_envio_todos
+    return render(request, 'pages/teste.html', {'data': clientes})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 197, in render
+    template = context.template.engine.select_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\engine.py", line 206, in select_template
+    return self.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 484, in parse
+    raise self.error(token, e)
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 482, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '['MATRICULA']' from 'cliente['MATRICULA']'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 290205
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2041
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2041
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2042
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2042
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2042
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2871
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 160, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 81, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 65, in notifica_cliente
+    salva_ultima_notificacao(cliente, tag) # Persistirá na tabela de envios independente do status do envio
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\queries.py", line 75, in salva_ultima_notificacao
+    set_ultima_matricula_servico(cliente, tag)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py", line 24, in set_ultima_matricula_servico
+    item.save()
+  File "C:\Python312\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Python312\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+                       ^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\compiler.py", line 1747, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\compiler.py", line 1686, in prepare_value
+    return field.get_db_prep_save(value, connection=self.connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\fields\__init__.py", line 1607, in get_db_prep_value
+    value = self.get_prep_value(value)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\fields\__init__.py", line 1585, in get_prep_value
+    value = super().get_prep_value(value)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\fields\__init__.py", line 1464, in get_prep_value
+    return self.to_python(value)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\fields\__init__.py", line 1567, in to_python
+    raise exceptions.ValidationError(
+django.core.exceptions.ValidationError: ['“20-12-2023” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ] format.']
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 164647
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\mysql.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 163, in testa_envio_todos
+    return render(request, 'pages/teste.html', {'clientes': clientes})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 197, in render
+    template = context.template.engine.select_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\engine.py", line 206, in select_template
+    return self.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 484, in parse
+    raise self.error(token, e)
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 482, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ':"d-m-Y"' from 'cliente.DATA:"d-m-Y"'
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 291940
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2843
+"GET /static/css/styles.css HTTP/1.1" 200 5128
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 2883

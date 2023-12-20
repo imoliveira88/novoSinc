@@ -1,6 +1,6 @@
 from aplicacao.date import get_data
 import cx_Oracle
-import mysql
+from aplicacao.mysql import set_ultima_matricula_servico
 
 def select_from_get_faturas_view():
     return (
@@ -72,7 +72,8 @@ def executa_query_piramide(query):
 # Corrigir após finalizar o mysql.py
 def salva_ultima_notificacao (cliente, tag): #Era salvaUltimaNotificacao
     
-    mysql.set_ultima_matricula_servico(cliente, tag)
+    set_ultima_matricula_servico(cliente, tag)
+    afetadas = 0
 
     if (tag == 3 or tag == 4):
         afetadas = set_info_not_piramide(cliente, tag)

@@ -24,7 +24,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
 
-class Query(models.Model):
+class Query(models.Model): #A ser excluído. Está aqui apenas para não quebrar alguns métodos de testes em outros arquivos
     nome = models.CharField('Nome', unique=True, max_length=100, blank=False)
     descricao = models.CharField('Descricao', unique=False, max_length=200, blank=False, default="Descrição padrão")
     query = models.CharField('Query', unique=True, max_length=5000, blank=False)
@@ -36,3 +36,15 @@ class Query(models.Model):
         verbose_name = 'Query'
         verbose_name_plural = 'Queries'
         ordering = ['nome']
+
+class Envio(models.Model):
+    contrato = models.CharField('Contrato', max_length=10, blank=False)
+    email = models.CharField('E-mail', max_length=50)
+    titulo = models.CharField('Titulo', max_length=20)
+    data_envio = models.DateTimeField('Data')
+    status_envio = models.CharField('Status',max_length=20)
+
+    class Meta:
+        verbose_name = 'Envio'
+        verbose_name_plural = 'Envios'
+        ordering = ['contrato']

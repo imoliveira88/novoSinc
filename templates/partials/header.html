@@ -4,19 +4,12 @@
 <header class="main-header-container">
     <table align="center" width="80%">
         <tr>
-            <td>
-                <table class="logo" align="right">
-                    <tr>
-                        <td style="text-align: right;">
-                            <div class="container-footer">
-                                <img src="{% static 'images/copergas-sinc-sf.png' %}" height="50px"
-                                    alt="logo-coper">
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            <td style="text-align: right;">
+                <div>
+                    <img src="{% static 'images/copergas-sinc-sf.png' %}" height="50px" alt="logo-coper">
+                </div>
             </td>
-            <td align="center" style="padding-left: 10px;">
+            <td>
                 <table class="menu" align="center">
                     <tr>
                         <td><a href="{% url 'queries' %}">Queries</a></td>
@@ -24,7 +17,7 @@
                     </tr>
                 </table>
             </td>
-            <td align="right" style="text-align: right;">
+            <td style="text-align: left;">
                 <a href="{% url 'logout' %}">Logout</a>
             </td>
         </tr>

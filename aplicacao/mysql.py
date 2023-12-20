@@ -1,6 +1,7 @@
 from aplicacao.date import get_data
 import mysql.connector
 from datetime import datetime, timedelta
+from aplicacao.models import Envio
 
 # TABELAS
 TABELA_CLIENTES = "sinc_clientes"
@@ -14,55 +15,19 @@ ERRO = "erro"
 TAG_USUARIO_EXISTENTE = "ER_DUP_ENTRY"
 TAG_TOKEN_GRAVADO = 1
 TAG_TOKEN_NAO_GRAVADO = 0
-TAG_NOVO_TOKEN
 
 #Todos os callback foram transformados em "return". Verificar como adaptar o uso
 
-def db():
-    conn_mysql = mysql.connector.connect(
-        user='root',
-        password='',
-        host='localhost',
-        port='3306',
-        database='sinc_db',
-        multipleStatements=True
-    )
-    return conn_mysql
-
 def set_ultima_matricula_servico(cliente, tipo):
-    conn_mysql = db()
 
-    cursor = conn_mysql.cursor()
-
-    sql_set_ultima_mat = (
-        "INSERT INTO sinc_ultima_notificacao "
-        "(titulo, ultima_data, id_pir, matricula, idperfilfaturamento, not_tipo, meio_not, contato_cliente, nome_cliente) "
-        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    )
-
-    data_atual = datetime.now().strftime('%Y-%m-%d')
-
-    values = (
-        cliente['TITULO'],
-        data_atual,
-        cliente['ID_CLIENTE'],
-        cliente['MATRICULA'],
-        cliente['IDPERFILFATURAMENTO'],
-        tipo,
-        cliente['NOT'],
-        cliente['CONTATO'],
-        cliente['NOME_CLIENTE']
-    )
+    item = Envio(contrato=cliente['MATRICULA'],email=cliente['EMAIL'],titulo=cliente['TITULO'],data_envio=datetime.now(),status_envio=cliente['STATUS'])
+    item.save()
 
     try:
-        cursor.execute(sql_set_ultima_mat, values)
-        conn_mysql.commit()
+        item.save()
         print('Ultima matricula salva com sucesso')
     except mysql.connector.Error as err:
         print(f'Erro ao salvar a ultima matricula! {err}')
-    finally:
-        cursor.close()
-        conn_mysql.close()
 
 def salvar_protocolos(dados):
     conn_mysql = db()

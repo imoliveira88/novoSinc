@@ -23,6 +23,8 @@ body {
 table.menu {
     background: #061aef;
     box-shadow: 5px 5px 5px #9295e0;
+    display: flex;
+    align-items: center;
     width: 60%;
     font-size: 2rem;
     color: white;
@@ -36,6 +38,13 @@ table.menu {
     padding: 0;
     border-radius: 5px;
     margin-top: 20px;
+}
+
+header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 table.menu td{

@@ -5,15 +5,22 @@
 
     <table id="datatable">
         <tr>
-            <th>NUMPEDC</th>
-            <th>CODPROD</th>
+            <th>CONTRATO</th>
+            <th>TÍTULO</th>
+            <th>E-MAIL</th>
+            <th>DATA</th>
+            <th>STATUS</th>
         </tr>
-        {% for row in data %}
+        {% for cliente in clientes %}
         <tr>
-            <td>{{ row.0 }}</td>
-            <td>{{ row.1 }}</td>
+            <td>{{ cliente.MATRICULA }}</td>
+            <td>{{ cliente.TITULO }}</td>
+            <td>{{ cliente.EMAIL }}</td>
+            <td>{{ cliente.DATA }}</td>
+            <td>{{ cliente.STATUS }}</td>
         </tr>
         {% endfor %}
     </table>
+
 
 </div>

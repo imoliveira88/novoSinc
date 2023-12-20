@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from aplicacao.emails import enviar_email
+from aplicacao.emails import enviar_email,notificar_clientes_teste
 from aplicacao.forms import QueryForm
 from django.urls import reverse
 from django.contrib import messages
@@ -152,3 +152,12 @@ def testa_envio(request):
     return render(request, 'pages/teste.html', {'data': rows})
 
     #['pablo.logiquesistemas@copergas.com.br']
+
+def testa_envio_todos(request):
+    print("Antes da captura de todos os clientes na condição de faturas próximas ao vencimento")
+    clientes = faturas_proximas_vencer()
+    print("Dicionário de clientes setado")
+    notificar_clientes_teste(2,clientes)
+    print("Após envio dos e-mails")
+
+    return render(request, 'pages/teste.html', {'clientes': clientes})
