@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.relatorio{
+    text-align: center;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -23,7 +27,6 @@ body {
 table.menu {
     background: #061aef;
     box-shadow: 5px 5px 5px #9295e0;
-    display: flex;
     align-items: center;
     width: 60%;
     font-size: 2rem;
@@ -41,10 +44,11 @@ table.menu {
 }
 
 header {
-    padding: 10px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin: 0;
 }
 
 table.menu td{
@@ -53,7 +57,7 @@ table.menu td{
     margin: auto;
     width: 50rem;
     height: 5rem;
-    padding: 0;
+    padding-left: 10px;
 }
 
 table.menu a {
@@ -112,6 +116,23 @@ table.sobre {
     margin: auto;
     padding: 0;
     border-radius: 5px;
+}
+
+.main-header-conteiner {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+#logo {
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+#logout {
+    text-align: right;
+    margin-top: 10px;
+    margin-left: 10px; /* Adjust the margin as needed */
+    color: red;
 }
 
 .main-content-login {
@@ -178,8 +199,7 @@ button {
 }
 
 .container-lista {
-    display: flex;
-    flex-flow: row wrap;
+    justify-content: center;
     padding: 2rem;
     background: white;
 }
@@ -258,7 +278,34 @@ table.table-filtro th {
     background-color: #061aef;
     color: white;
     padding: 2rem;
-  }
+}
+
+#geral {
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50%;
+    background-color: #e4e4e4;
+    border: 2px solid rgb(4, 0, 255)
+}
+
+#tabela_resumo {
+    margin: auto;
+    width: 50%;
+    flex-flow: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#filtro {
+    width: 50%;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#tabela_resumo td {
+    border: 0px;
+    padding: 8px;
+    text-align: left;
+}
 
 .main-footer {
     display: flex;

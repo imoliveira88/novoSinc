@@ -42,6 +42,7 @@ class Envio(models.Model):
     email = models.CharField('E-mail', max_length=50)
     titulo = models.CharField('Titulo', max_length=20)
     data_envio = models.DateTimeField('Data')
+    tipo_envio = models.CharField('Tipo', max_length=20)
     status_envio = models.CharField('Status',max_length=20)
 
     class Meta:

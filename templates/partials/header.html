@@ -2,24 +2,18 @@
 {% load bootstrap_icons %}
 
 <header class="main-header-container">
-    <table align="center" width="80%">
+    <div>
+        <img id="logo" src="{% static 'images/copergas-sinc-sf.png' %}" style="max-height: 75px;" alt="logo-coper">
+    </div>
+
+    <table class="menu">
         <tr>
-            <td style="text-align: right;">
-                <div>
-                    <img src="{% static 'images/copergas-sinc-sf.png' %}" height="50px" alt="logo-coper">
-                </div>
-            </td>
-            <td>
-                <table class="menu" align="center">
-                    <tr>
-                        <td><a href="{% url 'queries' %}">Queries</a></td>
-                        <td><a href="{% url 'sobre' %}">Sobre</a></td>
-                    </tr>
-                </table>
-            </td>
-            <td style="text-align: left;">
-                <a href="{% url 'logout' %}">Logout</a>
-            </td>
+            <td><a href="{% url 'relatorio_proximas' %}">Relatórios</a></td>
+            <td><a href="{% url 'sobre' %}">Sobre</a></td>
         </tr>
     </table>
+
+    <div id="logout">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
 </header>

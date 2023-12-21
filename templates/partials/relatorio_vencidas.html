@@ -1,0 +1,76 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+
+    <h2 class="relatorio">Alerta de faturas vencidas</h2>
+    <br/>
+
+    <table id="geral">
+        <tr>
+            <td>
+    
+                <table id="tabela_resumo">
+                    <tr>
+                        <td>Enviados: </td>
+                        <td>{{ total_enviados }}</td>
+                    </tr>
+                    <tr>
+                        <td>Não enviados: </td>
+                        <td>{{ nao_enviados }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total: </td>
+                        <td>{{ total }}</td>
+                    </tr>
+                </table>
+            </td>
+    
+            <td>
+                <table id="filtro">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <tr>
+                            <td><label for="data1">Data inicial: </label></td>
+                            <td><input type="text" id="data1" name="data1"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="data2">Data Final: </label></td>
+                            <td><input type="text" id="data2" name="data2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center;"><button class="btn btn-primary" type="submit">Filtrar</button>
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+
+    <table id="datatable">
+        <tr>
+            <th>ID</th>
+            <th>CONTRATO</th>
+            <th>TÍTULO</th>
+            <th>E-MAIL</th>
+            <th>DATA</th>
+            <th>TIPO</th>
+            <th>STATUS</th>
+        </tr>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.contrato }}</td>
+            <td>{{ cliente.titulo }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.data_envio|date:"d/m/Y H:i:s" }}</td>
+            <td>{{ cliente.tipo_envio }}</td>
+            <td>{{ cliente.status_envio }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>

@@ -13,10 +13,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login, logout
+from datetime import datetime
 
 import cx_Oracle
 
-from aplicacao.models import Query
+from aplicacao.models import Query, Envio
 from aplicacao.queries import faturas_vencidas, faturas_proximas_vencer
 
 import logging
@@ -53,7 +54,7 @@ def edita_query(request, id):
     if request.method == 'GET':
         context = {'form' : QueryForm(instance=query), 'id':id}
         return render(request,'pages/edita_query.html',context)
-#usar strip
+    #usar strip
     elif request.method == 'POST':
         form = QueryForm(request.POST or None)
         context = {'form': form}
@@ -121,27 +122,7 @@ def logout_view(request):
     return redirect("/")
 
 def testa_envio(request):
-    # Connect to the Oracle database
-    """ connection = cx_Oracle.connect(
-        user="SINC_INADIPLENTES",
-        password="AN4LISYS_IN4D1",
-        dsn="192.168.1.46:1521/piramide.intranet.copergas.com.br"
-    )
-
-    # Create a cursor
-    cursor = connection.cursor()
-
-    # Execute a sample query (replace with your actual query)
-    query = "SELECT NUMPEDC, CODPROD FROM ITENS_PED_COMPRA FETCH FIRST 10 ROWS ONLY"
-    cursor.execute(query)
-
-    # Fetch all rows
-    rows = cursor.fetchall()
-
-    # Close the cursor and connection
-    cursor.close()
-    connection.close() """
-    
+  
     rows = faturas_proximas_vencer()
     
     cliente = rows[0]
@@ -161,3 +142,63 @@ def testa_envio_todos(request):
     print("Após envio dos e-mails")
 
     return render(request, 'pages/teste.html', {'clientes': clientes})
+
+def proximas_a_vencer(request):
+    context = {}
+    if request.method == 'GET':
+        clientes = Envio.objects.all().filter(tipo_envio = "Próximas a vencer").order_by('id')
+        total = clientes.count()
+        total_enviados = clientes.filter(status_envio = 'Enviado').count()
+        nao_enviados = total - total_enviados
+
+        context = {'clientes': clientes, 'total': total, 'total_enviados': total_enviados, 'nao_enviados': nao_enviados}
+
+        return render(request, 'pages/relatorio_proximas.html', context)
+    elif request.method == 'POST':
+        date_string1 = request.POST['data1']
+        date_string2 = request.POST['data2']
+
+        date_object1 = datetime.strptime(date_string1, '%d/%m/%Y')
+        date_object2 = datetime.strptime(date_string2, '%d/%m/%Y')
+
+        # Convert the datetime object to the desired format
+        data1 = date_object1.strftime('%Y-%m-%d %H:%M:%S')
+        data2 = date_object2.strftime('%Y-%m-%d %H:%M:%S')
+
+        clientes = Envio.objects.filter(tipo_envio = "Próximas a vencer").filter(data_envio__gt=data1, data_envio__lt=data2).order_by('id')
+        total = clientes.count()
+        total_enviados = clientes.filter(status_envio='Enviado').count()
+        nao_enviados = total - total_enviados
+        context = {'clientes': clientes, 'total': total, 'total_enviados': total_enviados, 'nao_enviados': nao_enviados}
+
+        return render(request, 'pages/relatorio_proximas.html', context)
+
+def vencidas(request):
+    context = {}
+    if request.method == 'GET':
+        clientes = Envio.objects.all().filter(tipo_envio = "Vencidas").order_by('id')
+        total = clientes.count()
+        total_enviados = clientes.filter(status_envio = 'Enviado').count()
+        nao_enviados = total - total_enviados
+
+        context = {'clientes': clientes, 'total': total, 'total_enviados': total_enviados, 'nao_enviados': nao_enviados}
+
+        return render(request, 'pages/relatorio_vencidas.html', context)
+    elif request.method == 'POST':
+        date_string1 = request.POST['data1']
+        date_string2 = request.POST['data2']
+
+        date_object1 = datetime.strptime(date_string1, '%d/%m/%Y')
+        date_object2 = datetime.strptime(date_string2, '%d/%m/%Y')
+
+        # Convert the datetime object to the desired format
+        data1 = date_object1.strftime('%Y-%m-%d %H:%M:%S')
+        data2 = date_object2.strftime('%Y-%m-%d %H:%M:%S')
+
+        clientes = Envio.objects.filter(tipo_envio = "Vencidas").filter(data_envio__gt=data1, data_envio__lt=data2).order_by('id')
+        total = clientes.count()
+        total_enviados = clientes.filter(status_envio='Enviado').count()
+        nao_enviados = total - total_enviados
+        context = {'clientes': clientes, 'total': total, 'total_enviados': total_enviados, 'nao_enviados': nao_enviados}
+
+        return render(request, 'pages/relatorio_vencidas.html', context)
