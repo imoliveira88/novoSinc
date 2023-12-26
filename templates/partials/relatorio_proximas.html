@@ -51,6 +51,7 @@
     <br/>
 
     <table id="datatable">
+        <thead>
         <tr>
             <th>ID</th>
             <th>CONTRATO</th>
@@ -60,17 +61,20 @@
             <th>TIPO</th>
             <th>STATUS</th>
         </tr>
-        {% for cliente in clientes %}
-        <tr>
-            <td>{{ cliente.id }}</td>
-            <td>{{ cliente.contrato }}</td>
-            <td>{{ cliente.titulo }}</td>
-            <td>{{ cliente.email }}</td>
-            <td>{{ cliente.data_envio|date:"d/m/Y H:i:s" }}</td>
-            <td>{{ cliente.tipo_envio }}</td>
-            <td>{{ cliente.status_envio }}</td>
-        </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.contrato }}</td>
+                <td>{{ cliente.titulo }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.data_envio|date:"d/m/Y H:i:s" }}</td>
+                <td>{{ cliente.tipo_envio }}</td>
+                <td>{{ cliente.status_envio }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 
 </div>

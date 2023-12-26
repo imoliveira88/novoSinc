@@ -1,4 +1,4 @@
-from click import BaseCommand
+from django.core.management.base import BaseCommand
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from aplicacao.emails import enviar_email,notificar_clientes_teste
@@ -17,54 +17,20 @@ from django.contrib.auth import authenticate, login, logout
 from datetime import datetime
 from background_task.models import Task
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 import cx_Oracle
 
 from aplicacao.models import Query, Envio
 from aplicacao.queries import faturas_vencidas, faturas_proximas_vencer
 
-from background_task import background
+from celery import shared_task
+from celery.utils.log import get_task_logger
 import logging
 
-@background(schedule=30)  # This task will run every 30 seconds for testing purposes
-def my_background_task():
-    # Your background task logic here
-    print("Background task executed at 15:30 every day")
+logger = get_task_logger(__name__)
 
-class Command(BaseCommand):
-    help = 'Schedule daily background task at 15:30'
-
-    def handle(self, *args, **options):
-        # Clear any existing tasks with the same name
-        Task.objects.filter(task_name='aplicacao.views.my_background_task').delete()
-
-        # Calculate the next run time for 15:30 today
-        now = timezone.now()
-        today_1530 = now.replace(hour=15, minute=30, second=0, microsecond=0)
-        if now > today_1530:
-            next_run = today_1530 + timezone.timedelta(days=1)
-        else:
-            next_run = today_1530
-
-        # Create a new task
-        task = Task.objects.create(
-            task_name='myapp.views.my_background_task',
-            run_at=next_run,
-        )
-
-        print(f"Task scheduled for {next_run}")
-
-@csrf_exempt  # For simplicity; you might want to implement a more secure solution
-def schedule_task(request):
-    if request.method == 'POST':
-        # Trigger the background task when the HTML page is submitted
-        my_background_task.delay()
-        return HttpResponse("Task scheduled successfully.")
-    else:
-        return render(request, 'schedule_task.html')
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 """
 <h2>Schedule a Background Task</h2>
     <form method="post" action="{% url 'schedule_task' %}">
@@ -79,6 +45,10 @@ logger.setLevel(logging.INFO)
 def app_view(request):
     return render(request, 'pages/queries.html')
 
+def custom_404(request, exception):
+    return render(request, 'login.html', status=404)
+
+@login_required
 def lista_queries(request):
     query_list = Query.objects.all()
 
@@ -99,6 +69,7 @@ def lista_queries(request):
     #context = {'queries': query}
     #return render(request, "pages/queries.html", context)
 
+@login_required
 def edita_query(request, id):
     query = Query.objects.get(id=id)
     if request.method == 'GET':
@@ -116,26 +87,11 @@ def edita_query(request, id):
         context = {'queries': query}
         return render(request, 'pages/queries.html',context)
 
+@login_required
 def sobre(request):
     return render(request, "pages/sobre.html")
 
-def exibe_query(request, id):
-    query = Query.objects.get(id=id)
-    context = {'query': query}
-    return render(request, "pages/exibe_query.html", context)
-
-def inclui_query(request):
-    context = {}
-    form = QueryForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-
-    context = {'form': form}
-    if request.POST:
-        return HttpResponseRedirect('lista_queries')
-    else:
-        return render(request, 'pages/inclui_query.html',context)
-
+@login_required
 def deleta_query(request, id):
 
     try:
@@ -161,16 +117,17 @@ def login_view(request, *args):
 
 
     if request.user.is_authenticated:
-        return render(request, 'pages/teste.html')
+        return render(request, 'pages/relatorio_proximas.html') #TODO: dashboard
         #return redirect("aplicacao/teste.html")
 
     return render(request, 'login.html', context)
 
-
+@login_required
 def logout_view(request):
     logout(request)
     return redirect("/")
 
+@login_required
 def testa_envio(request):
 
     rows = faturas_proximas_vencer()
@@ -184,6 +141,7 @@ def testa_envio(request):
 
     #['pablo.logiquesistemas@copergas.com.br']
 
+@login_required
 def testa_envio_todos(request):
     print("Antes da captura de todos os clientes na condição de faturas próximas ao vencimento")
     clientes = faturas_proximas_vencer()
@@ -193,6 +151,7 @@ def testa_envio_todos(request):
 
     return render(request, 'pages/teste.html', {'clientes': clientes})
 
+@login_required
 def proximas_a_vencer(request):
     context = {}
     if request.method == 'GET':
@@ -223,6 +182,7 @@ def proximas_a_vencer(request):
 
         return render(request, 'pages/relatorio_proximas.html', context)
 
+@login_required
 def vencidas(request):
     context = {}
     if request.method == 'GET':

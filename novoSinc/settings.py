@@ -26,6 +26,25 @@ AUTH_USER_MODEL = 'aplicacao.Usuario'
 
 # Application definition
 
+CELERY_BROKER_URL = 'redis://192.168.60.136:6379/0'
+CELERY_RESULT_BACKEND = 'redis://192.168.60.136.1:6379/0'
+
+CELERY_TIMEZONE = 'UTC'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://192.168.60.136:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+CELERY_IMPORTS = (
+    'novoSinc.tasks',  # Add the path to your tasks module
+)
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -35,9 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'rest_framework',
+    'background_task',
     'django_jinja',
-    'background-task',
+    'django_redis',
     'aplicacao',
+    'celery',
     'django_bootstrap_icons',
     'django_filters'
 ]
@@ -51,7 +72,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'aplicacao.middleware.Custom404Middleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -103,6 +126,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'novoSinc.wsgi.application'
+ASGI_APPLICATION = 'novoSinc.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

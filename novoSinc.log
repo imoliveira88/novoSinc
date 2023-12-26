@@ -13110,3 +13110,486 @@ Watching for file changes with StatReloader
 "GET /static/css/styles.css HTTP/1.1" 200 6726
 "GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842193
 "GET /static/css/styles.css HTTP/1.1" 200 6800
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 3362
+"GET /static/css/styles.css HTTP/1.1" 200 6800
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"POST / HTTP/1.1" 200 2844
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842193
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842193
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /static/css/styles.css HTTP/1.1" 200 6836
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/favicon-32x32.png HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /static/css/styles.css HTTP/1.1" 304 0
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /static/css/styles.css HTTP/1.1" 200 6836
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /static/css/styles.css HTTP/1.1" 200 6838
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /static/css/styles.css HTTP/1.1" 200 6874
+"GET /aplicacao/sobre HTTP/1.1" 200 2891
+"GET /static/css/styles.css HTTP/1.1" 200 6875
+"GET /aplicacao/sobre HTTP/1.1" 200 2830
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 4517
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 4517
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 4517
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 4517
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+"GET /aplicacao/sobre HTTP/1.1" 200 2830
+"GET /aplicacao/sobre HTTP/1.1" 200 2830
+"GET /static/css/styles.css HTTP/1.1" 200 6856
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/sobre HTTP/1.1" 200 2830
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/sobre HTTP/1.1" 200 2830
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/sobre HTTP/1.1" 200 2830
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /aplicacao/sobre HTTP/1.1" 200 2830
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 3362
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4511
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 2349
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 2282
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 2169
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 2176
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 2176
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 2176
+Not Found: /accounts/login
+"GET /accounts/login HTTP/1.1" 404 2176
+"GET / HTTP/1.1" 200 3362
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 2176
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 3362
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /accounts/login/
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py", line 12, in __call__
+    return render(request, 'login.html', status=404, message='Página não existente')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: render() got an unexpected keyword argument 'message'
+"POST /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 500 65910
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 3362
+Not Found: /accounts/login/
+"POST /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 3362
+Not Found: /accounts/login/
+"POST /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 3413
+Not Found: /accounts/login/
+"POST /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 3413
+Not Found: /accounts/login/
+"POST /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 3413
+Not Found: /accounts/login/
+"POST /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 3413
+Not Found: /accounts/login
+"GET /accounts/login HTTP/1.1" 404 3413
+Not Found: /accounts/login
+"POST /accounts/login HTTP/1.1" 404 3413
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /accounts/login
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'Custom404Middleware' object is not callable
+"POST /accounts/login HTTP/1.1" 500 61676
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /accounts/login
+"GET /accounts/login HTTP/1.1" 404 4520
+Not Found: /login
+"GET /login HTTP/1.1" 404 4493
+"GET / HTTP/1.1" 200 3413
+"POST / HTTP/1.1" 200 2814
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 3413
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+"GET / HTTP/1.1" 200 3413
+"POST / HTTP/1.1" 200 2814
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 842163
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960035
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4511
+"GET / HTTP/1.1" 200 3927
+"GET /static/css/styles.css HTTP/1.1" 200 7022
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"POST / HTTP/1.1" 200 3328
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960035
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960035
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960027
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960027
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 5031
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 5031
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 5101
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960027
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 5217
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 4043
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"POST / HTTP/1.1" 200 5224
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 4043
+"GET /aplicacao HTTP/1.1" 301 0
+"GET /aplicacao/ HTTP/1.1" 200 4218
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4558
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 179
+"GET /aplicacao/logout HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/logout HTTP/1.1" 404 179
+"GET / HTTP/1.1" 200 4043
+"POST / HTTP/1.1" 200 5224
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 4043
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"POST / HTTP/1.1" 200 4150
+"POST / HTTP/1.1" 200 4150
+"POST / HTTP/1.1" 200 4150
+"POST / HTTP/1.1" 200 5224
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 4043
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"POST / HTTP/1.1" 200 4150
+"POST / HTTP/1.1" 200 5224
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /admin
+"GET /admin HTTP/1.1" 404 3993
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 4043
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"POST / HTTP/1.1" 200 4150
+Not Found: /admin
+"GET /admin HTTP/1.1" 404 3993
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin HTTP/1.1" 200 4043
+"POST /admin HTTP/1.1" 200 4043
+"POST /admin HTTP/1.1" 200 4043
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /admin HTTP/1.1" 200 4043
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /admin
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py", line 9, in __call__
+    print(f"Entrou aqui 1 {response.status}")
+                           ^^^^^^^^^^^^^^^
+AttributeError: 'HttpResponseNotFound' object has no attribute 'status'
+"POST /admin HTTP/1.1" 500 66413
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin HTTP/1.1" 200 4043
+"POST /admin HTTP/1.1" 200 4043
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /admin HTTP/1.1" 200 4043
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /admin HTTP/1.1" 200 4043
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /admin
+"POST /admin HTTP/1.1" 404 3994
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin HTTP/1.1" 200 4043
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Internal Server Error: /admin
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 107, in process_response
+    if response.status_code == 404 and self.should_redirect_with_slash(request):
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'status_code'
+"POST /admin HTTP/1.1" 500 70822
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin HTTP/1.1" 200 4043
+Internal Server Error: /admin
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 107, in process_response
+    if response.status_code == 404 and self.should_redirect_with_slash(request):
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'status_code'
+"POST /admin HTTP/1.1" 500 70821
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin HTTP/1.1" 200 4043
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+Internal Server Error: /admin
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 107, in process_response
+    if response.status_code == 404 and self.should_redirect_with_slash(request):
+       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'status_code'
+"POST /admin HTTP/1.1" 500 70826
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /admin
+"GET /admin HTTP/1.1" 404 3993
+Not Found: /admin
+"GET /admin HTTP/1.1" 404 3993
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /admin
+"GET /admin HTTP/1.1" 404 3993
+Not Found: /admin
+"GET /admin HTTP/1.1" 404 3993
+"GET / HTTP/1.1" 200 4043
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"POST / HTTP/1.1" 200 4150
+"POST / HTTP/1.1" 200 5224
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 4043
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 302 0
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4058
+Not Found: /accounts/login/
+"GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 4058
+"GET / HTTP/1.1" 200 4043
+"POST / HTTP/1.1" 200 5224
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 4043
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/css/styles.css HTTP/1.1" 200 7022
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"POST / HTTP/1.1" 200 5224
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 960143
