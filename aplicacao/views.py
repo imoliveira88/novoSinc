@@ -1,3 +1,4 @@
+from click import BaseCommand
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from aplicacao.emails import enviar_email,notificar_clientes_teste
@@ -14,16 +15,65 @@ from rest_framework import status
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login, logout
 from datetime import datetime
+from background_task.models import Task
+from django.utils import timezone
 
 import cx_Oracle
 
 from aplicacao.models import Query, Envio
 from aplicacao.queries import faturas_vencidas, faturas_proximas_vencer
 
+from background_task import background
 import logging
+
+@background(schedule=30)  # This task will run every 30 seconds for testing purposes
+def my_background_task():
+    # Your background task logic here
+    print("Background task executed at 15:30 every day")
+
+class Command(BaseCommand):
+    help = 'Schedule daily background task at 15:30'
+
+    def handle(self, *args, **options):
+        # Clear any existing tasks with the same name
+        Task.objects.filter(task_name='aplicacao.views.my_background_task').delete()
+
+        # Calculate the next run time for 15:30 today
+        now = timezone.now()
+        today_1530 = now.replace(hour=15, minute=30, second=0, microsecond=0)
+        if now > today_1530:
+            next_run = today_1530 + timezone.timedelta(days=1)
+        else:
+            next_run = today_1530
+
+        # Create a new task
+        task = Task.objects.create(
+            task_name='myapp.views.my_background_task',
+            run_at=next_run,
+        )
+
+        print(f"Task scheduled for {next_run}")
+
+@csrf_exempt  # For simplicity; you might want to implement a more secure solution
+def schedule_task(request):
+    if request.method == 'POST':
+        # Trigger the background task when the HTML page is submitted
+        my_background_task.delay()
+        return HttpResponse("Task scheduled successfully.")
+    else:
+        return render(request, 'schedule_task.html')
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+"""
+<h2>Schedule a Background Task</h2>
+    <form method="post" action="{% url 'schedule_task' %}">
+        {% csrf_token %}
+        <label for="desired_time">Desired Time (HH:MM):</label>
+        <input type="text" id="desired_time" name="desired_time" placeholder="HH:MM" pattern="[0-9]{2}:[0-9]{2}" title="Please enter a valid time in the format HH:MM" required>
+        <br>
+        <input type="submit" value="Schedule Task">
+    </form> """
 
 # Create your views here.
 def app_view(request):
@@ -97,7 +147,7 @@ def deleta_query(request, id):
 
     return HttpResponseRedirect('/aplicacao/lista_queries')
 
-def login_view(request, *args):    
+def login_view(request, *args):
     context={}
 
     if request.method == "POST":
@@ -108,23 +158,23 @@ def login_view(request, *args):
             login(request, user)
         else:
             return render(request, 'login.html', {'aviso':'Usuário ou senha incorretos'})
-        
+
 
     if request.user.is_authenticated:
         return render(request, 'pages/teste.html')
-        #return redirect("aplicacao/teste.html")    
+        #return redirect("aplicacao/teste.html")
 
     return render(request, 'login.html', context)
-    
+
 
 def logout_view(request):
     logout(request)
     return redirect("/")
 
 def testa_envio(request):
-  
+
     rows = faturas_proximas_vencer()
-    
+
     cliente = rows[0]
     print("pouco antes do envio de e-mail, no método de teste na view")
     logger.info('pouco antes do envio de e-mail, no método de teste na view')

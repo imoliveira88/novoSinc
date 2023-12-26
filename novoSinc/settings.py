@@ -36,10 +36,14 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'django_jinja',
+    'background-task',
     'aplicacao',
     'django_bootstrap_icons',
     'django_filters'
 ]
+
+#pip install django-background-tasks
+#python manage.py migrate
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
