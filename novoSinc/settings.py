@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,24 +27,17 @@ AUTH_USER_MODEL = 'aplicacao.Usuario'
 
 # Application definition
 
-CELERY_BROKER_URL = 'redis://192.168.60.136:6379/0'
-CELERY_RESULT_BACKEND = 'redis://192.168.60.136.1:6379/0'
+BROKER_URL = 'pyamqp://guest:guest@localhost//'
 
 CELERY_TIMEZONE = 'UTC'
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://192.168.60.136:6379/1',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
-
 CELERY_IMPORTS = (
-    'novoSinc.tasks',  # Add the path to your tasks module
+    'novoSinc.tasks',
 )
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,7 +50,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'background_task',
     'django_jinja',
-    'django_redis',
     'aplicacao',
     'celery',
     'django_bootstrap_icons',
@@ -73,6 +66,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'aplicacao.middleware.Custom404Middleware',
+    'aplicacao.middleware.URLLoggingMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -81,7 +75,7 @@ MIDDLEWARE = [
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
     'handlers': {
         'file': {
             'level': 'INFO',

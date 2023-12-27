@@ -2,6 +2,7 @@ from aplicacao.date import get_data
 import mysql.connector
 from datetime import datetime, timedelta
 from aplicacao.models import Envio
+from django.utils import timezone
 
 # TABELAS
 TABELA_CLIENTES = "sinc_clientes"
@@ -19,8 +20,13 @@ TAG_TOKEN_NAO_GRAVADO = 0
 #Todos os callback foram transformados em "return". Verificar como adaptar o uso
 
 def set_ultima_matricula_servico(cliente, tipo):
+    tipo_envio = ""
+    if tipo == 2:
+        tipo_envio = "Próximas a vencer"
+    elif tipo_envio == 3:
+        tipo_envio = "Vencidas"
 
-    item = Envio(contrato=cliente['MATRICULA'],email=cliente['EMAIL'],titulo=cliente['TITULO'],data_envio=datetime.now(),status_envio=cliente['STATUS'])
+    item = Envio(contrato=cliente['MATRICULA'],email=cliente['EMAIL'],titulo=cliente['TITULO'],data_envio=timezone.now(),status_envio=cliente['STATUS'],tipo_envio=tipo_envio)
     item.save()
 
     try:
@@ -41,7 +47,7 @@ def salvar_protocolos(dados):
         conn_mysql.commit()
         cursor.close()
 
-    data_atual = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    data_atual = timezone.now().strftime('%Y-%m-%d %H:%M:%S')
     print({
         'protocolos_gravados': len(posts),
         'data_gravacao': data_atual
@@ -67,7 +73,7 @@ def salvar_detalhes_protocolos(id_protocolo, dados):
         conn_mysql.commit()
         cursor.close()
 
-    data_atual = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    data_atual = timezone.now().strftime('%Y-%m-%d %H:%M:%S')
     print({
         'detalhes_protocolos_gravados': len(posts),
         'data_gravacao': data_atual

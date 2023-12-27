@@ -1,0 +1,26 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+
+    <table id="datatable">
+        <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>Ação</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for h in historico %}
+        <tr>
+            <td>{{ h.usuario }}</td>
+            <td>{{ h.acao }}</td>
+            <td>{{ h.data_login|date:"d/m/Y H:i:s" }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>

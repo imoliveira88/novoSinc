@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from aplicacao.models import Query
+from aplicacao.models import Query, Modelo
 
 class QueryForm(ModelForm):
     query = forms.CharField(widget=forms.Textarea(attrs={"rows":"5", "cols":"600",'class':'form-control','placeholder': 'Query'}))
@@ -8,3 +8,8 @@ class QueryForm(ModelForm):
     class Meta:
         model = Query
         fields = '__all__'
+
+class ModeloForm(forms.ModelForm):
+    class Meta:
+        model = Modelo
+        fields = ['conteudo']

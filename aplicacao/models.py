@@ -49,3 +49,15 @@ class Envio(models.Model):
         verbose_name = 'Envio'
         verbose_name_plural = 'Envios'
         ordering = ['contrato']
+
+class Historico(models.Model):
+    usuario = models.ForeignKey('Usuario', verbose_name='Historico', db_column='usuario_id', on_delete=models.PROTECT)
+    data_login = models.DateTimeField('Data')
+    acao = models.CharField('Acao', max_length=100)
+
+class Modelo(models.Model):
+    nome = models.CharField(max_length=30, unique=True)
+    conteudo= models.TextField()
+
+    def __str__(self):
+        return self.name

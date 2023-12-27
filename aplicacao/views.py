@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from aplicacao.emails import enviar_email,notificar_clientes_teste
-from aplicacao.forms import QueryForm
+from aplicacao.forms import QueryForm, ModeloForm
 from django.urls import reverse
 from django.contrib import messages
 from aplicacao.filters import QueryFilter
@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login, logout
-from datetime import datetime
+from datetime import datetime, timedelta
 from background_task.models import Task
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
@@ -22,7 +22,7 @@ from django.contrib.auth.decorators import login_required
 
 import cx_Oracle
 
-from aplicacao.models import Query, Envio
+from aplicacao.models import Query, Envio, Historico, Modelo
 from aplicacao.queries import faturas_vencidas, faturas_proximas_vencer
 
 from celery import shared_task
@@ -70,22 +70,20 @@ def lista_queries(request):
     #return render(request, "pages/queries.html", context)
 
 @login_required
-def edita_query(request, id):
-    query = Query.objects.get(id=id)
+def edita_modelo(request, id):
+    modelo = Modelo.objects.get(id=id)
     if request.method == 'GET':
-        context = {'form' : QueryForm(instance=query), 'id':id}
-        return render(request,'pages/edita_query.html',context)
-    #usar strip
+        context = {'form' : ModeloForm(instance=modelo), 'id':id}
+        return render(request,'pages/edita_modelo.html',context)
     elif request.method == 'POST':
-        form = QueryForm(request.POST or None)
+        form = ModeloForm(request.POST or None)
         context = {'form': form}
-        query.nome = form["nome"].data
-        query.query = form["query"].data
-        query.descricao = form["descricao"].data
-        query.save()
-        query = Query.objects.all
-        context = {'queries': query}
-        return render(request, 'pages/queries.html',context)
+        modelo.nome = form["nome"].data
+        modelo.conteudo = form["conteudo"].data
+        modelo.save()
+        modelos = Modelo.objects.all
+        context = {'modelos': modelos}
+        return render(request, 'pages/modelos.html',context)
 
 @login_required
 def sobre(request):
@@ -152,6 +150,12 @@ def testa_envio_todos(request):
     return render(request, 'pages/teste.html', {'clientes': clientes})
 
 @login_required
+def historico_logins(request):
+    historico = Historico.objects.all().order_by('-data_login')
+
+    return render(request, 'pages/historico_logins.html', {'historico': historico})
+
+@login_required
 def proximas_a_vencer(request):
     context = {}
     if request.method == 'GET':
@@ -167,12 +171,19 @@ def proximas_a_vencer(request):
         date_string1 = request.POST['data1']
         date_string2 = request.POST['data2']
 
+        print(f'Data 1 {date_string1} Data 2 {date_string2}')
+        if date_string1 == '':
+            date_string1 = '01/01/1900'
         date_object1 = datetime.strptime(date_string1, '%d/%m/%Y')
+        d1s = date_object1 - timedelta(days=1)
+        if date_string2 == '':
+            date_string2 = '31/12/3000'
         date_object2 = datetime.strptime(date_string2, '%d/%m/%Y')
+        d2s = date_object2 + timedelta(days=1)
 
         # Convert the datetime object to the desired format
-        data1 = date_object1.strftime('%Y-%m-%d %H:%M:%S')
-        data2 = date_object2.strftime('%Y-%m-%d %H:%M:%S')
+        data1 = d1s.strftime('%Y-%m-%d')
+        data2 = d2s.strftime('%Y-%m-%d')
 
         clientes = Envio.objects.filter(tipo_envio = "Próximas a vencer").filter(data_envio__gt=data1, data_envio__lt=data2).order_by('id')
         total = clientes.count()
@@ -198,12 +209,19 @@ def vencidas(request):
         date_string1 = request.POST['data1']
         date_string2 = request.POST['data2']
 
+        print(f'Data 1 {date_string1} Data 2 {date_string2}')
+        if date_string1 == '':
+            date_string1 = '01/01/1900'
         date_object1 = datetime.strptime(date_string1, '%d/%m/%Y')
+        d1s = date_object1 - timedelta(days=1)
+        if date_string2 == '':
+            date_string2 = '31/12/3000'
         date_object2 = datetime.strptime(date_string2, '%d/%m/%Y')
+        d2s = date_object2 + timedelta(days=1)
 
         # Convert the datetime object to the desired format
-        data1 = date_object1.strftime('%Y-%m-%d %H:%M:%S')
-        data2 = date_object2.strftime('%Y-%m-%d %H:%M:%S')
+        data1 = d1s.strftime('%Y-%m-%d')
+        data2 = d2s.strftime('%Y-%m-%d')
 
         clientes = Envio.objects.filter(tipo_envio = "Vencidas").filter(data_envio__gt=data1, data_envio__lt=data2).order_by('id')
         total = clientes.count()
@@ -212,3 +230,40 @@ def vencidas(request):
         context = {'clientes': clientes, 'total': total, 'total_enviados': total_enviados, 'nao_enviados': nao_enviados}
 
         return render(request, 'pages/relatorio_vencidas.html', context)
+
+def update_html_content(request, name):
+    html_content = get_object_or_404(Modelo, name=name)
+    if request.method == 'POST':
+        form = ModeloForm(request.POST, instance=html_content)
+        if form.is_valid():
+            form.save()
+            return redirect('success_page')  # Redirect to a success page
+    else:
+        form = ModeloForm(instance=html_content)
+    return render(request, 'update_html_content.html', {'form': form})
+
+def modelos(request):
+    modelos = Modelo.objects.all
+    context = {'modelos': modelos}
+    return render(request, 'pages/modelos.html',context)
+    """ html_content = get_object_or_404(HTMLContent, name=name)
+    if request.method == 'POST':
+        form = HTMLContentForm(request.POST, instance=html_content)
+        if form.is_valid():
+            form.save()
+            return redirect('success_page')  # Redirect to a success page
+    else:
+        form = HTMLContentForm(instance=html_content)
+    return render(request, 'update_html_content.html', {'form': form}) """
+
+# Método destinado a retornar com "ativo" caso o Novo Sinc esteja rodando. Útil para o Zabbix
+def status(request):
+    return JsonResponse({'status': 'ativo', 'message': 'O Novo SINC está rodando!'})
+
+
+""" <h2>Update HTML Content</h2>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Content</button>
+</form> """

@@ -16,3 +16,11 @@ def my_background_task():
     except Exception as e:
         print(f"Error in my_background_task: {e}")
         logger.exception(f"Error in my_background_task: {e}")
+
+@shared_task
+def testa_envio_todos(request):
+    print("Antes da captura de todos os clientes na condição de faturas próximas ao vencimento")
+    clientes = faturas_proximas_vencer()
+    print("Dicionário de clientes setado")
+    notificar_clientes_teste(2,clientes)
+    print("Após envio dos e-mails")
