@@ -48,3 +48,15 @@ class Modelo(models.Model):
 
     def __str__(self):
         return self.name
+
+class Query(models.Model):
+    nome = models.CharField('Nome', unique=True, max_length=100, blank=False)
+    sql = models.CharField('SQL', unique=True, max_length=5000, blank=False)
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name = 'Query'
+        verbose_name_plural = 'Queries'
+        ordering = ['nome']
