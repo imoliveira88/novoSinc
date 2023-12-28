@@ -10,6 +10,7 @@ from jinja2 import Environment, FileSystemLoader
 from aplicacao.queries import faturas_proximas_vencer, faturas_vencidas
 from novoSinc.settings import BASE_DIR, STATIC_ROOT
 from datetime import datetime
+from aplicacao.models import Modelo
 
 import logging
 
@@ -48,9 +49,11 @@ def notifica_cliente(tag, cliente, espera):
         colaboradores = GFIN
     print(f'Cliente atual -> {cliente}')
     if  (cliente['EMAIL'] != None):
+        print('Entrou logo após a verificação de e-mail')
         # Refatorar enviar_email de modo a fazer um tratamento de exceção que fará o papel do callback; "err" é booleano
         #err = enviar_email(tag, cliente.CONTATO, colaboradores, cliente) # Produção
         err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
+        print(f"Tentou enviar e-mail {err}")
 
         if err:
             print(err)
@@ -114,6 +117,7 @@ def read_file_content(file_path):
         return file.read()
 
 def enviar_email(tag, destinatario, cco, contexto):
+    print('No método enviar_email')
     caminho1_path = f'{STATIC_ROOT}/images/logo-coper2.png'
     caminho2_path = f'{STATIC_ROOT}/images/2-via-ico.png'
 
@@ -122,6 +126,8 @@ def enviar_email(tag, destinatario, cco, contexto):
 
     with open(caminho2_path, 'rb') as caminho2_file:
         caminho2_content = caminho2_file.read()
+
+    print('Após abrir imagens')
 
     assunto = ''
     
@@ -134,9 +140,13 @@ def enviar_email(tag, destinatario, cco, contexto):
     elif tag == 4:
         assunto = 'Copergás - Aviso de Suspensão'
 
+    print('Após atribuir valores às tags')
+
     contexto['DATA_EXTENSA'] = formatar_data_por_extenso(get_data(0, '/'))
     contexto['CAMINHO1'] = 'cid:logo-coper2.png'
     contexto['CAMINHO2'] = 'cid:2-via-ico.png'
+
+    print('Após inserção de contextos')
 
     # Create MIME message
     message = MIMEMultipart()
@@ -145,8 +155,11 @@ def enviar_email(tag, destinatario, cco, contexto):
     message['Bcc'] = ', '.join(cco)
     message['Subject'] = assunto
 
+    print('Antes do render_email_template_tabela')
+
     # Attach HTML content with inline images
-    html_content = render_email_template(tag, contexto)
+    html_content = render_email_template_tabela(tag, contexto) #28DEZ - Estava render_email_template
+    print('Usando o template vindo da tabela')
     message.attach(MIMEText(html_content, 'html'))
 
     # Attach inline images
@@ -192,6 +205,7 @@ def define_tipo_not(tag):
     }
     return models.get(tag)
 
+# Método recupera modelo de e-mails constante em templates/modelos
 def render_email_template(tag, contexto):
     modelos_path = os.path.join(BASE_DIR, 'templates/modelos')
     templates_env = Environment(loader=FileSystemLoader(modelos_path))
@@ -200,8 +214,25 @@ def render_email_template(tag, contexto):
     html_content = template.render(contexto)
     return html_content
 
-# AVISO DE PROX A VENCER
+# Método recupera modelo de e-mails constante em na tabela Modelo
+def render_email_template_tabela(tag, contexto):
+    # Retrieve the Modelo object based on the provided tag
+    print('Dentro do render_email')
+    modelos_path = os.path.join(BASE_DIR, 'templates/modelos')
+    templates_env = Environment(loader=FileSystemLoader(modelos_path))
 
+    template_name = f'email_{define_tipo_not(tag)}.html'
+    modelo = Modelo.objects.get(nome=template_name)
+
+    print(f'Após recuperar modelo com nome {modelo.nome}')
+
+    # Use the Django template engine to render the template
+    template = templates_env.from_string(modelo.conteudo)
+    html_content = template.render(contexto)
+
+    return html_content
+
+# AVISO DE PROX A VENCER
 def avisar_prox_vencer():
     rows = faturas_proximas_vencer()
     if rows.len > 0:
@@ -210,7 +241,6 @@ def avisar_prox_vencer():
         notificar_clientes(TAG_FATURA_PROX_VENCER, trata_array(clientes))
 
 # AVISO DE FATURA VENCIDA
-
 def avisar_faturas_vencidas():
     rows = faturas_vencidas()
     if rows.len > 0:

@@ -1,15 +1,16 @@
 from django.urls import path
 from django.conf.urls import handler404
-from aplicacao.views import custom_404, deleta_query, edita_modelo, lista_queries, app_view, sobre, testa_envio, logout_view, testa_envio_todos, proximas_a_vencer, vencidas, status, historico_logins, modelos
+from aplicacao.views import custom_404, deleta_modelo, edita_modelo, exibe_modelo, inclui_modelo, sobre
+from aplicacao.views import testa_envio, logout_view, testa_envio_todos, proximas_a_vencer, vencidas, status, historico_logins, modelos, home
 
 handler404 = custom_404
 
 urlpatterns = [
-    path('aplicacao/', app_view),
-    #path('', lista_queries),
-    path('aplicacao/lista_queries', lista_queries, name="queries"),
+    path('aplicacao/', home),
     path('aplicacao/edita_modelo/<int:id>/', edita_modelo, name="edita_modelo"),
-    path('aplicacao/deleta_query/<int:id>/', deleta_query, name='deleta_query'),
+    path('aplicacao/exibe_modelo/<int:id>/', exibe_modelo, name="exibe_modelo"),
+    path('aplicacao/inclui_modelo', inclui_modelo, name="inclui_modelo"),
+    path('aplicacao/deleta_modelo/<int:id>/', deleta_modelo, name='deleta_modelo'),
     path('aplicacao/teste', testa_envio, name="teste"),
     path('aplicacao/teste_envio_todos', testa_envio_todos, name="teste_todos"),
     path('aplicacao/relatorio_proximas', proximas_a_vencer, name="relatorio_proximas"),

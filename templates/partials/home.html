@@ -1,0 +1,68 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+
+    <h2 class="relatorio">Home</h2>
+    <br/>
+
+    <table id="geral">
+        <tr>
+            <td>
+                <table class="tabela_resumo">
+                    <tr>
+                        <td colspan="2"><h4>Próximas a vencer</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Enviados: </td>
+                        <td>{{ total_enviados_proximas }}</td>
+                    </tr>
+                    <tr>
+                        <td>Não enviados: </td>
+                        <td>{{ nao_enviados_proximas }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total: </td>
+                        <td>{{ total_proximas }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <form id="proximas" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn btn-primary" type="submit" style="white-space: nowrap;">Simular envio</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="tabela_resumo">
+                    <tr>
+                        <td colspan="2"><h4>Vencidas</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Enviados: </td>
+                        <td>{{ total_enviados_vencidas }}</td>
+                    </tr>
+                    <tr>
+                        <td>Não enviados: </td>
+                        <td>{{ nao_enviados_vencidas }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total: </td>
+                        <td>{{ total_vencidas }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <form id="vencidas" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn btn-primary" type="submit" style="white-space: nowrap;">Simular envio</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </td>            
+        </tr>
+    </table>
+
+</div>

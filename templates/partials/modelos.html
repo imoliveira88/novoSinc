@@ -2,26 +2,24 @@
 {% load bootstrap_icons %}
 
 <div class="container-lista">
-    <div class="lista">
-        <h2>Modelos cadastrados</h2>
-        <table id="datatable">
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>&nbsp;</th>
-                <th><a href="{% url 'inclui_modelo' %}">{% bs_icon 'plus-lg' color='white' %}</a></th>
-                <th>&nbsp;</th>
-            </tr>
-            {% for query in queries %}
-            <tr>
-                <td>{{ query.id }}</td>
-                <td>{{ query.nome }}</td>
-                <td><a href="{% url 'exibe_modelo' modelo.id %}">{% bs_icon 'search' color='blue' %}</a></td>
-                <td><a href="{% url 'edita_modelo' modelo.id %}">{% bs_icon 'pencil' color='green' %}</a></td>
-                <td><a href="{% url 'deleta_modelo' modelo.id %}">{% bs_icon 'trash' color='red' %}</a></td>
-            </tr>
-            {% endfor %}
-        </table>
+    <h2>Modelos cadastrados</h2>
+    <table id="datatable">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>&nbsp;</th>
+            <th><a href="{% url 'inclui_modelo' %}">{% bs_icon 'plus-lg' color='white' %}</a></th>
+            <th>&nbsp;</th>
+        </tr>
+        {% for modelo in modelos %}
+        <tr>
+            <td>{{ modelo.id }}</td>
+            <td>{{ modelo.nome }}</td>
+            <td><a href="{% url 'exibe_modelo' modelo.id %}">{% bs_icon 'search' color='blue' %}</a></td>
+            <td><a href="{% url 'edita_modelo' modelo.id %}">{% bs_icon 'pencil' color='green' %}</a></td>
+            <td><a href="{% url 'deleta_modelo' modelo.id %}">{% bs_icon 'trash' color='red' %}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 
-    </div>
 </div>

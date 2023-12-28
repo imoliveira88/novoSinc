@@ -2,28 +2,23 @@
 {% load bootstrap_icons %}
 
 <div class="container-lista">
-    <div class="lista">
-        <h2>Detalhamento de query</h2>
+        <h2>Exibição de modelo de e-mail</h2>
         <table class="table-filtro" align="center">
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Descrição</th>
             </tr>
             <tr>
-                <td>{{query.id}}</td>
-                <td>{{query.nome}}</td>
-                <td>{{query.descricao}}</td>
+                <td>{{modelo.id}}</td>
+                <td>{{modelo.nome}}</td>
             </tr>
         </table>
-        <h3>Query</h3>
+        <h3>Conteúdo</h3>
         <table class="exibe-query">
             <tr>
-	            <td>{{query.query}}</td>
+	            <td>{{modelo.conteudo|safe}}</td>
             </tr>
         </table>
         <br>
-    </div>
-
 
 </div>

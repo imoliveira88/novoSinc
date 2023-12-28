@@ -2,10 +2,9 @@ from django.core.management.base import BaseCommand
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from aplicacao.emails import enviar_email,notificar_clientes_teste
-from aplicacao.forms import QueryForm, ModeloForm
+from aplicacao.forms import ModeloForm
 from django.urls import reverse
 from django.contrib import messages
-from aplicacao.filters import QueryFilter
 from django.template.loader import get_template
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework import generics, permissions
@@ -22,7 +21,7 @@ from django.contrib.auth.decorators import login_required
 
 import cx_Oracle
 
-from aplicacao.models import Query, Envio, Historico, Modelo
+from aplicacao.models import Envio, Historico, Modelo
 from aplicacao.queries import faturas_vencidas, faturas_proximas_vencer
 
 from celery import shared_task
@@ -42,64 +41,84 @@ logger = get_task_logger(__name__)
     </form> """
 
 # Create your views here.
-def app_view(request):
-    return render(request, 'pages/queries.html')
+def home(request):
+    context = {}
+    if request.method == 'GET':
+        clientes1 = Envio.objects.all().filter(tipo_envio = "Próximas a vencer").order_by('id')
+        total_proximas = clientes1.count()
+        total_enviados_proximas = clientes1.filter(status_envio = 'Enviado').count()
+        nao_enviados_proximas = total_proximas - total_enviados_proximas
+
+        clientes2 = Envio.objects.all().filter(tipo_envio = "Vencidas").order_by('id')
+        total_vencidas = clientes2.count()
+        total_enviados_vencidas = clientes2.filter(status_envio = 'Enviado').count()
+        nao_enviados_vencidas = total_vencidas - total_enviados_vencidas
+
+        context = {'total_proximas': total_proximas, 'total_enviados_proximas': total_enviados_proximas, 'nao_enviados_proximas': nao_enviados_proximas, 'total_vencidas': total_vencidas, 'total_enviados_vencidas': total_enviados_vencidas, 'nao_enviados_vencidas': nao_enviados_vencidas}
+
+        return render(request, 'pages/home.html', context)
+    elif request.method == 'POST':
+        """ clientes = Envio.objects.filter(tipo_envio = "Próximas a vencer").filter(data_envio__gt=data1, data_envio__lt=data2).order_by('id')
+        total = clientes.count()
+        total_enviados = clientes.filter(status_envio='Enviado').count()
+        nao_enviados = total - total_enviados
+        context = {'clientes': clientes, 'total': total, 'total_enviados': total_enviados, 'nao_enviados': nao_enviados} """
+
+        return render(request, 'pages/home.html', context)
+
+
+
+    return render(request, 'pages/home.html')
 
 def custom_404(request, exception):
     return render(request, 'login.html', status=404)
 
 @login_required
-def lista_queries(request):
-    query_list = Query.objects.all()
-
-    paginator = Paginator(query_list, 10)  # Show 10 queries per page
-    page = request.GET.get('page')  # Fix the parameter name
-
-    try:
-        queries = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver the first page.
-        queries = paginator.page(1)
-    except EmptyPage:
-        # If the page is out of range, deliver the last page of results.
-        queries = paginator.page(paginator.num_pages)
-
-    return render(request, 'pages/queries.html', {'queries': queries})
-
-    #context = {'queries': query}
-    #return render(request, "pages/queries.html", context)
+def edita_modelo(request, id):
+    html_content = get_object_or_404(Modelo, id=id)
+    if request.method == 'POST':
+        form = ModeloForm(request.POST, instance=html_content)
+        if form.is_valid():
+            form.save()
+            return render(request, 'pages/modelos.html',context)
+    else:
+        form = ModeloForm(instance=html_content)
+    return render(request, 'pages/edita_modelo.html', {'form': form})
 
 @login_required
-def edita_modelo(request, id):
+def inclui_modelo(request):
+    context = {}
+    form = ModeloForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context = {'form': form}
+    if request.POST:
+        return render(request, 'pages/modelos.html')
+    else:
+        return render(request, 'pages/inclui_modelo.html',context)
+
+@login_required
+def exibe_modelo(request, id):
     modelo = Modelo.objects.get(id=id)
-    if request.method == 'GET':
-        context = {'form' : ModeloForm(instance=modelo), 'id':id}
-        return render(request,'pages/edita_modelo.html',context)
-    elif request.method == 'POST':
-        form = ModeloForm(request.POST or None)
-        context = {'form': form}
-        modelo.nome = form["nome"].data
-        modelo.conteudo = form["conteudo"].data
-        modelo.save()
-        modelos = Modelo.objects.all
-        context = {'modelos': modelos}
-        return render(request, 'pages/modelos.html',context)
+    context = {'modelo': modelo}
+    return render(request, "pages/exibe_modelo.html", context)
 
 @login_required
 def sobre(request):
     return render(request, "pages/sobre.html")
 
 @login_required
-def deleta_query(request, id):
+def deleta_modelo(request, id):
 
     try:
-        obj = get_object_or_404(Query, id=id)
+        obj = get_object_or_404(Modelo, id=id)
         obj.delete()
-        messages.info(request, "Query excluída com sucesso!")
+        messages.info(request, "Modelo excluído com sucesso!")
     except Exception:
-        messages.error(request, "Erro na tentativa de exclusão da query!")
+        messages.error(request, "Erro na tentativa de exclusão do modelo!")
 
-    return HttpResponseRedirect('/aplicacao/lista_queries')
+    return render(request, 'pages/modelos.html',context)
 
 def login_view(request, *args):
     context={}
@@ -231,39 +250,11 @@ def vencidas(request):
 
         return render(request, 'pages/relatorio_vencidas.html', context)
 
-def update_html_content(request, name):
-    html_content = get_object_or_404(Modelo, name=name)
-    if request.method == 'POST':
-        form = ModeloForm(request.POST, instance=html_content)
-        if form.is_valid():
-            form.save()
-            return redirect('success_page')  # Redirect to a success page
-    else:
-        form = ModeloForm(instance=html_content)
-    return render(request, 'update_html_content.html', {'form': form})
-
 def modelos(request):
     modelos = Modelo.objects.all
     context = {'modelos': modelos}
     return render(request, 'pages/modelos.html',context)
-    """ html_content = get_object_or_404(HTMLContent, name=name)
-    if request.method == 'POST':
-        form = HTMLContentForm(request.POST, instance=html_content)
-        if form.is_valid():
-            form.save()
-            return redirect('success_page')  # Redirect to a success page
-    else:
-        form = HTMLContentForm(instance=html_content)
-    return render(request, 'update_html_content.html', {'form': form}) """
 
 # Método destinado a retornar com "ativo" caso o Novo Sinc esteja rodando. Útil para o Zabbix
 def status(request):
     return JsonResponse({'status': 'ativo', 'message': 'O Novo SINC está rodando!'})
-
-
-""" <h2>Update HTML Content</h2>
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update Content</button>
-</form> """

@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+h2, h3 {
+    margin: auto;
+    text-align: center;
+}
+
 .relatorio{
     text-align: center;
 }
@@ -45,6 +50,7 @@ table.menu {
 
 .submenu {
     margin: auto;
+    margin-top: 20px;
     background-color: #8f70b8;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     padding: 0;
@@ -260,7 +266,13 @@ button {
 .container-lista {
     justify-content: center;
     padding: 2rem;
-    background: white;
+    background: rgb(169, 177, 241);
+    margin: auto;
+    width: 70%;
+    align-items: center;
+    text-align: center; /* Center text and inline elements */
+    display: flex;
+    flex-direction: column;
 }
 
 table.table-filtro{
@@ -319,7 +331,7 @@ table.table-filtro th {
 
 #datatable {
     font-family: Arial, Helvetica, sans-serif;
-    width: 50%;
+    width: 70%;
     margin: auto;
   }
 
@@ -340,14 +352,20 @@ table.table-filtro th {
 }
 
 #geral {
+    padding: 5px;
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
-    width: 50%;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center text and inline elements */
+    display: flex;
+    flex-direction: column;
     background-color: #e4e4e4;
     border: 2px solid rgb(4, 0, 255)
 }
 
-#tabela_resumo {
+.tabela_resumo {
     margin: auto;
     width: 50%;
     flex-flow: nowrap;

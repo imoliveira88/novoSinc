@@ -14284,3 +14284,820 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'inclui_modelo' not found. 'i
 "GET /aplicacao/historico_logins HTTP/1.1" 200 7317
 C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5263
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 304 0
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 3948
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 304 0
+"POST / HTTP/1.1" 200 5263
+"GET /aplicacao/modelos HTTP/1.1" 200 3684
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3854
+"GET /aplicacao/modelos HTTP/1.1" 200 3684
+"GET /aplicacao/historico_logins HTTP/1.1" 200 8126
+"GET /aplicacao/modelos HTTP/1.1" 200 3684
+"GET /aplicacao/historico_logins HTTP/1.1" 200 8401
+"GET /aplicacao/modelos HTTP/1.1" 200 3684
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7052
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /static/css/styles.css HTTP/1.1" 200 7077
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3854
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3712
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3709
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3723
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3709
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 9770
+"GET /aplicacao/sobre HTTP/1.1" 200 3272
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 10043
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3709
+"GET /aplicacao/historico_logins HTTP/1.1" 200 10457
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\forms.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3777
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 964094
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3847
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3777
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3777
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7417
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3777
+"GET /static/css/styles.css HTTP/1.1" 200 7417
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3777
+"GET /static/css/styles.css HTTP/1.1" 200 7417
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3777
+"GET /static/css/styles.css HTTP/1.1" 200 7417
+"POST /aplicacao/inclui_modelo HTTP/1.1" 302 0
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 3777
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /aplicacao/inclui_modelo HTTP/1.1" 302 0
+"GET /aplicacao/modelos HTTP/1.1" 200 3605
+"GET /static/css/styles.css HTTP/1.1" 304 0
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/modelos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 225, in modelos
+    return render(request, 'pages/modelos.html',context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'exibe_modelo' not found. 'exibe_modelo' is not a valid view function or pattern name.
+"GET /aplicacao/modelos HTTP/1.1" 500 184842
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4575
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/modelos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 231, in modelos
+    return render(request, 'pages/modelos.html',context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'deleta_modelo' not found. 'deleta_modelo' is not a valid view function or pattern name.
+"GET /aplicacao/modelos HTTP/1.1" 500 186402
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7421
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14809
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14773
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14999
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7453
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /static/css/styles.css HTTP/1.1" 200 7470
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14773
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14773
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7130
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14773
+"GET /static/css/styles.css HTTP/1.1" 200 7153
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14773
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 15277
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/sobre HTTP/1.1" 200 3272
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 15550
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 964094
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 964094
+"GET /static/css/styles.css HTTP/1.1" 200 7153
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14773
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14781
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 16935
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 964094
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14781
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7185
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7263
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /static/css/styles.css HTTP/1.1" 200 7243
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14940
+"GET /static/css/styles.css HTTP/1.1" 200 7199
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14939
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7179
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14939
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7291
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 14781
+"GET /aplicacao/historico_logins HTTP/1.1" 200 19030
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 12175
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO1 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO1%20%7D%7D HTTP/1.1" 404 4879
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO2 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO2%20%7D%7D HTTP/1.1" 404 4879
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 14939
+"GET /static/css/styles.css HTTP/1.1" 304 0
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 20030
+"GET /aplicacao/historico_logins HTTP/1.1" 200 20172
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7291
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 964094
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 20458
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 964094
+"GET /static/css/styles.css HTTP/1.1" 304 0
+- Broken pipe from ('127.0.0.1', 59383)
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 21010
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/historico_logins HTTP/1.1" 200 21285
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Watching for file changes with StatReloader
+"GET /aplicacao/historico_logins HTTP/1.1" 200 21427
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /aplicacao/historico_logins HTTP/1.1" 200 21702
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 140, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 82, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 54, in notifica_cliente
+    err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 150, in enviar_email
+    html_content = render_email_template_tabela(tag, contexto) #28DEZ - Estava render_email_template
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 208, in render_email_template_tabela
+    modelo = Modelo.objects.get(name=template_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1426, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1236, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'name' into field. Choices are: conteudo, id, nome
+- Broken pipe from ('127.0.0.1', 60418)
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 964094
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 140, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 84, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 55, in notifica_cliente
+    err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 152, in enviar_email
+    html_content = render_email_template_tabela(tag, contexto) #28DEZ - Estava render_email_template
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 210, in render_email_template_tabela
+    modelo = Modelo.objects.get(name=template_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Python312\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1426, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1236, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1724, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'name' into field. Choices are: conteudo, id, nome
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 170065
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 140, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 84, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 55, in notifica_cliente
+    err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 161, in enviar_email
+    html_content = render_email_template_tabela(tag, contexto) #28DEZ - Estava render_email_template
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 225, in render_email_template_tabela
+    template = get_template(modelo.nome)
+               ^^^^^^^^^^^^
+NameError: name 'get_template' is not defined
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 122228
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 140, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 86, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 57, in notifica_cliente
+    err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 163, in enviar_email
+    html_content = render_email_template_tabela(tag, contexto) #28DEZ - Estava render_email_template
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 229, in render_email_template_tabela
+    template = get_template(modelo.nome)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: email_fatura-prox.html
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 129416
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_todos
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 140, in testa_envio_todos
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 84, in notificar_clientes_teste
+    notifica_cliente(tag,cliente,0)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 55, in notifica_cliente
+    err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 161, in enviar_email
+    html_content = render_email_template_tabela(tag, contexto) #28DEZ - Estava render_email_template
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 231, in render_email_template_tabela
+    context = Context(contexto)  # Use RequestContext if needed
+              ^^^^^^^
+NameError: name 'Context' is not defined. Did you mean: 'contexto'?
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 500 122869
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/teste_envio_todos HTTP/1.1" 200 8424
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 971680
+"POST /aplicacao/relatorio_proximas HTTP/1.1" 200 16766
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 23134
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 12175
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO1 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO1%20%7D%7D HTTP/1.1" 404 4879
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO2 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO2%20%7D%7D HTTP/1.1" 404 4879
+"GET /aplicacao/historico_logins HTTP/1.1" 200 23860
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 971680
+"GET /aplicacao/historico_logins HTTP/1.1" 200 24279
+"GET /aplicacao/sobre HTTP/1.1" 200 3272
+"GET /aplicacao/historico_logins HTTP/1.1" 200 24552
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 971680
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /aplicacao/historico_logins HTTP/1.1" 200 24971
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\middleware.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/historico_logins HTTP/1.1" 200 25113
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/sobre HTTP/1.1" 200 3272
+"GET /aplicacao/historico_logins HTTP/1.1" 200 25386
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/sobre HTTP/1.1" 200 3272
+"GET /aplicacao/historico_logins HTTP/1.1" 200 25792
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/sobre HTTP/1.1" 200 3272
+"GET /aplicacao/historico_logins HTTP/1.1" 200 26198
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 971680
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao HTTP/1.1" 301 0
+Internal Server Error: /aplicacao/
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 45, in app_view
+    return render(request, 'pages/queries.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'inclui_query' not found. 'inclui_query' is not a valid view function or pattern name.
+"GET /aplicacao/ HTTP/1.1" 500 171732
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/ HTTP/1.1" 200 4157
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /aplicacao/historico_logins HTTP/1.1" 200 27138
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 971680
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 5256
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 971680
+"POST /aplicacao/relatorio_proximas HTTP/1.1" 200 16766
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"POST /aplicacao/relatorio_proximas HTTP/1.1" 200 16766
+"POST /aplicacao/relatorio_proximas HTTP/1.1" 200 16766
+"POST /aplicacao/relatorio_proximas HTTP/1.1" 200 16766
+"GET /aplicacao/ HTTP/1.1" 200 4157
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/historico_logins HTTP/1.1" 200 28414
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /static/favicon-32x32.png HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 4162
+"GET /aplicacao/ HTTP/1.1" 200 5412
+"GET /static/css/styles.css HTTP/1.1" 200 7478
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 5412
+"GET /static/css/styles.css HTTP/1.1" 200 7478
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 5412
+"GET /static/css/styles.css HTTP/1.1" 200 7478
+"POST /aplicacao/ HTTP/1.1" 200 5400
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /aplicacao/ HTTP/1.1" 200 5400
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /aplicacao/ HTTP/1.1" 200 5400
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /aplicacao/ HTTP/1.1" 200 5400
+"POST /aplicacao/ HTTP/1.1" 200 5400
+"GET /aplicacao/ HTTP/1.1" 200 5412
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/modelos HTTP/1.1" 200 7201
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 5412
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 971680
+"GET /aplicacao/ HTTP/1.1" 200 5412
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 5441
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 5441
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 971680
+"GET /aplicacao/ HTTP/1.1" 200 5441
+"GET /static/css/styles.css HTTP/1.1" 200 7478
+"GET /aplicacao/ HTTP/1.1" 200 5470
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/ HTTP/1.1" 200 5470
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 200 7527

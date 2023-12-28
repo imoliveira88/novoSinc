@@ -24,19 +24,6 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
 
-class Query(models.Model): #A ser excluído. Está aqui apenas para não quebrar alguns métodos de testes em outros arquivos
-    nome = models.CharField('Nome', unique=True, max_length=100, blank=False)
-    descricao = models.CharField('Descricao', unique=False, max_length=200, blank=False, default="Descrição padrão")
-    query = models.CharField('Query', unique=True, max_length=5000, blank=False)
-
-    def __str__(self):
-        return self.nome
-
-    class Meta:
-        verbose_name = 'Query'
-        verbose_name_plural = 'Queries'
-        ordering = ['nome']
-
 class Envio(models.Model):
     contrato = models.CharField('Contrato', max_length=10, blank=False)
     email = models.CharField('E-mail', max_length=50)
