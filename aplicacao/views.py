@@ -150,7 +150,6 @@ def testa_envio(request):
     rows = faturas_proximas_vencer()
 
     cliente = rows[0]
-    print("pouco antes do envio de e-mail, no método de teste na view")
     logger.info('pouco antes do envio de e-mail, no método de teste na view')
     enviar_email(2,'igor.oliveira@copergas.com.br','',cliente)
 
@@ -159,14 +158,18 @@ def testa_envio(request):
     #['pablo.logiquesistemas@copergas.com.br']
 
 @login_required
-def testa_envio_todos(request):
-    print("Antes da captura de todos os clientes na condição de faturas próximas ao vencimento")
+def testa_envio_proximas(request):
     clientes = faturas_proximas_vencer()
-    print("Dicionário de clientes setado")
     notificar_clientes_teste(2,clientes)
-    print("Após envio dos e-mails")
 
-    return render(request, 'pages/teste.html', {'clientes': clientes})
+    return render(request, 'pages/relatorio_proximas.html', {'clientes': clientes})
+
+@login_required
+def testa_envio_vencidas(request):
+    clientes = faturas_vencidas()
+    notificar_clientes_teste(3,clientes)
+
+    return render(request, 'pages/relatorio_vencidas.html', {'clientes': clientes})
 
 @login_required
 def historico_logins(request):
@@ -190,7 +193,6 @@ def proximas_a_vencer(request):
         date_string1 = request.POST['data1']
         date_string2 = request.POST['data2']
 
-        print(f'Data 1 {date_string1} Data 2 {date_string2}')
         if date_string1 == '':
             date_string1 = '01/01/1900'
         date_object1 = datetime.strptime(date_string1, '%d/%m/%Y')
@@ -228,7 +230,6 @@ def vencidas(request):
         date_string1 = request.POST['data1']
         date_string2 = request.POST['data2']
 
-        print(f'Data 1 {date_string1} Data 2 {date_string2}')
         if date_string1 == '':
             date_string1 = '01/01/1900'
         date_object1 = datetime.strptime(date_string1, '%d/%m/%Y')

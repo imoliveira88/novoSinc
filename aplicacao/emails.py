@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from aplicacao.date import formatar_data_por_extenso, get_data
-from aplicacao.queries import salva_ultima_notificacao
+from aplicacao.queries import salva_ultima_notificacao, salva_ultima_notificacao_teste
 from jinja2 import Environment, FileSystemLoader
 from aplicacao.queries import faturas_proximas_vencer, faturas_vencidas
 from novoSinc.settings import BASE_DIR, STATIC_ROOT
@@ -32,16 +32,16 @@ TAG_AVISO_SUSPENSAO = 4
 
 def notifica_cliente(tag, cliente, espera):
     espera_atual = 0
-    if (tag != 2 and (validar_valor_no_array(cliente.IDPERFILFATURAMENTO, ['30000009', '3']) )):
+    if (tag != 2 and (validar_valor_no_array(cliente['IDPERFILFATURAMENTO'], ['30000009', '3']) )):
         #console.log("ADICIONANDO GRUPO DE COLABORADORES COMERCIAL!")
         colaboradores = GFIN + COLABORADORES_COMERCIAL
-    elif (tag != 2 and (validar_valor_no_array(cliente.IDPERFILFATURAMENTO,[ '30000010', '2', '1']) )):
+    elif (tag != 2 and (validar_valor_no_array(cliente['IDPERFILFATURAMENTO'],[ '30000010', '2', '1']) )):
         #console.log("ADICIONANDO GRUPO DE COLABORADORES RESIDENCIAL!")
         colaboradores = GFIN + COLABORADORES_RESIDENCIAL
-    elif (tag != 2 and (cliente.IDPERFILFATURAMENTO == '10020000' )):
+    elif (tag != 2 and (cliente['IDPERFILFATURAMENTO'] == '10020000' )):
         #console.log("ADICIONANDO GRUPO DE COLABORADORES VEICULAR!")
         colaboradores = GFIN + COLABORADORES_VEICULAR
-    elif (tag != 2 and (validar_valor_no_array(cliente.IDPERFILFATURAMENTO, ['20020329', '30000007', '30000028', '30000016', '5', '9']) )):
+    elif (tag != 2 and (validar_valor_no_array(cliente['IDPERFILFATURAMENTO'], ['20020329', '30000007', '30000028', '30000016', '5', '9']) )):
         #console.log("ADICIONANDO GRUPO DE COLABORADORES INDUSTRIAL!")
         colaboradores = GFIN + COLABORADORES_INDUSTRIAL
     else:
@@ -49,11 +49,9 @@ def notifica_cliente(tag, cliente, espera):
         colaboradores = GFIN
     print(f'Cliente atual -> {cliente}')
     if  (cliente['EMAIL'] != None):
-        print('Entrou logo após a verificação de e-mail')
         # Refatorar enviar_email de modo a fazer um tratamento de exceção que fará o papel do callback; "err" é booleano
         #err = enviar_email(tag, cliente.CONTATO, colaboradores, cliente) # Produção
         err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
-        print(f"Tentou enviar e-mail {err}")
 
         if err:
             print(err)
@@ -69,6 +67,45 @@ def notifica_cliente(tag, cliente, espera):
     else:
         salva_ultima_notificacao(cliente, tag)
 
+def notifica_cliente_teste(tag, cliente, espera):
+    espera_atual = 0
+    colaboradores = ''
+    if (tag != 2 and (validar_valor_no_array(cliente['IDPERFILFATURAMENTO'], ['30000009', '3']) )):
+        #console.log("ADICIONANDO GRUPO DE COLABORADORES COMERCIAL!")
+        colaboradores = GFIN + COLABORADORES_COMERCIAL
+    elif (tag != 2 and (validar_valor_no_array(cliente['IDPERFILFATURAMENTO'],[ '30000010', '2', '1']) )):
+        #console.log("ADICIONANDO GRUPO DE COLABORADORES RESIDENCIAL!")
+        colaboradores = GFIN + COLABORADORES_RESIDENCIAL
+    elif (tag != 2 and (cliente['IDPERFILFATURAMENTO'] == '10020000' )):
+        #console.log("ADICIONANDO GRUPO DE COLABORADORES VEICULAR!")
+        colaboradores = GFIN + COLABORADORES_VEICULAR
+    elif (tag != 2 and (validar_valor_no_array(cliente['IDPERFILFATURAMENTO'], ['20020329', '30000007', '30000028', '30000016', '5', '9']) )):
+        #console.log("ADICIONANDO GRUPO DE COLABORADORES INDUSTRIAL!")
+        colaboradores = GFIN + COLABORADORES_INDUSTRIAL
+    else:
+        #console.log("NENHUM GRUPO DE COLABORADOR ADICIONADO!")
+        colaboradores = GFIN
+    print(f'Cliente atual -> {cliente}')
+    if  (cliente['EMAIL'] != None):
+        # Refatorar enviar_email de modo a fazer um tratamento de exceção que fará o papel do callback; "err" é booleano
+        #err = enviar_email(tag, cliente.CONTATO, colaboradores, cliente) # Produção
+        err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
+
+        if err:
+            print(err)
+            print('Oversending: aguardando 15 segundos para tentar novamente.')
+            time.sleep(15) # Aguarda 15 segundos antes de tentar reenviar
+            espera_atual = espera + 15
+            notifica_cliente(tag, cliente, espera_atual)
+            if espera_atual > 45:
+                salva_ultima_notificacao_teste(cliente, tag) # Caso tenha falhado três vezes, passa para o próximo cliente, evitando loop infinito
+        else:
+            cliente['STATUS'] = 'Enviado' # E-mail enviado com sucesso
+            salva_ultima_notificacao_teste(cliente, tag) # Persistirá na tabela de envios independente do status do envio
+    else:
+        salva_ultima_notificacao_teste(cliente, tag)
+
+
 #Retirada a condicional referente ao envio de SMS
 def notificar_clientes(tag, clientes): # Era notificarClientes
     for cliente in clientes:
@@ -81,7 +118,7 @@ def notificar_clientes_teste(tag, clientes): # Era notificarClientes
         cliente['DATA'] = datetime.now().strftime('%Y-%m-%d')
         cliente['STATUS'] = 'Não enviado'
         cliente['EMAIL'] = 'igor.oliveira@copergas.com.br'
-        notifica_cliente(tag,cliente,0)
+        notifica_cliente_teste(tag,cliente,0)
     # E-mails enviados
     
 def trata_array(contatos):
@@ -117,7 +154,6 @@ def read_file_content(file_path):
         return file.read()
 
 def enviar_email(tag, destinatario, cco, contexto):
-    print('No método enviar_email')
     caminho1_path = f'{STATIC_ROOT}/images/logo-coper2.png'
     caminho2_path = f'{STATIC_ROOT}/images/2-via-ico.png'
 
@@ -126,8 +162,6 @@ def enviar_email(tag, destinatario, cco, contexto):
 
     with open(caminho2_path, 'rb') as caminho2_file:
         caminho2_content = caminho2_file.read()
-
-    print('Após abrir imagens')
 
     assunto = ''
     
@@ -140,13 +174,9 @@ def enviar_email(tag, destinatario, cco, contexto):
     elif tag == 4:
         assunto = 'Copergás - Aviso de Suspensão'
 
-    print('Após atribuir valores às tags')
-
     contexto['DATA_EXTENSA'] = formatar_data_por_extenso(get_data(0, '/'))
     contexto['CAMINHO1'] = 'cid:logo-coper2.png'
     contexto['CAMINHO2'] = 'cid:2-via-ico.png'
-
-    print('Após inserção de contextos')
 
     # Create MIME message
     message = MIMEMultipart()
@@ -155,11 +185,8 @@ def enviar_email(tag, destinatario, cco, contexto):
     message['Bcc'] = ', '.join(cco)
     message['Subject'] = assunto
 
-    print('Antes do render_email_template_tabela')
-
     # Attach HTML content with inline images
     html_content = render_email_template_tabela(tag, contexto) #28DEZ - Estava render_email_template
-    print('Usando o template vindo da tabela')
     message.attach(MIMEText(html_content, 'html'))
 
     # Attach inline images
@@ -186,7 +213,6 @@ def enviar_email(tag, destinatario, cco, contexto):
             # Send the email
             server.send_message(message)
             logger.info(f'E-mail enviado para {destinatario}')
-            print("e-mail enviado")
         return True
     except smtplib.SMTPException as e:
         print(f"SMTP Exception: {e}")
@@ -217,14 +243,11 @@ def render_email_template(tag, contexto):
 # Método recupera modelo de e-mails constante em na tabela Modelo
 def render_email_template_tabela(tag, contexto):
     # Retrieve the Modelo object based on the provided tag
-    print('Dentro do render_email')
     modelos_path = os.path.join(BASE_DIR, 'templates/modelos')
     templates_env = Environment(loader=FileSystemLoader(modelos_path))
 
     template_name = f'email_{define_tipo_not(tag)}.html'
     modelo = Modelo.objects.get(nome=template_name)
-
-    print(f'Após recuperar modelo com nome {modelo.nome}')
 
     # Use the Django template engine to render the template
     template = templates_env.from_string(modelo.conteudo)

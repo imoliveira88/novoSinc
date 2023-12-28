@@ -56,6 +56,31 @@
         });
     </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the form elements
+        var formProximas = document.getElementById('proximas');
+        var formVencidas = document.getElementById('vencidas');
+
+        // Attach event listener to the "Simular envio" button in the form with ID "proximas"
+        formProximas.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            submitForm('{% url "teste_envio_proximas" %}'); // Call the function to submit the form
+        });
+
+        // Attach event listener to the "Simular envio" button in the form with ID "vencidas"
+        formVencidas.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            submitForm('{% url "teste_envio_vencidas" %}'); // Call the function to submit the form
+        });
+
+        // Define the function to submit the form
+        function submitForm(url) {
+            window.location.href = url; // Redirect to the generated URL
+        }
+    });
+</script>
+
     <title>SINC</title>
 
 </head>

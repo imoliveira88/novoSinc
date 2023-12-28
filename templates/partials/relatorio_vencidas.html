@@ -10,7 +10,7 @@
         <tr>
             <td>
     
-                <table id="tabela_resumo">
+                <table class="tabela_resumo">
                     <tr>
                         <td>Enviados: </td>
                         <td>{{ total_enviados }}</td>
@@ -31,11 +31,11 @@
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <tr>
-                            <td><label for="data1">Data inicial: </label></td>
+                            <td><label for="data1">Data inicial</label></td>
                             <td><input type="text" id="data1" name="data1"></td>
                         </tr>
                         <tr>
-                            <td><label for="data2">Data Final: </label></td>
+                            <td><label for="data2">Data Final</label></td>
                             <td><input type="text" id="data2" name="data2"></td>
                         </tr>
                         <tr>

@@ -70,13 +70,21 @@ def executa_query_piramide(query):
     return afetadas
 
 # Corrigir após finalizar o mysql.py
-def salva_ultima_notificacao (cliente, tag): #Era salvaUltimaNotificacao
+def salva_ultima_notificacao(cliente, tag): #Era salvaUltimaNotificacao
     
     set_ultima_matricula_servico(cliente, tag)
     afetadas = 0
 
     if (tag == 3 or tag == 4):
         afetadas = set_info_not_piramide(cliente, tag)
+
+    return afetadas
+
+# Apenas para teste, não insere informações no Pirâmide
+def salva_ultima_notificacao_teste(cliente, tag): #Era salvaUltimaNotificacao
+    
+    set_ultima_matricula_servico(cliente, tag)
+    afetadas = 0
 
     return afetadas
 
@@ -91,3 +99,4 @@ def set_info_not_piramide(cliente, tag):
 			+ "('001','" + cliente.TITULO +"', 'DT_AVSUS', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
         afetadas = executa_query_piramide(insertInfoAvisoSuspensao)
     return afetadas
+

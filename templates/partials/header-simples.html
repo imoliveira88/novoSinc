@@ -8,14 +8,15 @@
 
     <table class="menu">
         <tr>
-            <td><a href="{% url 'relatorio_proximas' %}">Relatórios</a></td>
+            <td><a href="{% url 'home' %}">{% bs_icon 'house' color='white' %} Home</a></td>
+            <td><a href="{% url 'relatorio_proximas' %}">{% bs_icon 'card-list' color='white' %} Relatórios</a></td>
             <td><a href="{% url 'modelos' %}">Modelos</a></td>
-            <td><a href="{% url 'historico_logins' %}">Sessões</a></td>
+            <td><a href="{% url 'historico_logins' %}">{% bs_icon 'people-fill' color='white' %} Sessões</a></td>
             <td><a href="{% url 'sobre' %}">Sobre</a></td>
         </tr>
     </table>
 
     <div id="logout">
-        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'logout' %}">{% bs_icon 'arrow-90deg-left' color='red' %} Logout</a>
     </div>
 </header>
