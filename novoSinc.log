@@ -15877,3 +15877,25 @@ Watching for file changes with StatReloader
 "GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 18030
 "GET /aplicacao/modelos HTTP/1.1" 200 10266
 "GET /aplicacao/historico_logins HTTP/1.1" 200 55004
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/datatables_portugues.js HTTP/1.1" 304 0
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\novoSinc\settings.py changed, reloading.
+Watching for file changes with StatReloader

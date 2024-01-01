@@ -157,6 +157,10 @@ def testa_envio(request):
 
     #['pablo.logiquesistemas@copergas.com.br']
 
+def testa_envio_celery(request):
+    clientes = faturas_proximas_vencer()
+    notificar_clientes_teste(2,clientes)
+
 @login_required
 def testa_envio_proximas(request):
     clientes = faturas_proximas_vencer()

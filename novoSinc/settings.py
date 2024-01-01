@@ -28,11 +28,12 @@ AUTH_USER_MODEL = 'aplicacao.Usuario'
 # Application definition
 
 BROKER_URL = 'pyamqp://guest:guest@localhost//'
+CELERY_RESULT_BACKEND = 'rpc://'
 
-CELERY_TIMEZONE = 'UTC'
+CELERY_TIMEZONE = 'America/Recife'
 
 CELERY_IMPORTS = (
-    'novoSinc.tasks',
+    'aplicacao.tasks',
 )
 
 CELERY_ACCEPT_CONTENT = ['json']
@@ -131,7 +132,7 @@ DATABASES = {
         'NAME': 'sinc',
         'USER': 'postgres',
         'PASSWORD': "coper2023gas",
-        'HOST': '192.168.60.136',
+        'HOST': '10.125.179.70',
         'PORT': '5432',
     },
     'piramide': {

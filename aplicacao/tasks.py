@@ -2,6 +2,8 @@ from __future__ import absolute_import, unicode_literals
 from celery import shared_task
 from datetime import datetime
 import logging
+from aplicacao.queries import faturas_proximas_vencer
+from aplicacao.emails import notificar_clientes_teste
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +20,7 @@ def my_background_task():
         logger.exception(f"Error in my_background_task: {e}")
 
 @shared_task
-def testa_envio_todos(request):
+def testa_envio_celery(request):
     print("Antes da captura de todos os clientes na condição de faturas próximas ao vencimento")
     clientes = faturas_proximas_vencer()
     print("Dicionário de clientes setado")

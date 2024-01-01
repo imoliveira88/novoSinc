@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 import os
+import sys
 from celery import Celery
 from celery.schedules import crontab
 
@@ -12,8 +13,8 @@ app = Celery('novoSinc')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.conf.beat_schedule = {
-    'testa_envio_todos': {
-        'task': 'aplicacao.tasks.testa_envio_todos',
+    'my_background_task': {
+        'task': 'aplicacao.tasks.my_background_task',
         'schedule': crontab(minute='*'),  # Run every minute
     },
 }
