@@ -20,7 +20,7 @@ def my_background_task():
         logger.exception(f"Error in my_background_task: {e}")
 
 @shared_task
-def testa_envio_celery(request):
+def tarefa(request):
     print("Antes da captura de todos os clientes na condição de faturas próximas ao vencimento")
     clientes = faturas_proximas_vencer()
     print("Dicionário de clientes setado")

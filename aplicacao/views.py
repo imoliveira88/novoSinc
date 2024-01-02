@@ -124,6 +124,7 @@ def login_view(request, *args):
     context={}
 
     if request.method == "POST":
+        print(request.POST)
         username = request.POST['login']
         password = request.POST['senha']
         user = authenticate(username=username, password=password)

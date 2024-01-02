@@ -4,6 +4,6 @@ from aplicacao.views import login_view
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('', login_view, name= "Página inicial"),
+    path('', login_view, name= "Login"),
     path('', include('aplicacao.urls')),
 ]

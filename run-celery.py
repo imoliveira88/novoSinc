@@ -13,8 +13,8 @@ app = Celery('novoSinc')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.conf.beat_schedule = {
-    'my_background_task': {
-        'task': 'aplicacao.tasks.my_background_task',
+    'tarefa': {
+        'task': 'aplicacao.tasks.tarefa',
         'schedule': crontab(minute='*'),  # Run every minute
     },
 }

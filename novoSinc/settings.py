@@ -27,8 +27,8 @@ AUTH_USER_MODEL = 'aplicacao.Usuario'
 
 # Application definition
 
-BROKER_URL = 'pyamqp://guest:guest@localhost//'
-CELERY_RESULT_BACKEND = 'rpc://'
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 
 CELERY_TIMEZONE = 'America/Recife'
 
@@ -132,7 +132,7 @@ DATABASES = {
         'NAME': 'sinc',
         'USER': 'postgres',
         'PASSWORD': "coper2023gas",
-        'HOST': '10.125.179.70',
+        'HOST': '172.25.48.1',
         'PORT': '5432',
     },
     'piramide': {
