@@ -27,8 +27,7 @@ COPY . /app/
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 RUN rm /etc/redis/redis.conf
-COPY /app/redis.conf /etc/redis/redis.conf
-RUN service redis-server start
+RUN cp /app/redis.conf /etc/redis/redis.conf
 
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=novoSinc.settings

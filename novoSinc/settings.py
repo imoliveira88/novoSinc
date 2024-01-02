@@ -132,7 +132,7 @@ DATABASES = {
         'NAME': 'sinc',
         'USER': 'postgres',
         'PASSWORD': "coper2023gas",
-        'HOST': '172.25.48.1',
+        'HOST': '192.168.60.136',
         'PORT': '5432',
     },
     'piramide': {
