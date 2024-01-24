@@ -15,7 +15,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.beat_schedule = {
     'tarefa': {
         'task': 'aplicacao.tasks.tarefa',
-        'schedule': crontab(minute='*'),  # Run every minute
+        'schedule': crontab(minute='*', hour='*', day_of_week='*'),  # Run every minute
     },
 }
 

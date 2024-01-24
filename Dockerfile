@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip && \
     apt-get install -y libpq-dev && \
-    apt-get install -y redis nano plocate
+    apt-get install -y redis redis-server nano plocate
 
 # Install Gunicorn
 RUN pip3 install gunicorn

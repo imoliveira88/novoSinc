@@ -8,7 +8,7 @@ from aplicacao.emails import notificar_clientes_teste
 logger = logging.getLogger(__name__)
 
 @shared_task
-def my_background_task():
+def tarefa():
     try:
         now = datetime.now()
         formatted_time = now.strftime("%d-%m-%Y %H:%M:%S")
@@ -20,7 +20,7 @@ def my_background_task():
         logger.exception(f"Error in my_background_task: {e}")
 
 @shared_task
-def tarefa(request):
+def tarefa_2(request):
     print("Antes da captura de todos os clientes na condição de faturas próximas ao vencimento")
     clientes = faturas_proximas_vencer()
     print("Dicionário de clientes setado")
