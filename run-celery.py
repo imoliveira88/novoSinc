@@ -11,6 +11,7 @@ app = Celery('novoSinc')
 
 # Load task modules from all registered Django app configs.
 app.config_from_object('django.conf:settings', namespace='CELERY')
+app.conf.broker_connection_retry_on_startup = True
 
 app.conf.beat_schedule = {
     'tarefa': {

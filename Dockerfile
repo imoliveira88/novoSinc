@@ -34,7 +34,8 @@ ENV DJANGO_SETTINGS_MODULE=novoSinc.settings
 
 # Make the entrypoint.sh script executable
 RUN chmod +x /app/entrypoint.sh
-#RUN chmod +x /app/entrypoint-worker.sh
+RUN chmod +x /app/entrypoint-worker.sh
+RUN chmod +x /app/entrypoint-beat.sh
 
 #RUN python3 manage.py collectstatic --noinput
 
