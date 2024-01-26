@@ -1,0 +1,1916 @@
+21AGO
+
+- Palestra informativa sobre a Copergás (Nadja) e LGPD (Mariana). Verificar caderno sobre alguns tópicos
+- Usuário plataforma UNITY. Verificar e-mail
+	VOIP
+	Senha de telefone: 94674
+	Domínio associado: voip.copergas.com.br
+
+- Usuário plataforma SoftExpert Excelence Suite 2.0 - senha alterada
+	endereço: https://csgi.copergas.com.br/softexpert/
+leiturista, jackson, senha Jackson
+- Usuário de computador integrado ao do e-mail - senha alterada
+
+- Principais sistemas atendidos (elencar tipos de atendimento - execução de contrato, desenvolvimento, etc)
+
+- GGAS (problemas de acesso ao APP - contrato) - empresa Logique
+- Piramide (travamento - solução via reinício do serviço)
+
+Em geral, gestão de melhorias e problemas junto aos contratos
+
+22AGO
+
+- Reserva de salas: Portal -> intra produtividade -> Reserva de Recursos
+- Portal Copergás -> Sistema Copergás - Antispam
+- Reunião diária (< 15min) - o que fez no dia anterior e programação para o dia
+- Impressora - 1788
+- Ver possibilidade AC
+- Ferramenta Teamviewer para acesso remoto
+- Seleção de alguns tutoriais de resolução de problemas para estudo
+
+23AGO
+
+- Em andamento, criação de usuário do sistema Assyst (igor.oliveira)
+- Ambiente de testes do GGAS: http://srvcoper015:8080/ggas, Apache Tomcat é o servidor de aplicações. Java, inicialmente com Structs e Spring
+
+Situações elencadas pelo Felipe:
+
+- Substituição do sistema antigo se deu por determinação da Mitsue, buscando ter um sistema único para todas as empresas de Gás em que atuava
+- Hoje não há uma validação do que foi feito. As soluções surgem sob demanda
+- Sem documentação, no entanto há registros no Redmine
+
+- Servidor do Sinc e agência virtual e app Copergás (consome o mesmo WS da agência virtual): srvcoper063 (IP 192.168.200.38)
+- Pastas importantes do código Sinc: config, controllers (VRF api_email-ctrl.js, oracle_db-ctrl.js)
+- Notificações de proximidade de vencimento, atraso, etc
+
+24AGO
+
+- SINC: Há permissão de execução?
+- start_sinc.bat: localização - Users\sinc.logon\Desktop\SCRIPTS\start_sinc.bat. A task está desabilitada
+
+CONNECT system/mypassword@mydbserver.example.com:1522
+
+Tentativa de dar o node robo_manual.js
+
+- Resolvido problema de envio de e-mails - Pirâmide
+- C:\Users\igor.oliveira\AppData\Local\Programs\Python\Python311
+
+(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.46)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=piramide.intranet.copergas.com.br))
+user: "SINC_INADIPLENTES", password: "AN4LISYS_IN4D1"
+
+https://databasefaqs.com/connect-excel-to-oracle-database/
+
+Installing Oracle Client for Microsoft Tools 19c (64bits)
+https://www.oracle.com/database/technologies/net-downloads.html
+
+25AGO
+
+- Reunião Serasa para criação de inserção de negativação em lote
+- Layout
+- Título tem que ter número diferente
+- Total de 15 casas, começando da posição 424 até a 438
+- Copergás envia para negativação e, após pagamento, envia solicitação de exclusão da negativação do cadastro do cliente
+- Trocar a vírgula e adicionar um zero à esquerda
+- Negativação em 40 dias
+- Após envio da consulta ao financeiro -> validação ->
+- De A para Liquidado, IN
+- pip install openpyxl, besides pandas
+
+- Agendar reunião e sala para reunião referente ao novo SINC (x)
+
+- Apresentação da GAO TECH referente ao novo SINC. Verificar bibliotecas capazes de fazer o dashboard, principalmente o gráfico. Py-Django
+
+Segunda - GCRC - Shirley e Rafael Ribeiro (cadastro de contratos e interação com agência virtual)
+Terça manhã - GMAR - Medição - Bruno João e Rodrigo Barros (gestor)
+
+Terça tarde - GFIN - Ana Rosa - faturamento e inadimplência
+Quarta manhã - Cláudio - processamento de arquivos, bancário e conciliação (situação vista com Pablo - negativação)
+
+- Ideia de Pablo: automatizar inclusões e exclusões no financeiro
+- Rebeca atualizou apresentação - vídeos passagem conhecimento
+
+Passos a seguir:
+
+1) Tirar vírgula e colocar ponto (a função chamada já faz isso, basta usar um REPLACE(tr.valor, CHR(13), '')
+2) Pensar na query para exclusão (usar cláusula IN talvez com subquery)
+3) Automatizar ambos os processos
+
+Gera select de inclusão
+Gera select dos TITULOS e inclui em algum lugar
+Gera select nesse lugar por títulos liquidados
+
+SELECT PARA INCLUSÃO
+
+SELECT
+'1' CODIGO_REGISTRO ||'I' CODIGO_OPERACAO 
+|| '000181' CNPJ_COPERGAS 
+|| To_Char(tr.VENCIMENTO, 'yyyymmdd') DATA_OCORRENCIA_VENCIMENTO 
+|| To_Char(tr.VENCIMENTO, 'yyyymmdd') DATA_TERMINO 
+|| RPad('FG',3, ' ') CODIGO_NATUREZA 
+|| '     ' CODIGO_PRACA_EMBRATEL 
+|| Decode ( Length(cl.CGC), 14, 'J', 'F')   TIPO_PESSOA 
+|| Decode ( Length(cl.CGC), 14, '1', '2')   TIPO_DOC 
+|| LPad(cl.CGC, 15, '0')   PRIMEIRO_DOC 
+|| LPad(' ', 57, ' ')   DADOS_SEGUNDO_DOC 
+|| RPad(cl.NOME, 70, ' ')   NOME_CLIENTE 
+|| '00000000' DATA_NASCIMENTO -- quarto campo. Apenas indicação
+|| RPad(' ', 70, ' ')   NOME_PAI 
+|| RPad(' ', 70, ' ')   NOME_MAE 
+|| RPad(vwggas2."ENDERECO" ||' ' || vwggas2."NUMERO" || ' ' || vwggas2."COMPLEMENTO", 45 , ' ') ENDERECO_RUA 
+|| RPad(vwggas2."BAIRRO", 20, ' ') Bairro_Cli 
+|| RPad(vwggas2."MUNICIPIO",25 , ' ') municipio 
+|| 'PE' UNIDADE_FEDERATIVA 
+|| vwggas2."CEP" 
+|| LPad(TRIM(TO_CHAR(tr.valor, '999999990D99', 'NLS_NUMERIC_CHARACTERS = '',.''')), 15, '0') VALOR 
+|| RPad(tr.TITULO, 16 ,' ') TITULO 
+|| RPad(' ', 139, ' ') SEQUENCIA_BRANCO 
+|| LPad(ROWNUM + 1, 7 , '0') SEQUENCIA
+
+FROM TITULO_REC tr
+
+LEFT JOIN CLIENTES cl ON cl.CODIGO = tr.CLIENTE
+LEFT JOIN VIEW_EMAILS_CONTRATO@DBL_PIR_GGAS vwggas ON vwggas."CONT_CODIGO_ANO_NR" = cl.COD_CONTRATO
+LEFT JOIN VIEW_LISTA_CLIENTES@DBL_PIR_GGAS vwggas2 ON vwggas2."NUMEROMATRICULA" = cl.COD_CONTRATO
+
+WHERE tr.EMISSAO <= TO_DATE('31/03/2023', 'DD/MM/YY')
+--AND tr.STATUS <> 'L'
+--AND tr.STATUS <> 'C'
+AND tr.STATUS = 'A'
+AND tr.VENCIMENTO < (SYSDATE-30) -- vencido há mais de 30 dias
+AND tr.VENCIMENTO > SYSDATE - 1796 -- vencimento dentro dos últimos 4 anos e 11 meses.--AND cl.COD_CONTRATO is null
+AND tr.ATIVO = 'S'
+
+--AND cl.COD_CONTRATO is null
+
+
+SELECT PARA EXCLUSÃO
+
+SELECT
+'1' CODIGO_REGISTRO ||'I' CODIGO_OPERACAO
+'000181' CNPJ_COPERGAS,
+To_Char(tr.VENCIMENTO, 'yyyymmdd') DATA_OCORRENCIA_VENCIMENTO,
+To_Char(tr.VENCIMENTO, 'yyyymmdd') DATA_TERMINO,
+RPad('FG',3, ' ') CODIGO_NATUREZA,
+'    ' CODIGO_PRACA_EMBRATEL,
+Decode ( Length(cl.CGC), 14, 'J', 'F')   TIPO_PESSOA,
+Decode ( Length(cl.CGC), 14, '1', '2')   TIPO_DOC,
+LPad(cl.CGC, 15, '0')   PRIMEIRO_DOC,
+LPad(' ', 57, ' ')   DADOS_SEGUNDO_DOC,
+RPad(cl.NOME, 70, ' ')   NOME_CLIENTE,
+'00000000' DATA_NASCIMENTO,
+RPad(' ', 70, ' ')   NOME_PAI,
+RPad(' ', 70, ' ')   NOME_MAE,
+RPad(vwggas2."ENDERECO" ||' ' || vwggas2."NUMERO" || ' ' || vwggas2."COMPLEMENTO", 45 , ' ') ENDERECO_RUA,
+RPad(vwggas2."BAIRRO", 20, ' ') Bairro_Cli,
+RPad(vwggas2."MUNICIPIO",25 , ' ') municipio,
+'PE' UNIDADE_FEDERATIVA,
+vwggas2."CEP",
+LPad(TRIM(TO_CHAR(tr.valor, '999999990D99')), 15, '0') VALOR,
+RPad(tr.TITULO, 16 ,' ') TITULO,
+RPad(' ', 139, ' ') SEQUENCIA_BRANCO,
+LPad(ROWNUM + 1, 7 , '0') SEQUENCIA
+
+FROM TITULO_REC tr
+
+LEFT JOIN CLIENTES cl ON cl.CODIGO = tr.CLIENTE
+LEFT JOIN VIEW_EMAILS_CONTRATO@DBL_PIR_GGAS vwggas ON vwggas."CONT_CODIGO_ANO_NR" = cl.COD_CONTRATO
+LEFT JOIN VIEW_LISTA_CLIENTES@DBL_PIR_GGAS vwggas2 ON vwggas2."NUMEROMATRICULA" = cl.COD_CONTRATO
+
+WHERE tr.EMISSAO <= TO_DATE('31/03/2023', 'DD/MM/YY')
+AND tr.STATUS = 'L'
+AND tr.VENCIMENTO < (SYSDATE-30) -- vencido há mais de 30 dias
+AND tr.VENCIMENTO > SYSDATE - 1796 -- vencimento dentro dos últimos 4 anos e 11 meses.
+
+28AGO
+
+- Palestra inicial SIPATMA
+- Reunião com Legilmo (revisar pontos no caderno)
+
+- 14:00 - Acompanhamento de rotina na GCRC (térreo - analisar apontamentos no caderno - ver .docx)
+
+Informações gerais sobre a agência virtual e apps (Sinapse -> GAO Tech) - Extrato dos vídeos da passagem de conhecimento Synapse x GAO Tech
+
+- desenvolvidos em Laravel. Toda a lógica de negócio está implementada na API
+- 4 bds: agbadmin - acesso e autenticação do usuário; piramide (ERP - consultas relacionadas a dados de contrato, dados de cliente, faturas, notas fiscais); unigas (sistema legado - consultas de consumo); ggas (novo sistema)
+- Há certa integração entre a API da agência e a API do GGAS
+
+29AGO
+
+- Visita GMAR (6 andar - analisar apontamentos no caderno - ver .docx)
+
+- Vídeos Unigás
+Unigás - integrado ao SGM, Gás Online, GGAS, Pirâmide
+Utilizados: Pressão, temperatura, cromatografia e PCS
+
+- Vídeo GGAS
+Prints de mapas de processos - analisar
+A integração com o pirâmide, no caso de contratos, é processada via job a cada dois minutos, ver com Felipe. De modo geral, todos os processos de integração ocorrem da mesma forma?
+
+- Vídeos Pirâmide
+
+
+30AGO
+
+- Felipe referente a problema da Matricula NULL - "Clientes com um F na Frente na verdade são fornecedores. Não deveriam aparecer na lista"
+
+
+Texto da conexão dna tabela dinâmica
+
+SELECT vw_pir.*, vw_ggas."GGAS_EMAILS_CONTRATO", vw_ggas."GGAS_EMAIL_CLIENTE_PRINCIPAL"
+FROM VIEW_CONTROLE_INADIMPLENCIA vw_pir
+LEFT JOIN VW_INADIMPL_CLIENTES_CONTRATO@DBL_PIR_GGAS vw_ggas 
+ON vw_pir.MATRICULA = vw_ggas."GGAS_NUMERO_CONTRATO"
+
+
+SELECT ORIGEM FROM VIEW_CONTROLE_INADIMPLENCIA WHERE MATRICULA IS NULL GROUP BY ORIGEM
+
+Query acha quais privilégios/papéis meu esquema/usuário tem: SELECT * FROM USER_ROLE_PRIVS
+
+SITUAÇÕES INTEGRAÇÃO - LANC DE TIT A RECEBER, FATURAMENTO, INCLUSÃO POR RENEGOCIAÇÃO TIT.A RECEBER, LANC DE TIT A RECEBER
+
+
+31AGO
+
+- Fechamento do SELECT para chamados de corte
+- Reestruturação da VIEW de inadimplentes
+- PIRAMIDE_CONSULTANTE
+- Criado Usuário IGORM
+
+Reunião dia 31 - GETI/Procenge
+
+Elba Rego (x)
+Edna do Amaral
+Zayra Fonseca
+
+- Revisão do código do Piramide sai mensalmente
+- Há envios de .bat, patches e triggers como workaround independente do compromisso mensal
+- GETI adota a postura de aguardar uma maturidade das versões do Pirâmide, de modo a evitar problemas advindos de novas implementações. Hoje, a GETI trabalha em torno de 10 versões atrás da versão mais atual liberada pela Procenge
+
+01SET
+
+- Treinamento Pirâmide - Relatórios de AF e módulo Admin
+- Treino prático - tarde
+- Criação tab din
+
+04SET
+
+- Sprint backlog:
+
+1) Plano de Ação - Migração site Copergás para o domínio copergas.com.br
+
+Considerando que não temos mais serviços sendo utilizados no copergas.com.br, precisamos ajustar o domínio em definitivo do site da companhia que atualmente está em novo.copergas.com.br
+
+- Alinhar com João/Sérgio as mudanças necessárias para a configuração do serviço;
+	Atividade deve ocorrer antes da reunião com a GaoTech
+	Basicamente hoje há um redirect quando o usuário tenta entrar em copergas.com.br, forçando ir para novo.copergas.com.br
+	Inicialmente deve haver migração completa e posteriormente a remoção do redirect
+- Realizar reunião com a Gao Tech para planejar a mudança e analisar os impactos;
+	Riscos envolvidos, necessidades (tempo necessário para alteração, dias necessários, etc)
+	Pelo menos quarta pela tarde. Conversa inicial com Anastácio. Aguardando
+- Verificar os redirecionamentos existentes vinculados ao novo.copergas.com.br;
+
+novo.copergas.com.br
+	geogas.copergas.com.br:7001
+	maps.googleapis.com
+	diversos erros na renderização de fontes. Erro de CORS (Cross-Origin) - Origens sendo bloqueadas por algum motivo... 
+
+2) Negativação - títulos legados
+
+Entrar em contato com o Financeiro para estabelecer a estratégia para realizar a negativação dos títulos legados junto ao Serasa.
+
+Verificar alternativa para dar autonomia à área para que possam gerar os arquivos (remessa/retorno).
+
+Compartilhar com Igor a atividade de geração da solução para que o financeiro consiga gerar os arquivos.
+
+3) PDS
+
+Propor desenho do processo de desenvolvimento de software, para atender à demanda da Companhia.
+
+Levar em consideração os serviços previstos no novo TR da Fábrica para atender o GGAS.
+
+Z:\DAF\GETI\GETI\PROJETOS\2023\_PROCESSOS EM ANDAMENTO\2023.205 - FÁBRICA DE SOFTWARE - GGAS
+
+Apontamentos sobre o TR do GGAS (verificar documento baixado)
+
+- Prevê ambiente de versionamento, controle e gerenciamento
+- Prevê Design Thinking
+- Item 4.1  descreve os entregáveis previstos no contrato. 1) Desenvolvimento de software 2) Sustentação de software 3) Criação e ambiente de versionamento
+- Item 4.2.1.1.2.3 prevê "aplicativo em plataforma low-code" (acaba implicando em Scriptcase ou similares)
+- Item 4.2.1.2.1 exibe o fluxo geral de trabalho da futura contratada: Ideação, planejamento do produto, sprints de concepção (iterativos), sprints de desenvolvimento (idem), homologação da sprint, liberação em produção
+- No PDS talvez entre a atividade de gestão de contratos
+- Item 4.2.1.4.1: real necessidade de um analista de dados?
+- Em algumas situações aparece SLA (que não é definido no documento), em outras ANS (definido no documento). Uniformizar
+- No item 4.2.3 "ferramenta de gestão de versões"
+- No item 4.4, solicita "ferramenta de registro de tarefas", como se fosse um entregável do contrato, no entanto não previsto no item 4.1. Além do mais, tal ferramenta, compatível com o Jira é conveniente de ser pedida? Outras empresas contratam sob mesmas exigências? Em geral empresas compram licenças do produto para gestão de software feito internamente. Oneramos o TR com um item auxiliar.
+
+
+- Experiência profissional do preposto. Anexo Q4.2, item 2.1.2. Atualmente está com 5 anos de experiência, além de duas certificações.
+- Item 2.4 - Arquiteto de software. Poderia ser apenas 03 anos como arquiteto/projetista de software. O item 2.4.2.2 ficou incompleto e, creio, não seria necessário, uma vez que toda informação estaria no item 2.4.2.1
+- Item 2.6 - Arquiteto DevSecOps. A não ser que esteja havendo planejamento de uso de microsserviços, o conhecimento em Openshift e Kubernetes é desnecessário. O conhecimento em Docker é necessário apenas se estiver havendo planejamento de conteinerização do projeto.
+
+De modo geral, para todos os perfis profissionais pedidos, declarações de instituições públicas ou privadas, do conhecimento de determinado profissional sobre tecnologias como Hibernate, SOA, Maven/Jenkins, não são tão fáceis de ser obtidas nem, tampouco, o registro desses conhecimento pode se dar como registro em CTPS. O mais viável é deixar apenas o requisito da experiência profissional no perfil pedido, comprovada via CTPS ou declaração de instituições públicas ou privadas, e colocar como requisito "desejável" o conhecimento naquelas tecnologias.
+
+- Item 2.11 - perfil Analista de Dados. Lendo o que está escrito como atribuições do perfil, o mais indicado é um profissional de banco de dados, com experiência como DBA em ambiente Oracle.
+
+5SET
+
+- TRT7 - Documento de Gestão de Mudanças, Documento de Gerenciamento de Configuração
+- Processos GGAS: Z:\DAF\GETI\GETI\GGAS\PROCESSOS E PROCEDIMENTOS\PROCESSOS BPM
+- Nova lei de licitações: 14.133/2021
+
+6SET
+
+- Reunião Gao Tech, referente à migração do site para o antigo - Igor, Anastácio, Sérgio, Ryan e pessoal da GaoTech - 15:00
+- Elaboração de PDS. Consulta em http://www.dsc.ufcg.edu.br/~jacques/cursos/proj/gerenciadesenv/processos.htm:
+
+- Planejamento e elaboração
+
+Relatório inicial de investigação
+Elicitação de requisitos -> Documento de Requisitos, talvez diagrama de casos de usos e etc, outros diagramas UML
+Projeto da arquitetura -> Documento de Arquitetura
+Criar backlog e distribuir em iterações (priorizar a funcionalidade e distribui-la entre as interações)
+
+Z:\DAF\GETI\GETI\SISTEMAS\ERP\Projetos Internos - TI\NOVO FLUXO DE COMPRAS\3-IT Emissao de Autorizacao de Fornecimento\Processos Fluxos
+
+- Construção
+
+Processo de desenvolvimento iterativo e incremental
+
+- Artefatos
+
+Documento de business case (investigação preliminar)
+Documento de orçamento e cronograma
+Documento de especificação de requisitos
+
+Reunião com a GaoTech
+
+Pauta
+
+Considerando que não temos mais serviços sendo utilizados no copergas.com.br, precisamos ajustar o domínio em definitivo do site da companhia que atualmente está novo.copergas.com.br
+•	Realizar reunião com a Gao Tech para planejar a mudança e analisar os impactos;
+•	Verificar os redirecionamentos existentes vinculados ao novo.copergas.com.br;
+•	Alinhar com João / Sérgio as mudanças necessárias para a configuração do serviço.
+
+- Responsabilidades envolvidas
+
+Redirecionamentos
+Instalação de certificados
+Migraçãoo propriamente dita
+
+1) Duas hospedagens diferentes hoje em dia: novo e o copergas
+2) Dois redirecionamentos, tanto no DNS como na hospedagem
+3) Data em que houve a migração
+4) Estimar o que precisa para migrar. Ideia de colocar conteúdo do novo no antigo, manter ambos os ambientes
+
+- Impactos
+
+----
+
+11SET
+
+- Continuação do PDS
+- Incluir documento de lições aprendidas no projeto, que alimentará o Documento Consolidado de Lições Aprendidas da GETI
+- Mapa de processos: descrever principais atividades. Elicitação de requisitos, Homologação
+- Descrever artefatos gerados: Documento de Requisitos, Documento de Arquitetura de Software, Documento de Lições Aprendidas do Projeto, Diagrama de Classes, Modelo ER, Projeto Conceitual, Lógico e Físico de banco de dados ou documento equivalente (x)
+- Ideia Pablo - Queries e etc
+- Xampp
+- file://///192.168.60.143/c$/xampp/htdocs/basededados/index.html
+- A etapa de Planejamento do Produto utiliza técnicas de Design Thinking e Lean Inception, com o objetivo de identificar as reais necessidades de negócio e de conceber a visão e o roadmap do produto, com foco em gerar valor para o usuário final
+
+Características design thinking
+
+- Metodologia usada para resolver problemas complexos através de novas ideias bem como para achar soluções para clientes. Envolve a habilidade de usar intuição, reconhecimento de padrões, construção de ideias emocionalmente significantes e valiosas, e outros passos como prototipagem e testes
+- Hexágono: empatia, definição, idealização, prototipagem, testes, entrega
+
+Características lean inception
+
+- Objetiva alinhar um grupo de pessoas na proposta da solução a ser construída, isto é, o Produto Mínimo Viável (MVP)
+- Combina a filosofia Design Thinking e o método Lean Startup para habilitar organizações a efetivamente inovar em escala
+- Foi criada para evitar perda de tempo, dinheiro e recursos
+
+12SET
+
+- Ler e fazer referências explícitas às normas ISO 14764 e 12207
+- Perfis constantes no TR do GGAS: PO, Usuários chave, Analista de Negócio, Analista UX, Arquiteto de Software, Desenvolvedor Sênior, Scrum Master, Analista de Dados (? - mais adequado seria DBA?), Analista, Desenvolvedor, Arquiteto DevSecOps, Analista de Teste e Qualidade
+- SSH, TLS
+- Boa bio https://www.atlassian.com/br/continuous-delivery/software-testing/exploratory-testing
+- Quase finalização do PDS
+- Tentativa de instalação do OLE - Deve instalar o add in Oracle para Excel
+- Deve instalar tanto o instant client como o SDK. Verificar o link: https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/1.5.1/oread/installing-oracle-database-instant-client.html#GUID-A61C2824-B9C7-4344-A7A2-E7FE0F05695D
+
+
+ISO 14764 - Standard for Software Engineering - Software Life Cycle Processes - Maintenance
+
+- Problem Report (PR) - termo usado para identificar e descrever problemas detectados em um produto de software
+- Processo de Manutenção - 4.1
+- Modification Request (MR) e seus processos
+- Aprovação da demanda
+
+ISO 12207
+
+
+13SET
+
+- A inicialização da fonte de dados falhou. Verifique o servidor de banco de dados ou contate o administrador de banco de dados. Certifique-se de que o banco de dados externo esteja disponível e tente a operação novamente.
+- https://blog.devart.com/connect-oracle-database-to-excel-import-your-data-in-minutes.html
+- Envio de e-mail para rat/ret
+- S906094 - Pedro: listar os tipos de produtos cadastrados no módulo Estoque com os respectivos patrimônios. Tipo patrimônio: COM, COMPONENTE MENOR
+- SELECT table_name FROM all_tab_columns WHERE column_name = 'EMAIL'
+
+Estatística de chamados
+
+
+RH3
+Usuário do sistema
+Exames e ASO's de colaboradores no sistema
+
+Piramide
+Desaglutinação do bem 100340 - S909896 - já resolvido
+Atualização do ambiente de produção - Infra
+Usuários sem acesso a certas funções
+
+SINC
+Creio que os e-mails de Aviso de Débito do SINC estão puxando o e-mail cadastrado na Pessoa Jurídica, e não os e-mails de faturamento que constam na aba Contrato. Poderiam verificar, por favor? - S880082
+
+14SET
+
+- Chamado para instalação do Oracle Client (x)
+- Verificação da origem dos e-mails do SINC - verificado: vêm do e-mail de cobrança tanto do GGAS, como do Unigas
+- Ferr ETL Pentaho
+- Query App GGAS muito lenta, análise execução
+
+15SET
+
+- Configuração do ambiente do sischamados e do queryhelper na máquina local
+- Configuração de repositórios git do sischamados e queryhelper no computador local com pushes feitos
+- Revisão do documento de Processo de Desenvolvimento de Software
+- https://trello.com/b/Gqd0rPuq/geti
+
+18SET
+
+- Criação usuário RH3
+- Criação usuário HelpDesk Procenge
+- Acrescentar melhorias no PDS
+- Os papéis previstos no TR foram abrangidos pelo PDS, com ressalvas ao Analista de Negócio (nomenclatura em desuso hoje. É o equivalente a PO na metodologia ágil) e ao Analista de Dados, cuja descrição de atribuições no TR não condiz com  o perfil.
+
+
+- Planejar colocar triggers no bd das queries e do novo sischam
+
+SELECT table_name FROM all_tab_columns WHERE column_name = 'EMAIL'
+
+19SET
+
+- https://portal.copergas.com.br/
+- http://192.168.60.136:8000/
+
+20SET
+
+- Backlog QueryHelper: relatórios (exibir queries por sistema), pesquisa, execução de queries
+
+Relatório
+
+- Seleção de sistema
+- Possibilidade de pesquisa de partes do nome
+
+- Tabelas referentes a AFs: PEDIDO_COMPRA, PIR_SAIDAS (COD_FILIAL, COD_SERIE, COD_NF), PIR_LOG_ENVIO_EMAIL_AF
+- Instalado o Oracle Client - Importação sendo feita para as tabelas dinâmicas
+
+- Cadeia de conexão: Provider=OraOLEDB.Oracle.1;Password=PIRAMIDE_CONSULTANTE;Persist Security Info=True;User ID=PIRAMIDE_CONSULTANTE;Data Source=PIRAMIDE;Extended Properties=""
+
+- Texto do comando:
+SELECT vw_pir.*, vw_ggas."GGAS_EMAILS_CONTRATO", vw_ggas."GGAS_EMAIL_CLIENTE_PRINCIPAL"
+FROM IGORM.VIEW_CONTROLE_CORTES vw_pir
+LEFT JOIN VW_INADIMPL_CLIENTES_CONTRATO@DBL_PIR_GGAS vw_ggas 
+ON vw_pir.MATRICULA = vw_ggas."GGAS_NUMERO_CONTRATO"
+
+PIR_ITEM_SOLICITACAO_VIAGEM (COD_TITULO_REC), PIR_SOLICITACAO_VIAGEM, TITULO_REC
+
+- Classes formulários django: form-control, form-select (select), form-check-input (checkbox)
+- Tabela entrada com foreign key EMPRESA
+
+- Backlog QueryHelper: relatórios (exibir queries por sistema), pesquisa, execução de queries
+- Adição da classe Módulo, adição de filtro preliminar, aumento do tamanho do campo nome em Query
+
+21SET
+
+- Contituação do chamado S908688
+- Itens restantes do Backlog planejado: edição de Query, execução de query
+- Enviado e-mail à Ana Gambôa, referente ao chamado número S894217
+- ASSYST: para resolver, não esquecer de colocar causa, departamento de serviço de acionamento.
+- Assyst: Agência Virtual. Verificar chamado S854910 (Aberto)  - Fernando Almofrey
+- Sischamados: melhorada a tela de login e parte da de cadastro de usuários, bem como aspecto geral das tabelas que são contêineres de formulários
+- Verificar trigger PIRAMIDE.TRG_PIR_IU_ITNFE_TIITNFENTRADA
+- Webmail: https://mail.copergas.com.br
+- Repositório de conhecimento: gestaoCon
+
+22SET
+
+- Verificar AFs geradas para situação Ronaldo
+- Modelo de dados Pirâmide: Z:\DAF\GETI\GETI\SISTEMAS\ERP\Modelo de dados\Tabelas 6.04
+- Z:\Publico\Biblioteca Virtual\CURSOS E TREINAMENTOS\TREINAMENTOS PROCENGE
+- ORA-02291: integrity constraint (PIRAMIDE.FK_FORCNT_PEDCMP)
+
+https://renenyffenegger.ch/notes/development/databases/Oracle/errors/ORA-02291_integrity-constraint-violated_parent-key-not-found/index
+
+25SET
+
+- Erro de Sintaxe na fórmula @If (SalFmtFormatDateTime(
+- Tabelas envolvidas na Integração Bancária
+
+Base de Dados de Produção = AGVIRT
+IP=  192.168.0.46
+Host = srvcoper065
+Porta = 1521
+SERVICE_NAME = AGVIRT.intranet.copergas.com.br
+
+AGVADMIN - agvadmin2
+
+- Sem muito avanço no chamado de Ronaldo
+
+26SET
+
+- Elaborar documento de gestão do conhecimento, referente ao chamado de Ronaldo
+- Backlog planejado: edição de Query, execução de query, melhoria do "Sobre"
+- Atualização query da VIEW VIEW_CONTROLE_CORTES
+- Feedback positivo de Ronaldo, sobre o chamado
+
+27SET
+
+- Treinamento Pirâmide
+- Correção query da VIEW de controle de cortes (OK)
+- Visualizar apontamentos de Legilmo sobre o PDS
+- https://trinhhieu668.wordpress.com/2021/10/12/modern-ci-cd-system-on-gcp-p1/
+- Feito mapa de processo simplificado para CI/CD
+- No PDS, corrigir o mapa de processos de processamento da Demanda (retirar "Desenvolvimento de software" e incluir o "sim" do último condicional)
+- No processo de Desenvolvimento de software, incluir o subprocesso de CI/CD logo após o bloco do Desenvolvimento Scrum
+
+28SET
+
+- Treinamento Pirâmide
+
+Migração para domínio antigo
+
+- Necessidades
+
+1) Usuário e senha do administrador do copergas.com.br: copergas, !M4f6qQcSdx3
+2) Usuário e senha do novo.copergas.com.br
+3) Exportar do novo.copergas.com.br e importar no copergas.com.br
+4) Testar funcionalidades do site após importação (busca ativa por links estáticos)
+5) Remover redirecionamento de novo.copergas para copergas.com
+6) Após um tempo sem problemas, talvez remover o domínio novo.copergas.com.br
+
+- Chamado aberto no K2 Host #243321
+
+https://clook.net/blog/a-complete-guide-to-exporting-and-importing-your-wordpress-website/
+
+1) Entrar no painel admin do site (/wp-admin)
+2) Ferramentas - Exportar
+3) Entra no cPanel (tentei login e senha lá existente) ou cliente FTP (não sei) -> File Manager -> abre public_html -=> bt direito em wp-content e comprime - Bt direito e Download
+
+Sérgio
+
+- Há outros serviços, configurações de DNS e etc hospedados no domínio antigo
+
+- Entra no administrativo do wordpress e altera o nome na configuração - Arthur HelpDesk da K2 Host
+- Tempo para fazer a migração ~ 50GB ~ 2h - Pode agendar horário pós expediente
+
+- CPanel copergas copergascom Hygat@apuj7Yag
+- CPanel novo.copergas novocope 0t54CMc8W;;gDk
+
+29SET
+
+- Treinamento Pirâmide Web
+- Fiscal - Relatórios - Livro - ISS
+- Administrador - Geral - ISS
+- Criar ocorrência na Procenge para verificação da geração de relatório
+- Iniciados com I bens do ativo (NDO gera bens do ativo e tem OSI) e os iniciados com S (NDO não gera bens do ativo e não tem OSI) não são e isso está provocando erro na tentativa de persistência
+- Abertos chamados para caso de Melize e para o caso de Lucimario
+
+- Chamado 379136 - Melize
+
+AF 00052374
+Produtos: I0931 - NDO COM159 (imobilizado sem ICMS - DIFA 11% - fora do estado) - NDO inexistente ou não associada à classificação do produto
+	  Retificador automático - Máquinas - Classe 003
+	  IMOBILIZADO SEM ICMS - módulo compras - CFOP 2551 (compra de bem para o ativo imobilizado - compra de energia elétrica para distribuição ou comercialização)
+	  I0932 - DRENAGEM ELÉTRICA, MÁQUINAS E EQUIPAMENTOS
+
+PRODUTOS (COD_ORIGEM)
+ORIGEM
+
+
+ADMIN - Cadastros - NDO - Cadastro - Alterar - CFOP - Dá para incluir CFOP
+ESTOQUE - Estoque - Produto - Cadastro
+
+NDO - CODIGO
+CFOP - CODIGO
+PIR_NDO_CFOP - COD_NDO, COD_CFOP
+PIR_CADASTRO_NDO_PRODUTO - COD_NDO, COD_PRODUTO
+
+- AF 52374 recebida -- A NDO foi alterada de COM159 para COM086
+
+02OUT
+
+Chamado Melize
+
+- OC2719651 - Chamado referente ao chamado de Melize
+- NDOs COM087 e COM169
+- Itens I6321, I6189, I6324, I6325, S6756, S6759
+- IND_IMOBILIZAVEL (coluna de PRODUTOS) é 0 para itens da NDO COM169
+- IND_GERA_BEM_ATIVO (coluna de NDO) é 'N' para itens da NDO COM169
+
+- Base postgres Site: copergasteste, Coper123, pgsql.copergas.com.br, SRVCOPER042 - 192.168.200.42 (root, nmap)
+
+- Informações sobre tabelas do novo.copergas: https://novo.copergas.com.br/wp-admin/admin.php?page=wpdatatables-administration
+- igor-oliveira
+
+- Encontradas as informações sobre fornecedores. Usuários -> Fornecedores
+- Parece que wpdatatable id = 7
+
+
+03OUT
+
+Sumário de chamados
+
+- S916849 - Aguardando Melize
+- S908688 - Aguardando para encerrar. Informações sobre alegadas divergências já enviadas a Cleudeni
+- S916873 - Aguardando retorno da Procenge para repasse a Lucimario
+- S922806 - Necessidade informada à Procenge. Chamado aberto no HelpDesk Procenge. Aguardando
+- S920304 - Melize - mesmo recebimento de nota - Encerrado
+
+- Outros chamados S853311 (atualização Pirâmide testes - Anastácio está com a demanda), S854910 (Almofrey, atualização da logo da Copergás), S886828 (Rebeca, VIEW_ORCAMENTO_CONTA_SESUITE)
+
+04OUT
+
+Sumário de chamados
+
+- S904070 - Chamado de Pedro para melhoria do histórico do Pirâmide
+- S908688 - Aguardando para encerrar. Informações sobre alegadas divergências já enviadas a Cleudeni
+- S916849 - Aguardando Melize
+- S916873 - Aguardando retorno da Procenge para repasse a Lucimario
+- S922806 - Necessidade informada à Procenge. Chamado aberto no HelpDesk Procenge. Aguardando
+
+- Feita a programação de férias
+- S926686
+
+Prezados, bom dia!
+
+Solicito associar os centros de custo e aplicações ao autorizador Wilson Malini.
+
+.
+
+                    ·         Código: 2.06.0213
+
+·         Aplicação: O60213
+
+·         Descrição do Centro de Custo: REMANEJAMENTO PAN NORDESTINA - GERE
+
+At.te,
+
+- ALTER SEQUENCE NUM_SEQ_PRESTCONTAS_AD RESTART START WITH 10000
+
+05OUT
+
+Sumário de chamados
+
+- S904070 - Chamado de Pedro para melhoria do histórico do Pirâmide - fechado pois novas funcionalidades não são mais permitidas dentro do Pirâmide Desktop
+- S908688 - Aguardando para encerrar. Informações sobre alegadas divergências já enviadas a Cleudeni
+- S916849 - Aguardando Melize
+- S916873 - Aguardando retorno da Procenge para repasse a Lucimario - Nas notas 000039 e 000040 o imposto ISS carregou como tributado na nota? Ou como Isento ou Outros?
+- S922806 - Necessidade informada à Procenge. Chamado aberto no HelpDesk Procenge. Aguardando
+
+- Acompanhar atualização Pirâmide
+- Ver e-mail treinamento QSMS
+
+- Fazer gestão do conhecimento com chamado número 394332 - prestação de contas: erro do banco ORA-00001: restrição exclusiva (PIRAMIDE.PK_PIR_PRESTACAO_CONTAS) violada
+
+- Enviada imagem do chamado de Lucimario pertinente à quantidade de dígitos das notas fiscais. Enviado e-mail complementando informações à Sthella.
+
+- Execução manual trigger TRG_PIR_PRESTACAO_CONTAS
+
+06OUT
+
+Sumário de chamados
+
+- S928460 - Chamado de Isabelle para desfazimento de desaglutinação/baixa
+- S904070 - Chamado de Pedro para melhoria do histórico do Pirâmide - fechado pois novas funcionalidades não são mais permitidas dentro do Pirâmide Desktop
+- S908688 - Aguardando para encerrar. Informações sobre alegadas divergências já enviadas a Cleudeni
+- S916849 - Aguardando Melize
+- S916873 - Aguardando retorno da Procenge para repasse a Lucimario - Nas notas 000039 e 000040 o imposto ISS carregou como tributado na nota? Ou como Isento ou Outros?
+- S922806 - Necessidade informada à Procenge. Chamado aberto no HelpDesk Procenge. Aguardando
+
+- BASICO - RM, CONTRATOS E AF
+
+09OUT
+
+- S928460 - Chamado de Isabelle para desfazimento de desaglutinação/baixa
+- S908688 - Aguardando para encerrar. Informações sobre alegadas divergências já enviadas a Cleudeni - encerrado
+- S916849 - Aguardando Melize - resolvido - ALTER TRIGGER TRG_PIR_IU_ITNFE_TIITNFENTRADA DISABLE
+- S916873 - Aguardando retorno da Procenge para repasse a Lucimario - Nas notas 000039 e 000040 o imposto ISS carregou como tributado na nota? Ou como Isento ou Outros?
+- S922806 - Necessidade informada à Procenge. Chamado aberto no HelpDesk Procenge. Aguardando
+
+- Enviada orientação para Isabelle
+- Tentativa de solução junto a Melize
+
+- Movimentação - Aglutinar
+
+115374 a 115381
+
+- só é feita a aglutinação de bens tombados
+
+10OUT
+
+- S916873 - Aguardando retorno da Procenge para repasse a Lucimario - Nas notas 000039 e 000040 o imposto ISS carregou como tributado na nota? Ou como Isento ou Outros? - Ana Carolina retornou com procedimento
+- S922806 - Necessidade informada à Procenge. Chamado aberto no HelpDesk Procenge. Aguardando
+- S928460 - Chamado de Isabelle para desfazimento de desaglutinação/baixa
+- S928518 - Pirâmide - Relatório Lista de Itens - não traz saldo de item não utilizado
+
+Provider=OraOLEDB.Oracle.1;Password=PIRAMIDE_CONSULTANTE;Persist Security Info=True;User ID=PIRAMIDE_CONSULTANTE;Data Source=PIRAMIDE;Extended Properties=""
+
+11OUT
+
+- Verificar inconsistência nos resultados da VIEW face base recebida (Resolvido)
+- Avanços nos chamados de Lucimário (configuração de relatório ISS e aumento do número de dígitos)
+- Demanda de Rebeka
+
+S932296 - isabelle.cesar@copergas.com.br
+
+Bom dia!
+
+Solicito liberar o acesso para o estagiário Rafael Zarzar (GFIN) no Módulo Compras, menu COMPRAS – Osi/Entregável para consulta.
+
+S931975 (Aberto) - maria.silva@copergas.com.br
+
+Solicito alteração do meu perfil para inclusão de notas de Conhecimento de frete. Materiais>Compras>Conhecimento de frete>Incluir NFs.
+
+16OUT
+
+- S916873 - Aguardando retorno da Procenge para repasse a Lucimario - Nas notas 000039 e 000040 o imposto ISS carregou como tributado na nota? Ou como Isento ou Outros? - Ana Carolina retornou com procedimento
+- S922806 - Necessidade informada à Procenge. Chamado aberto no HelpDesk Procenge. Aguardando
+- S928460 - Chamado de Isabelle para desfazimento de desaglutinação/baixa
+- S928518 - Pirâmide - Relatório Lista de Itens - não traz saldo de item não utilizado
+- S934549 - Frederico Vilaça
+
+- Alteração de perfil de Rafael Zarzar - solicitado por Isabelle Miranda (dificuldade em encontrar o perfil que ela deseja - apenas consulta em um menu específico)
+- Chamado de criação do usuário de Rafael Zarzar - S910233 - 
+- S931972 - Chamado de Evellyn para criação de controle na planilha de inadimplência, atendimento ao template necessário. Ver ideia de pablo para confecção automática dos arquivos
+- Revisar documento PDS
+
+- Agência virtual: verificar, no Keepass, o usuário AGVADMIN: agvadmin2
+- Helpdesk da Procenge - adicionar função ao perfil do estagiário financeiro. Feita inclusão... falta editar
+
+IP da agência virtual: 192.168.200.38
+
+Procedimento após criação de usuário no Pirâmide
+
+- Entra no servidor de AD (srvcoper002)
+- Active Directory - Clica em intranet.copergas.com.br
+
+- Diego passou que a aplicação Cliente não estava funcionando. Criou pasta novo projeto e não rodou. Dois APACHES na mesma máquina, scriptcase e outra
+- Scriptcase e desenv na mesma máquina
+- A aplicação já em outra máquina
+- Scriptcase e docker em uma máquina e o banco em outra
+
+17OUT
+
+- Chamados
+- Questão dos e-mails
+- Problema Pirâmide Contabilidade
+
+- Geração de AF: copiar, criar AF do zero. 0332 - CJUR. ana.figueiras@copergas.com.br
+
+Módulo Compras - Contratos - Contrato - Itens
+
+- \\srvcoper048\Arquivos_03\Programas\Crystal Report - problema do Crystal Report
+- \\srvcoper014\Piramide\bin\crXI_R2_redinstall - setup.exe
+- Depois bin e executa, como ADM PIR_DllReport_ChkVer
+- Murilo resolvido
+
+Treinamento QSMS
+
+- e-mail e celular para Júlio Jorge ao fim do treinamento
+- RH3 - Cadastros - atentar para marcar ou não a checkbox "colaborador específico"
+- O que mais causa erro hoje é na parte de conselho profissional. Às vezes falta o conselho e o estado
+- Cadastros - ambientes de trabalho
+- Tabelas - tipos de exames	
+	Itens de EPI - necessário colocar "certificado de aprovação"
+- No exame laboratorial, atentar para o campo "ordem do exame" (inicial ou sequencial)
+- Exame demissional deve ser enviado antes do RH enviar a rescisão. Tem havido problemas quanto a isso
+- Cadastros de eventos -> não enviar duas vezes o mesmo evento na sequência (exemplo: erro percebido em algum campo)
+
+- PET_OC2720710_Cadastro_AF  - Compras - Autorização de Fornecimento - Cadastro
+- PET_OC2720710_Cadastro_SC - Compras - Solicitação - Cadastro
+- PET_OC2720710_ItensCP - Contratos - Contrato - Itens
+
+- Enviar e-mail/anúncio relacionado ao Pirâmide
+- Resolver situação de Max
+- Verificar caso de Karenne
+
+- Mapa, notícias, consulta por logradouro
+
+SELECT * FROM PIR_CONTRATO_PASSIVO WHERE COD_CONTRATO LIKE 'DAF 046.17'
+
+UPDATE PIR_CONTRATO_PASSIVO
+SET COD_STATUS = 'A' --ATUALMENTE ESTÁ "EN"
+WHERE COD_CONTRATO LIKE 'DAF 046.17'
+
+18OUT
+
+- Relatar ocorrência de ontem referente ao Pirâmide. Falha na geração de AFs. Procenge informou que esse era um problema conhecido da revisão 165 e disponibilizou PETs. Verificar a data de criação de cada PET
+- Atualizar POP da atualização de versão do Pirâmide
+- Fazer POP do deploy de PETs
+- Atualizar POP da reinstalação do Crystal
+- Verificar views usadas no SINC
+- Resolvido chamado de Evellyn
+
+19OUT
+
+- Atualizar planilha de migração
+- https://agenciavirtual.copergas.com.br:8443/site/invoices -> gera segunda via de boletos
+- AF materiais
+
+Chamados de Anastácio: S863192, S875615, S919587, S925376, S792119, S846910, S853314, S856966, S857614
+
+20OUT
+
+Solicito criação de uma coluna na planilha, a qual difere se o faturamento do cliente é mensal ou semanal.
+
+Caminho: Z:\DAF\GFIN\GFIN\01.FINANCEIRO\Cobrança\Controle de inadimplencia
+
+Acessa o módulo Finanças
+
+Acessa o Menu Gerais -> Configuração de relatórios:
+
+Seleciona o módulo CONTRATOS PASSIVOS e o submódulo CONTRATOS PASSIVOS e troca o MEMCALC.RPT por MEMCALC_S_EMIT.rpt
+
+- Erro liquidação título - Cláudio
+- Erro baixa AF - 931549
+- E-mail contratos
+
+23OUT
+
+- Bens 109921, 110276
+- Colocar dados de sistemas na planilha de Rebeka
+- Verificar se o sinc rodará às 15:45 - criado log para o sinc
+- Criada trigger para corrigir falha do reinício da sequence de PIR_PRESTACAO_CONTAS -> TRG_CORRIGE_SEQUENCE_PRESTACAO_CONTAS
+- Ontem o último sequence era 18774 - Nadja
+
+Resumo do vídeo de Pablo
+
+Conciliação
+
+Balancete de certo centro de custo
+
+- Objetivo: explodir o lançamento contábil que deu origem a 233664515,68 -> Custo I e F = 3.01.0001, 01/08/2023 a 31/08/2023, conta inicial 1, conta final 2
+- Dentro do ativo fixo, todos os bens estão no centro de custo 2.01.0002 -> R$ 138853,66 (Lisboa acredita que está em algum lugar dentro dos 233 milhões). Bem de 2011 foi tombado em 2017
+- Há 233 milhões dispersos no centro de custo 3.01.0001
+LANCAMENTO, PEDIDO_COMPRA, PEDIDO_VENDA, ENTRADA, PIR_SAIDA, REQUISICAO
+
+- Explodir o 233 -> No módulo Finanças - Lançamentos -> Data I 01/01/2012 a 31/12/2013. CCusto 3.01.0001
+- Posteriormente mudou a empresa para NASAJON
+
+Objeto: ver qual movimentação tirou o valor daquela conta inicial e trouxe para a conta iniciada por 3
+
+GGÁS ATIVOS: CONTRATO - COSI_CD, 1 ATIVO, 2 ENCERRADO e 12 EM ENCERRAMENTO, 11 AGUARDANDO -- Consi
+
+24OUT
+
+- Chamados para pedir empenho: OC2747707 (Erros com BMs), OC2726765 (Emissão de AFs, desconfiguração de contas vinculadas), OC2737315 (Exibição de itens do contrato), OC2750605 (correção de contas auxiliares, passo a passo ou validação da solução sugerida), OC2737589 (Erros com SPEDs)
+
+OC2604296
+
+- S822454
+
+- Enviar e-mail para o pessoal do financeiro: 3EheK1lqfifxFlIQPdKr -> financeiro@copergas.com.br
+
+25OUT
+
+- Enviar e-mail para o pessoal do financeiro: 3EheK1lqfifxFlIQPdKr -> financeiro@copergas.com.br
+- Lembrar do erro com o Katana que houve em produção, após instalação do Patch
+- Atualizar SE Suite
+- Ver demanda de Lisboa
+- 100, 200, 202, 501 (x)
+- Resolver chamado de Pedro - S941837 (x)
+- SRVCOPER04 - SH Suite produção
+
+- Atualização SE Suite
+Site: https://dc.softexpert.com/se-dc-core/#/pt-br
+Usuário: copergas Senha: COPER2011
+
+Instalação da versão 2.2.0.103
+Patch 239 do dia 25/10/2023
+
+service.bat install openspecimen
+
+- Pede Oracle >= 18
+
+- Entra no SE Suite -> Componentes -> configuração - licença de acesso
+Histórico de sessões - CM001 - Desconecta sessões
+
+
+
+26OUT
+
+- se suite -> fonte de dados
+
+[26-Oct-2023 17:17:49 America/Buenos_Aires] PHP Notice: 'stream_socket_client(): Unable to connect to 127.0.0.1:3000 (No connection could be made because the target machine actively refused it)' in C:\sesuite\web\include\baseclass\pear\socket.php:145
+Stack trace:
+#0 C:\sesuite\web\include\baseclass\pear\socket.php(145): stream_socket_client(string, integer, string, integer, integer, resource)
+#1 C:\sesuite\web\include\baseclass\pear\request.php(770): connect(string, integer, NULL, integer, array)
+#2 C:\sesuite\web\wwwroot\monitor\alert-proxy.php(25): sendRequest()
+#3 C:\sesuite\web\wwwroot\monitor\alert-proxy.php(2): sg_load(string)
+#4 {main}
+ thrown in C:\sesuite\web\include\baseclass\pear\socket.php on line 145
+
+27OUT
+
+Link Produção :
+csgi.copergas.com.br/softexper
+
+Link Homologação :
+csgit.copergas.com.br/softexpe
+
+srvcoper003/softexpert/login
+
+- Atualização SE Suite
+Site: https://dc.softexpert.com/se-dc-core/#/pt-br
+Usuário: copergas Senha: COPER2011
+
+- Dump do BD feito às 08:24
+- Derrubar usuários
+- Parar tomcat, memcached, katana, pdfconverter. SoftExpert katana
+- Parar o IIS
+- Executar instalador
+- Colocar a key
+
+- Adicionar informações ao chamado principal
+
+30OUT
+
+- Entrar no wp-admin
+- Plugins desativados: WPCode Lite, wpData, Regenerate Thumbnails
+- Ver chamados de Ana: questão dos contratos que não recebem e-mail e melhoria da query de inadimplentes
+- Corrigir query
+
+- Abaaba123@
+
+31OUT
+
+- Ver chamados de Ana: questão dos contratos que não recebem e-mail e melhoria da query de inadimplentes
+- Desativados: Contact Form CFDB7, Yoast SEO, WP Code Lite
+- Ativado: Site Kit by Google, AMP
+- Sistema de obras - dentro do SGP
+
+Cliente 44781 - A.G.C CONSTRUCOES & EMPREENDIMENTOS (
+44926 - Alpargatas S.A. - 
+44503 - SSM SOLUCOES METALICAS - 746944.GAS
+
+01NOV
+
+- Usuário SYS - C2q6q2ZSH3wC
+- OC2747707 - Erros com BMs
+- OC2737315 - Erro na exibição de itens de contrato
+- admin-ajax.php - reconfigurar para ficar disponível a todo visitante
+
+Pirâmide, Unigás, SE Suite
+
+- Maria Ângela - Anastácio - ver solicitação de viagem
+- Pedir suporte ao K2Host referente ao que o pessoal do MapsMarker falou
+
+06NOV
+
+- S949852 - Chamado de Ângela - cancelamento de item dentro de uma solicitação
+- S948748: Manuella Pirâmide - manuella.souza - PADRÃO - 10928/005227 (x)
+- S948747: Manuella SE-Suite
+- S948629: Paula Carine - Pedro Rafhael (Piramide e Unigas) - paula.arruda - 005226 (x)
+- S948628: Ambas para SE-Suite
+
+Relatórios: \\SRVCOPER014\RELATORIOS
+Exportação de AF: c:\
+
+Na aba: identificação filial: 001 (005093), 007 (F000Matricula)
+
+Perfil: BASICO -RM, CONTRATOS E AF, PADRAO - 609 Manuella, 610 Paula (Unidade de origem)
+
+1) Acesso a srvcoper002 -> active directory - intranet copergás - users -> botão direito -> find
+
+
+- Área - GCVI (Gerente de Comercialização Veicular e Industrial)
+- Grupo de acesso - Competência Gestores - competência gestores (AVD), 09_02_15_100 CONSULTA E EXECUÇAO
+- Equipe - bpms01.01, bpms03, bpms4.01, eq.avd.gestores, gcvi
+- Liderado - bruno sousa, fernando almofrey, marco antônio oliveira, rejane barros, tarcísio araújo
+
+07NOV
+
+- TI_DOCUMENTO_REC 746956.GAS, TI_HISTORICO_REC, 2368077, 746956.GAS
+- S953128 - Desabilitar usuário SeSuite - Paulo Henrique da Silva
+- S953129 - Desabilitar usuário Piramide
+
+- Proposição não está bloqueada pela usuária
+
+- Fatura próxima a vencer e vencida
+
+08NOV
+
+- Formulário - Conjunto de dados - getDespesasPrestContas
+- SRVCOPER037 Pentaho (C:\Users\joaosoftex.vpn\Desktop\IntegracaoSExPiramidePrestContas)
+- email_fatura-venc.htm: Ref.: Aviso de débito com aviso prévio de suspensão de fornecimento
+- email_fatura-prox.htm: Ref.: Fatura Próxima a Vencer
+
+09NOV
+
+- Atualização SE Suite
+Site: https://dc.softexpert.com/se-dc-core/#/pt-br
+Usuário: copergas Senha: COPER2011
+
+- Dump do BD feito
+- Derrubar usuários - histórico de sessões - lento
+- Parar tomcat, memcache, katana, pdfconverter
+- Parar o IIS
+- Executar instalador
+- Reiniciar serviços
+- Iniciar o IIS
+- Colocar a key
+
+
+- Lembrar de procurar pelo portal do fornecedor no compactado gerado do public_html
+- Validar a correção do problema da exportação para imagens - processos e etc
+- Fazer Pop da instalação de versão/patch do SE-Suite
+
+- Solicitação de viagem (stand by) - 
+
+- 54811, 54813 (solicitação de viagem) - Viagens 1300 (autorizada), 1302 (autorizada)
+
+10NOV
+
+- CFOP no cadastro do produto e da NDO devem casar
+
+AF - Fornecedor 4912
+
+Provas de TI - site verificar
+
+DTC 044.23
+
+Mudanças no Maps
+
+- Capabilities: mapas, todo mundo - verificar após atualização do pessoal
+
+13NOV
+
+- SINC não enviar e-mail no feriado (alteradas as queries)
+
+A colaboradora Evelyn (GFIN) solicita o cadastramento dos feriados de novembro/23 a dezembro/24 para assegurar que o SINC não envie e-mails relacionados à cobrança nos dias em que não houver expediente na Copergás, seja por feriado ou dias compensados. Criada a constante "datasFeriados" (x)
+
+- Petro Nunes Caruaru - acesso ao site - usuário não possuia cadastro na Agência Virtual
+
+- 005225
+
+14NOV
+
+- Geocodificação - Google - -8.0223705,-34.9820404    Região: .lat
+- clientID 528018612298-uvrcdkutashsm6lp5ufrvuh2e3k66e61.apps.googleusercontent.com/
+- signature: AIzaSyALZP1jugg4S4hqOSUIK2tLNl4fepyZ5Mw
+
+
+16NOV
+
+- Contato com a Procenge, referente a diferença em saldos no contrato DAF 031.20, por exemplo (x)
+- Ver planilha de Rebeka
+
+
+\\SRVCOPER014\RELATORIOS
+
+- Terça ou Quarta - Souza: 08:30 - Marcar reunião
+
+20NOV
+
+- Ver chamados SAC
+
+21NOV
+
+- Verificar programação do aplicativo
+- Aplicativo src/pages/RecoverPassword
+- Linha 63 de src\pages\RecoverPassword\index.tsx:
+
+Estava         if(res.data.email == "@" || res.data.email_contr == null){
+if(res.data.email == "@" || res.data.email == null){
+
+Aplicativo Copergás
+
+- npm install --legacy-peer-deps (instalará todos os pacotes listados no package.json - usando PowerShell)
+- no arquivo gradlew.bat, pode ser retirado o "if not "%OS%" == "Windows_NT" goto win9xME_args" logo abaixo do @rem
+
+22NOV
+
+- Verificar o chamado S964464
+- Abrir chamado junto à Procenge
+- Chamado de Tiago Diniz - perfil alterado para incluir "gestor de comunicação"
+
+Repositórios
+
+https://github.com/CopergasGit/sinc
+copergas-agencia-virtual-api
+copergas-agencia-virtual
+copergas-app-react
+
+Recopiar dados da pasta sinc no 063
+
+- e-mail Legilmo -> incluir no track
+
+Acompanhar log do pentaho em 
+\logs no servidor srvcoper037
+
+--Walkthrough de instalação do queryhelper Docker
+
+python -m venv venv
+venv\Scripts\activate
+cd venv
+git clone https://github.com/imoliveira88/queryhelper
+pip install psycopg2
+pip install django-filter
+pip install django-bootstrap-icons
+pip install django-admin
+pip install Django
+
+Após isso o python manage.py runserver roda normalmente
+
+- Alterado o postgresql.conf (para permitir conexões de "*") e pg_hba.conf para aceitar conexões chamando 0.0.0.0/0 (método "trust")
+
+docker build -t queryhelper .
+docker run -p 8000:8000 -d queryhelper
+docker exec -it your_container_name_or_id bash
+
+docker system prune -af
+
+23NOV
+
+- Atualizar os repositórios com o código mais atual. Organizar o github
+- Checar andamento prestação de contas
+- Problema SINC
+
+24NOV
+
+- Acompanhamento SINC
+- Suspeita de que a situação do primeiro destinatário "polua" os assuntos dos e-mails dos demais. Verificar função notificar(i)
+
+27NOV
+
+- Atualização Pirâmide (manhã testes, a partir das 16h produção)
+- Verificar SINC (há versão de backup no meu desktop). Detalhe do 'YYY' no oracle_db-ctrl. (x)
+- AlertaReposição, Ativo, Integracao e Orcamento
+
+- Início instalação em testes: 09:40
+- Problemas no acesso ao Teste2 para instalação do Migrador. Resolvido com a alteração do formato da data no computador
+
+App Copergás
+
+- Assegure-se que o GRADLE SYNC seja bem sucedido
+- CTRL+F9: Build
+
+- A tarefa do robô sinc foi desabilitada. Reativar a partir das 15:31 (x)
+
+- Ver débitos no SINC -- Puxa da FUNCTION do Pirâmide que consulta feriados no GGAS
+- C:\Program Files\pdi-ce-9.3.0.0-428\data-integration\logs
+
+28NOV
+
+- Acompanhar atuação da trigger. A princípio, quando precisa fazer inserção por integração, toda tudo OK, mas quando alguém tenta fazer inserção manual, pula dois  números
+
+29NOV
+
+- Tarefa de casa
+- Copiados arquivos para o 014
+- Fechados os chamados da Agência Virtual
+
+30NOV
+
+- Ana Gamboa: 27NOV - Os comunicados do Sinc foram enviados hoje pela manhã antes de terminarmos a conciliação bancária. O cliente em questão recebeu um aviso sem possuir débitos (x)
+- Completar download do backup do Softaculous - novo.copergas.com.br
+- Modelos documentos GGAS  -> Nova Fábrica
+- snipping tool
+
+01DEZ
+
+- Continuar definição de documentos para passagem de conhecimento
+- QH: número de queries no query helper; cadastro de conexões e execução
+
+- Modelo de dados
+- Documento único, indexado, contendo mapas de processos para os principais fluxos usando BPMN
+- Documento de arquitetura do sistema
+- Guia de configuração de ambiente
+- Manual de usuário atualizado
+- FAQ
+
+04DEZ
+
+- Procenge resolveu o erro de geração de relatório de acompanhamento de fatura (materiais - contratos - relatórios - acompanhamento de fatura) para o contrato DAF 067.33
+- Problema "The specified Gradle installation directory 'C:\Program Files\Android\Android Studio\gradle\gradle-2.14.1' does not exist." resolvido a partir da edição do arquivo "gradle" situado no diretório .idea
+- Houve problemas com relação a achar o plugin gradle referenciado e problemas com dependências e sintaxes obsoletas. Foram reestruturados os build.gradle a nível de projeto e de app
+
+Após copiar e colar o package.json, dei um npm install na pasta do projeto
+
+Build file 'C:\Users\igor.oliveira\Desktop\copergas-cliente-android\app\build.gradle' line: 17
+
+* What went wrong:
+A problem occurred evaluating project ':app'.
+> Could not read script 'C:\Users\igor.oliveira\Desktop\node_modules\react-native\react.gradle' as it does not exist.
+
+criei um arquivo react.gradle
+
+gradlew clean (na raiz do projeto)
+
+05DEZ
+
+- Tentar construir no projeto que está em Documentos. Backup criado. Status atual: não está encontrando o gradle build dentro do projeto principal
+
+06DEZ
+
+- Demanda de Rebeka -> preencher planilha
+
+07DEZ
+
+- Planilha mapeamento TI - https://copergas-my.sharepoint.com/:x:/g/personal/rebeka_lobo_copergas_com_br/ESkR8X4PSXlIo8bgQ0_cop0BUU2ERNarGyYUAlAVFXCH5A?e=IgofAe&CID=4E285233-7B21-4DF8-A6D5-0418D521723E&wdLOR=cBB6807E7-1492-4D3C-824E-A448935C647C
+
+Novo SINC
+
+- Criar aplicação com REST API
+
+connection = await oracledb.getConnection({ user: "SINC_INADIPLENTES", password: "AN4LISYS_IN4D1",
+    
+connectionString: "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.46)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=piramide.intranet.copergas.com.br)))" });
+
+11DEZ
+
+- Iniciar programação SINC (exibir e-mails que serão enviados, por tipo - Cliente, e-mail... o alerta seria enviado aos envolvidos, uma hora antes do SINC rodar; exibir alerta em caso de falta de e-mail, uma hora antes do envio do sinc)
+- Problema Maria Cristina. A cada dia, ela é desabilitada
+- Problema com o aplicativo. crypto-js com a msg "Error: Native crypto module could not be used to get secure random number"
+- Arquivo CryptService.tsx em src/services
+- No app, deve-se alterar a imagem de fundo também
+
+import logo from '../../assets/blue-logo.png' na linha 7 de index.tsx
+para
+import logo from '../../assets/new-logo.png'
+
+Feita higiene de logos não utilizadas
+
+- src/pages/RecoverPassword/index.tsx
+
+Estava         if(res.data.email == "@" || res.data.email_contr == null){
+Passou a ser   if(res.data.email == "@" || res.data.email == null){
+
+https://javascript.plainenglish.io/lets-create-a-react-native-typescript-app-35eee21e162d
+https://www.youtube.com/watch?v=YysKbNk1tj0
+
+- npm install -g expo-cli
+- expo init copergasAppNovo (digitei todo o caminho)
+- cd copergasAppNovo
+- npm start
+- npm run ios
+- npm run android
+- expo publish
+
+cd android
+./gradlew clean build (o primeiro build na máquina demora bastante - 
+./gradlew bundleRelease
+
+https://www.youtube.com/watch?v=y7Q5OMZjIsE
+
+- Feito commit e push para o diretório remoto do github
+
+Reunião Office 365
+
+- Migração do fileserver (Z) para o sharepoint
+- Treinamento: https://support.microsoft.com/pt-br/training
+- Ao fazer a transcrição do vídeo, lembrar de colocar no idioma falado no momento
+- Visio/Bizagi
+
+13DEZ
+
+- Alterada situação do usuário de Maria Cristina ~08:20h
+
+- Treinamento Office 365
+- Ver headspace
+- Dictate - word - não esquecer o idioma
+- Planner - pode ser utilizado como o trello - usa buckets (baldes)
+
+- Continuação projeto Novo Sinc
+	- Criação da página de login
+
+Erro de ausência da "relação" contenttypes
+python manage.py makemigrations contenttypes
+python manage.py migrate contenttypes
+
+python manage.py migrate --fake
+
+    mkdir restframework
+    cd restframework/
+    virtualenv env
+    source env/bin/activate
+    pip install django
+    pip install djangorestframework
+    django-admin startproject tutorial
+    cd tutorial
+    python manage.py shell
+
+14DEZ
+
+- Alterada a situação do usuário de Maria Cristina ~08:10h
+- Lembrar de falar com Adny sobre assinatura contrato
+- Reunião Rebeka 14h - Procenge
+
+15DEZ
+
+- Levantamento do fluxo de funcionamento do SINC
+- SINC estava sem rodar desde dia 14DEZ, quando comecei a abrir o código e ter sessão ativa na máquina, remotamente
+
+18DEZ
+
+- Passagem de conhecimento BI
+- Ajustar modelos de e-mail do SINC (atualizar o site)
+
+Treinamento ADM - Office 365
+
+- admin.microsoft.com/#/users -> alguns usuários vieram do AD local, outros da nuvem Microsoft. Só se pode editar usuários no seu ambiente de origem
+- Pode-se gerenciar respostas automáticas de usuários da organização
+- No OneDrive, pode-se estender o armazenamento até 5TB. Mais limite que isso, só abrindo chamado para a Microsoft
+- Usuário desativado: converto a caixa de correio como compartilhada e redireciono a licença para outra pessoa
+
+19DEZ
+
+- Painel comparativo de medição
+- Verificar o demonstrativo financeiro, Piramide
+- Usar views no SINC
+- QliK QMC
+- Passagem de conhecimento BI - Segundo dia
+
+26DEZ
+
+- Desenvolvimento novoSinc
+
+27DEZ
+
+- Desenvolvimento Novo SINC (ver detalhes de desenvolvimento)
+- Reunião GGAS
+- Cada visita - data-hora + usuário
+- Ver integração abertura de chamados Ag Virtual - Felipe alerta que não está funcionando
+
+28DEZ
+
+- Desenvolvimento Novo SINC (ver detalhes de desenvolvimento)
+
+29DEZ
+
+- Desenvolvimento Novo SINC (ver detalhes de desenvolvimento)
+
+01JAN
+
+- Resolvido problema do shebang Windows/Linux. Uso do Notepad++
+- Aplicação rodando em Docker
+
+02JAN
+
+- 7:56 Pirâmide Web
+- Alçada número 000127 gerando problemas- Não está classificado como tipo de material - 55529. Feito update, ver script do DBEAVER
+- C0390
+
+03JAN
+
+- Demanda Rebeka - novos colaboradores - https://copergas-my.sharepoint.com/:x:/g/personal/rebeka_lobo_copergas_com_br/ESkR8X4PSXlIo8bgQ0_cop0BUU2ERNarGyYUAlAVFXCH5A?rtime=-UHBC1EM3Eg
+- Consulta BI
+- Demandas GGAS - https://copergas-my.sharepoint.com/:w:/g/personal/rebeka_lobo_copergas_com_br/EbbNXARqQIlArNGmWwtuALgBZR3bC5LZjQclj1RYw8AU9A?e=4%3AK7lDqA&fromShare=true&at=9&CID=52358BBE-3CFF-46E6-ACCB-0C6388E85F2D&wdLOR=c972BBAF8-11CF-4D4E-85F7-CD15EA0E9EAD
+
+04JAN
+
+- Pesquisa de notas fiscais eletrônicas: reprocessar notas de remessa com erro.
+- Piramide Web - Gerais - NF-e. Seleciona "Não transmitida" e "transmitida com erro". Caso esteja "AR", "cancelar espera", caso esteja "ER", "reenviar"
+- No caso do semanal, a medição só consegue manipular até "integrado". Medição - Leitura - Análise de Medição do Supervisório. Caso esteja "faturado", a GETI precisará intervir.
+
+- Caso Internacional e Muro Alto: provavelmente o cliente devolverá tudo e precisaremos refaturar. Atentar a isso quando da atualização do ICMS. Manter Rodrigo Barros
+
+- Clara GMAR
+
+- Suspensão, religação, etc
+- Paginador não funciona
+- Listar por usuário - Filtro chamado por usuário
+- Gerar o PDF e enviar para a DIPOM
+
+- Tabela Fatura no banco -> FATU_DT_EMISSAO
+DOCUMENTO_FISCAL
+
+heitor.leoncio -> Copiar o perfil dele -> GDIS OPERAÇÃO - 5228. FISCAL E VENDEDOR: SIM
+
+Jéssica da Silva Lima - DIPON Operador Dipon
+Fernanda - DIPON
+Joseane Maria de Oliveira - DIPON - 8875479
+
+SEGURANÇA, AUDITORIA, CONTROLE DE ACESSO
+
+TI_NOTA_FISCAL
+
+-- 784427, 784566
+
+34508,15
+35120,68
+
+André GMAR
+
+-- Alteração PCS rota já gerada
+-- Apagar a composição do dia no citygate - 30, 31 e 01
+-- Uma planilha de cromatografia, outra com a macro
+
+05JAN
+
+- Reemissão fatura Internacional e Muro Alto
+- Situação das permissões GDIS
+- Ver o que ocorrerá após geração de faturas com novo campo de observações
+- Análise do incidente Internacional/Muro Alto
+
+- Deve verificar status anterior de 438550
+
+08JAN
+
+- Permissões GDIS
+- Reemissão Muro Alto e Internacional
+- Na reunião, é importante elencar os cenários: hoje a planilha deleta a linha. Se o usuário solicitar novo reset, mas ainda não colocou seu cpf e nova senha, a planilha não encontrará o registro a ser deletado, gerando erro.
+- Caso ToP Arlanxeo, postos com problema, emissão novas notas Internacional/Muro Alto
+
+Chamados visualizáveis pela DIPON: suspensão, religamento, retirar lacre, liberação de clientes
+
+- Arlanxeo tem uma parada programada 20-31DEZ -> deveria abater do valor, caso incorra em ToP - 400mil m3 28mil - 300 mil francisco.nunes
+
+- Contrato - Penalidades - ect
+
+- Flávio: rodar o cronograma, não faturar grupo, deixar a integração desabilitada
+- Rota temporária, executar, etc
+
+- COHI_IN_USO do ciclo posterior (ou MEHI_IN_USO)
+
+consumo_historico apresenta o volume -> 
+
+Fatura - incluir NFd - de quem é a nota - preenche formulário - preço ou volume?
+
+- todo mundo que alterou imposto rodou sem problema. Quem não alterou, deu erro
+
+pocn_cd = 54, posto ind
+
+Matheus executando faturamento
+Alef e Flávio, analisando os dados
+Houve mudanças no banco de dados
+
+Fizemos analise direto no banco e o problema foi no mapa de consumo. 
+Ainda não descobrimos a causa, mas basicamente foi substituído o primeiro dia do ciclo atual por um dia do ciclo passado, o que gerou a diferença
+
+- Verificar casos de erro na pesquisa de contrato
+
+09JAN
+
+- Veicular, autouso - icms
+- dia primeiro, ciclo 4 dez 2023 (internacional, muro alto)
+- supermedição diaria, consumo histórico, medicao historico, fatura item tributacao, tarifa 3 linhas p cada imposto
+- tarifa, tarifa faixa, tarifa faixa tributo, tarifa vigencia, tarifa vigencia tributo
+
+- Dois pontos nas penalidades - verificar na consulta
+- Nota de débito
+- ToP Arlanxeo
+- Rotina de verificação volume medido/volume faturado
+
+- Retirar Arlanxeo da rota SUPERVISORIOINDPENALIDADES
+
+- Começar paliativo hoje 01JAN
+
+Alterar rota... tirar de rota e colocar em rota provisória
+
+- Pegar rota clientes residencial - ver
+
+10JAN
+
+- planejamento@dipon.com.br
+
+-- Veiculares: ajustar no GGAS (comparar valores dos itens das notas devolvidas com as do piramide e manda integrar), apagar no Piramide
+
+-- PIR_SAIDAS tem as notas originais
+
+excluir de ti_nota_fiscal_item -- Item não existe
+
+- Rota sul 01 chamado dia 08JAN (x)
+- Bruno João - rota TEMP3 (x)
+- Chamados de Maria Clara (x)
+- Chamados GDIS
+- Recriar a VIEW view_ti_item_nfe_imp_ggas_pir (x)
+
+servidor srvcoper015 GGAST2
+
+448459, 449642, 451906, 452076, 452134, 452185
+
+'598','596','588','585','573','572','571','567','563','561','560','553','547','536','512','507')
+
+coloca data em TI_NOTA_FISCAL de modo ao job tentar reprocessar
+
+PRODUTO e NDO GNC
+
+- Parada programada Gibson
+- Gerdau, e-mail medição
+
+11JAN
+
+- Chamados GDIS (criado algoritmo básico)
+- Correção para as três notas faltantes de devolução
+- Situações Alexandre Leal - ToP (enviado um tutorial), parada programada
+- Chamados App
+- Chamado Maria Eduarda (x)
+- Correção e-mail Hugo (x)
+
+- Caso Rota S01 - alguns clientes setados para ATIVOS
+- Caso Rota S05 - ajuste manual de um dos pontos - Medição - Leitura - Análise de medição
+
+- Bruno - Arlanxeo - temporária - Novembro ciclo 3 - evoluindo até atualmente
+
+12JAN
+
+- CBT 2 CFOP 1661 NDO DEV039
+- Atualizar e-mail caçulinha
+
+15JAN
+
+- "Integração pendente"
+- Associação do Posto Caçulinha ao City Gate Garanhuns (x)
+- Caçulinha sem supervisório, por isso não integra (x)
+- Ajuste situação GCRC (x)
+- Ajuste chamados GDIS - chamados diferente de fechado e a partir de outubro (x)
+- Resolução problema e-mail Agência Virtual (x)
+
+- 25 login/senha, 587 anônimo
+
+- TI_DOCUMENTO_REC
+
+- CVM 26MAI
+
+16JAN
+
+- TEMP10 e TEMPINTERNACIONAL para o ciclo 2JAN
+- APR Olinda refaturamento -> devolução - 784980 e 785197 (última nota devolvida)
+- Sem faturamento ciclo 1 para GNC Mastergás 220 RAAT 7 ROTA_CD 160 e GPA Caruaru 311046, RAAT 6 ROTA_CD 133
+160 TEMP INTERNACIONAL
+133 SUPERVISORIOVEICULAR
+
+Problemas conhecidos x área que alertou:
+
+1) TEMP02: erro de Java no consistir - GMAR
+2) TEMP10: executou o Consistir normalmente, mas a ARLANXEO não aparece na tela de Validar Medições do Supervisório - GMAR
+3) GNC MASTERGAS (rota 220) e GPA CARUARU (rota 133) sem faturamento para o ciclo 1
+4) Houve refaturamento do APR Olinda (faturas 784980 e 785197) e não houve a devolução. Tentando fazer a devolução de volume para qualquer uma das faturas, temos o erro "Erro: Não é possível incluir uma NFD para contratos encerrados."
+
+
+17JAN
+
+6) Não está sendo possível gerar chamado de religação para o cliente - 202200880 
+
+7) NFE 439691 - EDF. CONDE DE NASSAU - APT 701 não foi integrada (X)
+
+4) Não está sendo possível realizar a devolução para a NFE 439072 - POSTO IND - APR OLINDA, temos o erro "Erro: Não é possível incluir uma NFD para contratos encerrados.". Vendo o status do contrato e ponto de consumo, vi que ambos estão ativos - GFIN -- 438857
+
+Caçulinha - pendente de integração
+
+2312150217
+
+jessicalima.dipon
+Abcd1234
+
+202200880
+
+
+18JAN
+
+- CENTRO 03: notas 787983 (tarcisio nogueira de souza) e 788283 (maria da conceição boudoux silva) presas na integração - (x)
+ 
+- NORTE 01B: 05 clientes não identificados - não atualiza o faturar (x)
+
+Pontos de consumo suspensos
+
+JARDINS DA ROSEIRA - TORRE 25 - APT 701 
+JARDINS DA ROSEIRA - TORRE 12 - APT 702 
+JARDINS DA ROSEIRA - TORRE 09 - APT 601 
+JARDINS DA ROSEIRA - TORRE 08 - APT 003 
+JARDINS DA ROSEIRA - TORRE 24 - APT 504 
+
+Pontos de consumo com contrato encerrado
+
+-- POCN 238538 e CONT_CD 47568 encerrado
+-- POCN 238639 e CONT_CD = 50028 encerrado
+-- POCN 239054 e CONT_CD = 39736 encerrado
+-- POCN 238484 e CONT_CD = 46463 encerrado
+ 
+- NORTE 01C: Contrato não integrado na tabela de Integração com o ERP (TI_CONTRATO) - (x)
+ 
+- NORTE 01E: 01 cliente não identificado - não atualiza o faturar (x)
+
+Pontos de consumo suspensos
+
+JARDINS DO FRIO - TORRE 01 - APT 204 
+4818121	JARDINS DO FRIO - TORRE 01 - APT 604 
+
+Pontos de consumo com contrato encerrado
+
+JARDINS DO FRIO - TORRE 01 - APT 204
+ 
+- OESTE 02A: rota está processando o faturar desde ontem - Verificando junto à Logique - consistir 1025 pontos, 427 pendentes - em encerramento, encerrado
+ 
+- SUL 06: Contrato não integrado na tabela de Integração com o ERP (TI_CONTRATO) e um cliente não identificado - parece ter sido um cont_in_uso = 1 associado a um contrato encerrado
+
+Pontos de consumo suspensos
+
+EDF. ENSEADA - APT 0302
+EDF. ENSEADA - APT 0902
+EDF. TALHAMAR - APT 0201
+EDF. COSTA DAS ROCHAS - APT 0101 
+EDF. COSTA DAS ROCHAS - APT 2204
+
+Pontos de consumo com contrato encerrado
+
+EDF. TALHAMAR - APT 0201
+EDF. ENSEADA - APT 0302
+EDF. COSTA DAS ROCHAS - APT 0101 
+
+-- cadastro Dulce
+
+- Processamento nota do 'LAURISTTON MENDES TEIXEIRA DE VASCONCELOS'
+
+Novembro para cá - chamados
+
+19JAN
+
+- Erro ao tentar baixar o Título 745309 feito
+
+Feitos no GGAS
+
+--NORTE 01B
+UPDATE CONTRATO SET COSI_CD = 1 WHERE CONT_CD IN (47568,50028,39736,46463) -- Estava 2
+
+--NORTE 01E
+UPDATE CONTRATO SET COSI_CD = 1 WHERE CONT_CD IN (50271) -- Estava 2
+
+--SUL 06
+UPDATE CONTRATO SET COSI_CD = 1 WHERE CONT_CD IN (46030,41128,45970,43307) -- Estava 2
+
+--CENTRO 08
+UPDATE CONTRATO SET COSI_CD = 1 WHERE CONT_CD IN (44785) -- Estava 2
+
+22JAN
+
+- Demandas GDIS
+- Não consegue abrir chamado
+- Rotas travadas c7, o2a e n1b
+
+- Ver Fatura FATU_CD -> Mais de um id de fatura para alguém da rota no mesmo ciclo
+
+N01B - faturar grupo bem sucedido
+
+Procesamentos de Drawback
+
+Ponto de consumo: JARDINS DA ROSEIRA - TORRE 12 - APT 702
+
+Ponto de consumo: JARDINS DA ROSEIRA - TORRE 09 - APT 601
+
+Ponto de consumo: JARDINS DA ROSEIRA - TORRE 08 - APT 003
+
+Ponto de consumo: JARDINS DA ROSEIRA - TORRE 25 - APT 701
+
+Faturados 4 (acima) e não faturados 776
+
+SELECT count(*) AS QUANTIDADE, POCN_CD FROM FATURA WHERE ROTA_CD = 106 AND FATU_DT_AM_REFERENCIA = 202401 GROUP BY POCN_CD ORDER BY POCN_CD -- N01B 779 com FATU_CD - de um total de 782 pontos de consumo - 70 já pagos
+
+
+O02A - faturar grupo bem sucedido
+
+Total de Pontos de consumo faturados (exatamente os de drawback): 459 (Faturas abaixo do valor mínimo: 57)
+Total de Pontos de consumo não faturados: 565
+
+SELECT count(*) AS QUANTIDADE, POCN_CD FROM FATURA WHERE ROTA_CD = 111 AND FATU_DT_AM_REFERENCIA = 202401 GROUP BY POCN_CD ORDER BY POCN_CD -- O02A 802 com FATU_CD - de um total de 1026 pontos de consumo - 128 já pagos
+
+
+Erro java
+
+SELECT count(*) AS QUANTIDADE, POCN_CD FROM FATURA WHERE ROTA_CD = 42 AND FATU_DT_AM_REFERENCIA = 202401 GROUP BY POCN_CD ORDER BY POCN_CD -- C07 818 com FATU_CD, de um total de 1032 pontos de consumo - 43 já pagos
+
+- Validar medições do supervisório
+
+- Backlog - Novo Sinc - Caso não tenha enviado e-mail em dia anterior, enviar
+- Criadas views para atender Maria Clara da GMAR. Ainda com problemas com o VB: ao clicar em atualizar, a consulta anterior some
+
+23JAN
+
+- Sugestão cursos
+- Retificação planilha anormalidades
+
+- Chamados App
+- Chamados GGAS
+- Chamado : 462114 
+
+S980104 
+
+Prezados, Boa Tarde!
+
+A GADS esta recebendo e-mail do GGAS. E-mails de religamento não devem ser direcionados para GADS.
+
+Atenciosamente, 
+
+- 461510
+- Boa tarde. O EDF. JOCKEY CLUB RESIDENCE da ROTA C15 não está consistindo no sistema GGAS . Favor verificar. (x)
+- Sem City gate: vê se tem face de quadra. Tendo vai em Cadastro - Localização - Quadra. "Indicador de rede" toggle para "não tem" e depois "tem"
+- Chamado 454909 - O GGAS está apresentando erros ao consultar contratos existentes no sistema. Um exemplo é o contrato que segue: 202200800. Anexo tem a imagem do erro que aconteceu com uma das atendentes do SAC.
+
+- Integração: ver e-mail de Legilmo. Integração dinâmica e com Piramide
+
+24JAN
+
+- Planilha Rebeka
+- Verificar chamado 454909 - um exemplo é o contrato que segue: 202200800 - Química amparo - QUÍMICA AMPARO (x)
+- Chamado 461510 - falha na rota C15 (x)
+- Chamados App (x)
+- BENVINDA DOCERIA ROTA C22 PCS NULO - Consistido
+
+docker build -t queryhelper .
+docker run -p 8000:8000 -d queryhelper
+docker exec -it your_container_name_or_id bash
+
+celery -A  run-celery worker --loglevel=info --logfile=worker.log -E
+
+25JAN
+
+- PCS nulo - deve importar a planilha de PCS antes do consistir
+- Chamado 462223:PIZZA HUT - GRAÇAS - ROTA C18 - ABERTO DIA 23 11:13
+- Ver situação Legilmo - BI
+- Corrigido beat e worker do Celery
+
+26JAN
+
+- Finanças - PECLD
+- Corrigida a chamada ao beat e ao worker pelo container
+- Está no horário +0. Pedir para rodar às 18:30. Problemas no envio de e-mails. Analisar
+
+Correções
+
+- Criação da trigger para corrigir sequence de prestação de contas
+- Finalização da atualização do Pirâmide Desktop, Web e Portal NFe no ambiente de testes
+- Início e desenvolvimento do Novo SINC
+
+Usos CGPT
+
+- Tradução de uma linguagem para outra com maior agilidade e pouco retrabalho com resolução de bugs
+- Troubleshoot mais assertivo
+- Limitação JAN-2022 (atualização natural das linguagens, últimos bugs, novidades, ..., tudo estará descoberto)
+
+QueryHelper: painéis com quantidade queries cadastradas, queries por sistema
+	- em cada "visualização" de query, ter um executor genérico de query
+
+https://towardsdatascience.com/create-a-dashboard-to-track-anything-with-plotly-and-dash-f9a5234d548b
+
+- Verif Qlik, Power BI
+
+Dicionário
+
+- spin up
+
+DATAS FUTURAS
+
+Informações importantes/a verificar
+
+- Gestão de conhecimento na pasta: Z:\DAF\GETI\GETI\SISTEMAS\_Equipe Sistemas\01. Base de conhecimento
+- Caminho para modelos de apresentações: Z:\DAF\GETI\GETI\APRESENTAÇÕES\_MODELO
+- Usuário adm: igoroliveira.adm
+- Impressora: 1788
+- KEEPASS: G3t!_C0p3rg45@
+- geti.repositorio@gmail.com - vintevinte2020seraoano
+- Helpdesk Procenge: helpdesk.procenge.com.br/Login
+		     login: copergas
+		     senha: ilhadeexcelencia
+
+Servidores/serviços
+
+- srvcoper063: sinc, agência virtual, app Copergás
+- srvcoper010: servidor de aplicação do Pirâmide (ambientes de homologação e testes)
+- srvcoper013: servidor de dados do Pirâmide
+- srvcoper014: servidor de aplicação do Pirâmide (ambiente de produção)
+- srvcoper015:8080/ggas: GGAS ambiente de testes
+- srvcoper048: contém os módulos baixados do Piramide
+- srvcoper003: SE Suite teste
+- srvcoper004: SE Suite produção
+- srvcoper022: Interface SINC - srvcoper022/sinc.prod
+
+Links/mantenedores de sistemas
+
+- Geogas: http://geogas.copergas.com.br:7001/geogasP0722/, Gempi
+- Gás Online: http://gasonline.copergas.com.br/, Syspro Quality
+- GGAS: https://ggas.copergas.com.br/, Logique
+- Unigás: http://srvcoper036/AvilaLauncher, T4i Soluções
+- Coletor GGAS: Logique
+- ERP Pirâmide: \\srvcoper005\utils\Pirâmide
+		\\SRVCOPER010\Piramide\bin\Admin - módulo Admin de homologação e teste
+    Portal NFE: http://srvcoper071:8090/portalnfe/
+- Site corporativo: https://www.copergas.com.br, Gao Tech
+- Agência virtual: https://agenciavirtual.copergas.com.br:8443, Gao Tech
+- App Copergás: Gao Tech
+- Portal RH3: http://rh3.copergas.com.br/, GCI
+- TradingWorks: TradingWorks
+- Equipmaint: InForma
+- Painéis BI: https://bi.copergas.com.br/, Horus (consultoria)/AnalisaBR (licenciamento)
+- Sinc: https://srvcoper022/sinc.prod/App_Login/, Gao Tech. Envio de notificações para clientes (inadimplência, avisos de débito, suspensão)
+- SGP: http://srvcoper022:8080/sgp.prod, Gao Tech
+- SE-Suite: https://csgi.copergas.com.br/, Softexpert
+
+Link Produção :
+csgi.copergas.com.br/softexper
+
+Link Homologação :
+csgit.copergas.com.br/softexper
+
+srvcoper003/softexpert/login
+
+CHAMADO - SOFTEXPERT
+==============================
+URL: customercenter.softexpert.com/
+usuário: pablo.logiquesistemas@copergas.com.br
+senha: Pablo.logiquesistemas_2022
+===============================
+
+===============================
+Login: jose.logiquesistemas
+Senha: Tacio160498***
+
+https://ggas.copergas.com.br/ggas
+===============================
+
+Piramide - Cpg_getI_PiR
+
+- Computador tela azul - se há reserva
+
+
+- GELIC: http://srvcoper022:8080/gelic/App_Login, Gao Tech (inicialmente desenvolvimento internamente)
+- Intranet: https://portal.copergas.com.br, VivaIntra, /admin
+- Portal de Manutenção: http://srvcoper017/glpi. Utilizado pela GADS para registro de serviços de manutenção predial
+
+- Soft Expert Suite: https://csgi.copergas.com.br/softexpert/
+
+- Portal de Suporte de TI
+
+	Visão Usuário: https://portalcopergas.lanlink.com.br/assystnet/
+	Visão Atendimento TI: https://portalcopergas.lanlink.com.br/assystweb/application.do
+
+Conhecimento geral
+
+https://portal.copergas.com.br/
+https://agenciavirtual.copergas.com.br:8443
+
+
+Acesso Portal de Chamados do Unigás   :
+
+ https://portal.t4ionline.com.br
+
+Login : igor.oliveira
+
+Senha : (A123b) Os parêntesis fazem parte da senha.
+
+The specified Gradle installation directory 'C:\Program Files\Android\Android Studio\gradle\gradle-2.14.1' does not exist.
+  AS OF TIMESTAMP flashback_time;
+END;
+
+scrap
+
+import requests
+from bs4 import BeautifulSoup
+
+url='https://www.bbc.com/news'
+response = requests.get(url)
+
+soup = BeautifulSoup(response.text, 'html.parser')
+headlines = soup.find('body').find_all('h3')
+for x in headlines:
+print(x.text.strip())
+
+
+SELECT  pocn.pocn_cd, pocn.pocn_ds--, pocn.pocn_cd_supervisorio
+        ,mehi.mehi_dt_am_leitura, mehi.mehi_nr_ciclo
+        ,SUM(mehi_md_consumo_medidor) AS "Consumo Medidor MEHI"
+        ,SUM(cohi.cohi_md_consumo) AS "Consumo COHI"
+        ,SUM(mehi_md_consumo_corretor) AS "Consumo Corretor MEHI"
+        ,SUM(cohi.cohi_md_consumo_medido) AS "Consumo Medido COHI"
+        ,SUM(cohi.cohi_md_consumo_apurado) AS "Consumo Apurado"--fait.fait_md_consumo
+        ,SUM(fait.fait_md_consumo) AS "Consumo Fatura"
+        ,SUM(fait.fait_md_consumo)/SUM(cohi.cohi_md_consumo_apurado) AS Razao
+        --corrigir com diferença --> SUM(fait.fait_md_consumo) - ,SUM(cohi.cohi_md_consumo_apurado)
+        ,CASE (SUM(cohi.cohi_md_consumo_apurado)) WHEN (SUM(fait.fait_md_consumo)) THEN 'OK'
+            ELSE 'ANALISAR VOLUMES' 
+        END AS "STATUS"
+FROM ponto_consumo pocn
+INNER JOIN medicao_historico mehi ON mehi.pocn_cd = pocn.pocn_cd
+INNER JOIN consumo_historico cohi ON cohi.mehi_cd_atual = mehi.mehi_cd
+LEFT JOIN fatura fatu ON cohi.cohi_cd = fatu.cohi_cd
+LEFT JOIN fatura_item fait ON fatu.fatu_cd =fait.fatu_cd
+WHERE pocn.rota_cd = 138 --133 veicular, 144 supervisorioindpenalidades 138 supervisorioindustrial
+--and pocn.pocn_cd =312926 
+AND mehi.mehi_dt_am_leitura > 202312
+--AND mehi.mehi_nr_ciclo = 4
+and mehi_in_uso = 1
+GROUP BY pocn.pocn_cd, pocn.pocn_ds
+        ,mehi.mehi_dt_am_leitura, mehi.mehi_nr_ciclo
+HAVING SUM(fait.fait_md_consumo) > 1 AND (SUM(cohi.cohi_md_consumo_apurado)) <> (SUM(fait.fait_md_consumo))
+ORDER BY pocn.pocn_cd, mehi.mehi_dt_am_leitura desc, mehi.mehi_nr_ciclo DES

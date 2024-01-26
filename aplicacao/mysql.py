@@ -23,7 +23,7 @@ def set_ultima_matricula_servico(cliente, tipo):
     tipo_envio = ""
     if tipo == 2:
         tipo_envio = "Próximas a vencer"
-    elif tipo_envio == 3:
+    elif tipo == 3:
         tipo_envio = "Vencidas"
 
     item = Envio(contrato=cliente['MATRICULA'],email=cliente['EMAIL'],titulo=cliente['TITULO'],data_envio=timezone.now(),status_envio=cliente['STATUS'],tipo_envio=tipo_envio)

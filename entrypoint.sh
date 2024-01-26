@@ -17,12 +17,12 @@ done
 # python manage.py createsuperuser --noinput
 service redis-server restart
 
-exec gunicorn novoSinc.wsgi:application --bind 0.0.0.0:8000 --workers 4 --threads 4 --log-level debug
-
 # Start Celery Worker
-./entrypoint-worker.sh
+celery -A run-celery worker --loglevel=info --logfile=worker.log --detach
 
 # Start Celery Beat
-./entrypoint-beat.sh
+celery -A run-celery beat --loglevel=info --logfile=beat.log --detach
+
+exec gunicorn novoSinc.wsgi:application --bind 0.0.0.0:8000 --workers 4 --threads 4 --log-level debug
 
 #python3 manage.py runserver

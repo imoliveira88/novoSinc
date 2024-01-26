@@ -6,7 +6,7 @@ from celery.schedules import crontab
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'novoSinc.settings')
 
-# Use RabbitMQ as the message broker
+# It uses REDIS as the message broker
 app = Celery('novoSinc')
 
 # Load task modules from all registered Django app configs.
@@ -14,9 +14,9 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.broker_connection_retry_on_startup = True
 
 app.conf.beat_schedule = {
-    'tarefa': {
-        'task': 'aplicacao.tasks.tarefa',
-        'schedule': crontab(minute='*', hour='*', day_of_week='*'),  # Run every minute
+    'envia_notificacoes_teste': {
+        'task': 'aplicacao.tasks.envia_notificacoes_teste',
+        'schedule': crontab(minute='20', hour='17', day_of_week='*'),  # It runs 14:40 every day
     },
 }
 

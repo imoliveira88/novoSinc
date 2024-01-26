@@ -7,8 +7,8 @@ WORKDIR /app
 # Update and install necessary packages
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip && \
-    apt-get install -y libpq-dev && \
-    apt-get install -y redis redis-server nano plocate
+    apt-get install -y libpq-dev libaio1 && \
+    apt-get install -y redis redis-server nano plocate zip
 
 # Install Gunicorn
 RUN pip3 install gunicorn
@@ -20,6 +20,15 @@ RUN pip3 install django-jinja
 RUN pip3 install celery
 RUN pip3 install redis
 RUN pip3 install mysql-connector
+
+
+# Set up Oracle client
+COPY instantclient-basic-linux.x64-19.22.0.0.0dbru.zip /tmp/
+RUN unzip /tmp/instantclient-basic-linux.x64-19.22.0.0.0dbru.zip -d /usr/local/
+
+ENV ORACLE_HOME=/usr/local/instantclient_19_22
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
+ENV PATH=$PATH:$ORACLE_HOME
 
 # Copy the application code
 COPY . /app/
@@ -34,8 +43,6 @@ ENV DJANGO_SETTINGS_MODULE=novoSinc.settings
 
 # Make the entrypoint.sh script executable
 RUN chmod +x /app/entrypoint.sh
-RUN chmod +x /app/entrypoint-worker.sh
-RUN chmod +x /app/entrypoint-beat.sh
 
 #RUN python3 manage.py collectstatic --noinput
 
