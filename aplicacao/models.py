@@ -45,6 +45,8 @@ class Historico(models.Model):
 class Modelo(models.Model):
     nome = models.CharField(max_length=30, unique=True)
     conteudo= models.TextField()
+    emails = models.CharField(max_length=200, unique=False)
+    #Campo emails: campo que armazenará endereços de e-mail que receberão relatório resumido
 
     def __str__(self):
         return self.name

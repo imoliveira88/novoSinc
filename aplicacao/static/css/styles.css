@@ -54,6 +54,22 @@ table.menu {
     margin-top: 20px;
 }
 
+#emailList {
+    background: #061aef;
+    box-shadow: 5px 5px 5px #5c5eaa;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    flex-flow: nowrap;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 1px;
+    margin: auto;
+    padding: 0;
+    border-radius: 5px;
+}
+
 .submenu {
     margin: auto;
     margin-top: 20px;

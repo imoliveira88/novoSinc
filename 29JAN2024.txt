@@ -1745,7 +1745,21 @@ celery -A  run-celery worker --loglevel=info --logfile=worker.log -E
 
 - Finanças - PECLD
 - Corrigida a chamada ao beat e ao worker pelo container
-- Está no horário +0. Pedir para rodar às 18:30. Problemas no envio de e-mails. Analisar
+
+29JAN
+
+- Usuários no GGAS e PIR
+- Inserção em massa. ALTER TABLE
+- DDL de uma tabela, view, etc: SELECT DBMS_METADATA.GET_DDL('TABLE', 'PIR_ATRIBUTO_TITREC') AS DDL
+FROM DUAL;
+- Para modificar um campo que é parte da chave primária de uma tabela, primeiro dropa-se a restrição, depois altera o campo. Por fim, refaz a restrição
+- Diversos registros já têm um campo com cod_tipo_atributo 'tipodoc' - estratégia: separar quem tem de quem não tem e criar UPDATES
+- CREATE USER IGORM IDENTIFIED BY "Oxentenovo88@";
+
+novoSinc
+
+- Criar e-mail de relatório de envio
+- Criar interface para inclusão de endereços de e-mail para recebimento relatórios de envio (contendo clientes, tipo do alerta, valor, data)
 
 Correções
 

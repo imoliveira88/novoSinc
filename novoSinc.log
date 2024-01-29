@@ -26,3 +26,54 @@ Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO1 }}
 "GET /static/css/styles.css HTTP/1.1" 304 0
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5725
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/css/styles.css HTTP/1.1" 200 7578
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"POST / HTTP/1.1" 200 8986
+"GET /aplicacao/modelos HTTP/1.1" 200 10925
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7817
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 5725
+"POST / HTTP/1.1" 200 8327
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7817
+"GET / HTTP/1.1" 200 8327
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7897
+"POST /aplicacao/inclui_modelo HTTP/1.1" 200 6670
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5066
+"GET /static/css/styles.css HTTP/1.1" 200 7949
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"POST / HTTP/1.1" 200 8327
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 8046
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 8046
+"GET /static/css/styles.css HTTP/1.1" 200 7912
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7932
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7925
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7921
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 5066
+"GET /static/css/styles.css HTTP/1.1" 200 7912
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"POST / HTTP/1.1" 200 8327
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7921

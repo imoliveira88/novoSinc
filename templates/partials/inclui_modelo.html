@@ -10,6 +10,13 @@
                 <td>Nome</td>
                 <td>{{form.nome}}</td>
             </tr>
+            <tr>
+                <td>Endereços de e-mail que receberão avisos</td>
+                <td>
+                    <input type="text" id="emailInput">
+                    <button class="btn btn-primary" type="button" id="addEmailBtn">Adicionar</button>
+                </td>
+            </tr>
         </table>
         <table class="table-filtro" align="center">
             <tr>
@@ -18,4 +25,26 @@
         </table>
         <button class="btn btn-primary" type="submit">Adicionar</button>
     </form>
+
+    <div id="emailList">
+        <!-- Display added emails here -->
+    </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const emailInput = document.getElementById("emailInput");
+        const addEmailBtn = document.getElementById("addEmailBtn");
+        const emailList = document.getElementById("emailList");
+
+        addEmailBtn.addEventListener("click", function() {
+            const email = emailInput.value.trim();
+            if (email !== "") {
+                const emailItem = document.createElement("div");
+                emailItem.textContent = email;
+                emailList.appendChild(emailItem);
+                emailInput.value = "";
+            }
+        });
+    });
+</script>
