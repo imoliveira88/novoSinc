@@ -80,7 +80,7 @@ def edita_modelo(request, id):
         form = ModeloForm(request.POST, instance=html_content)
         if form.is_valid():
             form.save()
-            return render(request, 'pages/modelos.html',context)
+            return render(request, 'pages/modelos.html', {'form': form})
     else:
         form = ModeloForm(instance=html_content)
     return render(request, 'pages/edita_modelo.html', {'form': form})

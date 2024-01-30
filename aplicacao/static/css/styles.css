@@ -392,13 +392,14 @@ table.table-filtro th {
     flex-flow: nowrap;
     margin-bottom: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid rgb(4, 0, 255);
+    border-radius: 5px;
 }
 
 .tabela_resumo td {
-    border: 0px;
     padding: 8px;
     white-space: nowrap;
-    text-align: center;
+    text-align: left;
 }
 
 #filtro {
