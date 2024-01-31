@@ -5,19 +5,28 @@
     <h2>Incluir modelo de e-mail</h2>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <table class="table-filtro" align="center">
+        <table class="cabeca-modelo" align="center">
             <tr>
                 <td>Nome</td>
                 <td>{{form.nome}}</td>
             </tr>
             <tr>
-                <td>Endereços de e-mail que receberão avisos</td>
+                <td>E-mails a serem alertados</td>
                 <td>
                     <input type="text" id="emailInput">
-                    <button class="btn btn-primary" type="button" id="addEmailBtn">Adicionar</button>
                 </td>
             </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><button class="btn btn-primary" type="button" id="addEmailBtn">Adicionar</button></td>
+            </tr>
         </table>
+
+        <br/>
+        <div id="emailList">
+            <!-- Display added emails here -->
+        </div>
+        <br/>
+
         <table class="table-filtro" align="center">
             <tr>
                 <td>{{form.conteudo}}</td>
@@ -25,10 +34,6 @@
         </table>
         <button class="btn btn-primary" type="submit">Adicionar</button>
     </form>
-
-    <div id="emailList">
-        <!-- Display added emails here -->
-    </div>
 </div>
 
 <script>

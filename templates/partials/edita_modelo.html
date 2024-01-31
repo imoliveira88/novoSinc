@@ -9,3 +9,21 @@
         <button class="btn btn-primary" type="submit">Salvar</button>
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const emailInput = document.getElementById("emailInput");
+        const addEmailBtn = document.getElementById("addEmailBtn");
+        const emailList = document.getElementById("emailList");
+
+        addEmailBtn.addEventListener("click", function() {
+            const email = emailInput.value.trim();
+            if (email !== "") {
+                const emailItem = document.createElement("div");
+                emailItem.textContent = email;
+                emailList.appendChild(emailItem);
+                emailInput.value = "";
+            }
+        });
+    });
+</script>

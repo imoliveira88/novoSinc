@@ -285,3 +285,142 @@ django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 2: 'st
 Not Found: /accounts/login/
 "GET /accounts/login/?next=/aplicacao/relatorio_proximas HTTP/1.1" 404 5051
 "GET /aplicacao/relatorio_proximas HTTP/1.1" 200 998162
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5066
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/css/styles.css HTTP/1.1" 200 7771
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"POST / HTTP/1.1" 200 8327
+"GET / HTTP/1.1" 200 8317
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 8327
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'login'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 128, in login_view
+    username = request.POST['login']
+               ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'login'
+"POST / HTTP/1.1" 500 80104
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5004
+"GET / HTTP/1.1" 200 8327
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'login'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 128, in login_view
+    username = request.POST['login']
+               ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'login'
+"POST / HTTP/1.1" 500 80103
+"GET / HTTP/1.1" 200 8327
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'login'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 128, in login_view
+    username = request.POST['login']
+               ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'login'
+"POST / HTTP/1.1" 500 80164
+"GET / HTTP/1.1" 200 8327
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 15912
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO1 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO1%20%7D%7D HTTP/1.1" 404 5100
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO2 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO2%20%7D%7D HTTP/1.1" 404 5100
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 15850
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO1 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO1%20%7D%7D HTTP/1.1" 404 5100
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO2 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO2%20%7D%7D HTTP/1.1" 404 5100
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 19614
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7921
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7922
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7919
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7921
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 998162
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7921
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 998162
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 8952
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7922
+"GET /static/css/styles.css HTTP/1.1" 200 7878
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7922
+"GET /static/css/styles.css HTTP/1.1" 200 7878
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7971
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7971
+"GET /static/css/styles.css HTTP/1.1" 200 7915
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7971
+"GET /static/css/styles.css HTTP/1.1" 200 7916
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7971
+"GET /static/css/styles.css HTTP/1.1" 200 7897
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7942
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7942
+"GET /static/css/styles.css HTTP/1.1" 200 7898
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7942
+"GET /static/css/styles.css HTTP/1.1" 200 7897
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7925
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 7998
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 8027
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 8026
+"GET /static/css/styles.css HTTP/1.1" 304 0
