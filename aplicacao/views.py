@@ -135,7 +135,7 @@ def login_view(request, *args):
 
 
     if request.user.is_authenticated:
-        return render(request, 'pages/relatorio_proximas.html') #TODO: dashboard
+        return render(request, 'pages/home.html') #TODO: dashboard
         #return redirect("aplicacao/teste.html")
 
     return render(request, 'login.html', context)

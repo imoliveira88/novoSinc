@@ -10,7 +10,8 @@ from jinja2 import Environment, FileSystemLoader
 from aplicacao.queries import faturas_proximas_vencer, faturas_vencidas
 from novoSinc.settings import BASE_DIR, STATIC_ROOT
 from datetime import datetime
-from aplicacao.models import Modelo
+from django.utils import timezone
+from aplicacao.models import Modelo, Envio
 
 import logging
 
@@ -120,6 +121,10 @@ def notificar_clientes_teste(tag, clientes): # Era notificarClientes
         cliente['EMAIL'] = 'igor.oliveira@copergas.com.br'
         notifica_cliente_teste(tag,cliente,0)
     # E-mails enviados
+    if tag == 3:
+        enviar_email_relatorio('Vencidas')
+    else:
+        enviar_email_relatorio('Próximas a vencer')
     
 def trata_array(contatos):
     def is_excecao(email):
@@ -221,6 +226,42 @@ def enviar_email(tag, destinatario, cco, contexto):
         print(f"An unexpected error occurred: {e}")
         return False
 
+def enviar_email_relatorio(tag):
+    
+    assunto = f'SINC - Relatório de Faturas {tag}'
+
+    # Create MIME message
+    message = MIMEMultipart()
+    message['From'] = 'sinc@copergas.com.br'
+    message['To'] = 'igor.oliveira@copergas.com.br' #', '.join(cco) TODO colocar quem está no conhecimento do modelo
+    message['Subject'] = assunto
+
+    # Attach HTML content with inline images
+    html_content = devolve_html(tag)
+    message.attach(MIMEText(html_content, 'html'))
+
+    message['Return-Receipt-To'] = 'sinc@copergas.com.br'
+    message['Disposition-Notification-To'] = 'sinc@copergas.com.br'
+    message['DSN'] = 'SiNC 0'
+    message['Return'] = 'headers'
+    message['Notify'] = 'success, failure, delay'
+    message['Recipient'] = 'sinc@copergas.com.br'
+
+    try:
+        # Setup the SMTP server
+        with smtplib.SMTP('mail.copergas.com.br', 25) as server:
+            # Login to the server
+            server.login('sinc', 'Ks9xKi5CClBMqAPr1iyu')
+            # Send the email
+            server.send_message(message)
+        return True
+    except smtplib.SMTPException as e:
+        print(f"Exceção SMTP: {e}")
+        return False
+    except Exception as e:
+        print(f"Um erro inesperado ocorreu: {e}")
+        return False
+
 def define_tipo_not(tag):
     models = {
         1: 'fatura-disp',
@@ -270,3 +311,21 @@ def avisar_faturas_vencidas():
         clientes = rows
         afetadas = rows.len
         notificar_clientes(TAG_FATURA_VENCIDA, trata_array(clientes))
+
+#"tag" pode ser "VENCIDAS" OU "PRÓXIMAS A VENCER"
+#Deve ser colocada uma lógica de exceção para tratar a tag
+def devolve_html(tag):
+    current_date = timezone.now().date()  # Get the current date
+    current_date_formatted = current_date.strftime("%d-%m-%Y")
+    
+    envios = Envio.objects.filter(tipo_envio=tag, data_envio__gt=current_date).order_by('id')
+
+    conteudo_html = f'<h2>Relatório de envio de faturas de {current_date_formatted}<h2><br>'
+
+    conteudo_html += f'<table style="border: 2px; background: #bcbcbc; padding: 2rem"><tr><th>Contrato</th><th>Título</th><th>E-mail</th><th>Data de envio</th><th>Status</th></tr>'
+    for envio in envios:
+        data_envio_formatted = envio.data_envio.strftime("%d-%m-%Y")  # Format date as dd-mm-yyyy
+        conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.email}</td><td>{data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
+    
+    conteudo_html += '</table>'
+    return conteudo_html

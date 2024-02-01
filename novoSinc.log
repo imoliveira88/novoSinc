@@ -424,3 +424,220 @@ Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO2 }}
 "GET /static/css/styles.css HTTP/1.1" 304 0
 "GET /aplicacao/inclui_modelo HTTP/1.1" 200 8026
 "GET /static/css/styles.css HTTP/1.1" 304 0
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5066
+"GET /static/css/styles.css HTTP/1.1" 200 7897
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"POST / HTTP/1.1" 200 8327
+"GET /static/favicon-32x32.png HTTP/1.1" 200 1391
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /aplicacao/exibe_modelo/1/ HTTP/1.1" 200 15850
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO1 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO1%20%7D%7D HTTP/1.1" 404 5100
+Not Found: /aplicacao/exibe_modelo/1/{{ CAMINHO2 }}
+"GET /aplicacao/exibe_modelo/1/%7B%7B%20CAMINHO2%20%7D%7D HTTP/1.1" 404 5100
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5004
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 19614
+"GET /aplicacao/logout HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 5066
+"POST / HTTP/1.1" 200 8327
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/edita_modelo/2/ HTTP/1.1" 200 20881
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 7724
+"GET /aplicacao/ HTTP/1.1" 200 7736
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_proximas
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 168, in testa_envio_proximas
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 126, in notificar_clientes_teste
+    enviar_email_relatorio('Próximas a vencer')
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 239, in enviar_email_relatorio
+    html_content = devolve_html(tag)
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 317, in devolve_html
+    current_date = timezone.now().date()  # Get the current date
+                   ^^^^^^^^
+NameError: name 'timezone' is not defined
+"GET /aplicacao/teste_envio_proximas HTTP/1.1" 500 87908
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_proximas
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 168, in testa_envio_proximas
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 126, in notificar_clientes_teste
+    enviar_email_relatorio('Próximas a vencer')
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 239, in enviar_email_relatorio
+    html_content = devolve_html(tag)
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 317, in devolve_html
+    current_date = timezone.now().date()  # Get the current date
+                   ^^^^^^^^^^^^
+AttributeError: type object 'datetime.timezone' has no attribute 'now'
+"GET /aplicacao/teste_envio_proximas HTTP/1.1" 500 87921
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao HTTP/1.1" 301 0
+"GET /aplicacao/ HTTP/1.1" 200 7736
+Internal Server Error: /aplicacao/teste_envio_proximas
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 168, in testa_envio_proximas
+    notificar_clientes_teste(2,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 127, in notificar_clientes_teste
+    enviar_email_relatorio('Próximas a vencer')
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 240, in enviar_email_relatorio
+    html_content = devolve_html(tag)
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 320, in devolve_html
+    envios = Envio.objects.filter(tipo_envio=tag, data_envio__gt=current_date).order_by('id')
+             ^^^^^
+NameError: name 'Envio' is not defined
+"GET /aplicacao/teste_envio_proximas HTTP/1.1" 500 88321
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/ HTTP/1.1" 200 7736
+"GET /aplicacao/teste_envio_proximas HTTP/1.1" 200 8327
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/ HTTP/1.1" 200 7736
+"GET /aplicacao/teste_envio_vencidas HTTP/1.1" 200 11767
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/relatorio_vencidas HTTP/1.1" 200 13698
+"GET /aplicacao/ HTTP/1.1" 200 7738
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /aplicacao/teste_envio_vencidas
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 175, in testa_envio_vencidas
+    notificar_clientes_teste(3,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 125, in notificar_clientes_teste
+    enviar_email_relatorio('Vencidas')
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 240, in enviar_email_relatorio
+    html_content = devolve_html(tag)
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 326, in devolve_html
+    conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.email}</td><td>{envio.data_envio}</td><td>{envio.status_envio|date:"d/m/Y"}</td></tr>'
+                                                                                                                                                    ^^^^
+NameError: name 'date' is not defined
+"GET /aplicacao/teste_envio_vencidas HTTP/1.1" 500 104716
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/teste_envio_vencidas HTTP/1.1" 200 11767
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao/ HTTP/1.1" 200 7738
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+Internal Server Error: /aplicacao/teste_envio_vencidas
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\views.py", line 175, in testa_envio_vencidas
+    notificar_clientes_teste(3,clientes)
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 125, in notificar_clientes_teste
+    enviar_email_relatorio('Vencidas')
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 240, in enviar_email_relatorio
+    html_content = devolve_html(tag)
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py", line 327, in devolve_html
+    conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.email}</td><td>{envio.data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
+                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Envio' object has no attribute 'data_envio_formatted'
+"GET /aplicacao/teste_envio_vencidas HTTP/1.1" 500 105121
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5004
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\igor.oliveira\Desktop\novoSinc\aplicacao\emails.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /aplicacao HTTP/1.1" 301 0
+"GET /aplicacao/ HTTP/1.1" 200 7738
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+"GET /aplicacao/teste_envio_vencidas HTTP/1.1" 200 11767
