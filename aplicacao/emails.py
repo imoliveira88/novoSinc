@@ -322,10 +322,10 @@ def devolve_html(tag):
 
     conteudo_html = f'<h2>Relatório de envio de faturas de {current_date_formatted}<h2><br>'
 
-    conteudo_html += f'<table style="border: 2px; background: #bcbcbc; padding: 2rem"><tr><th>Contrato</th><th>Título</th><th>E-mail</th><th>Data de envio</th><th>Status</th></tr>'
+    conteudo_html += f'<table style="border: 2px; background: #fff7f7; padding: 2rem"><tr><th>Contrato</th><th>Título</th><th>E-mail</th><th>Data de envio</th><th>Status</th></tr>'
     for envio in envios:
         data_envio_formatted = envio.data_envio.strftime("%d-%m-%Y")  # Format date as dd-mm-yyyy
         conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.email}</td><td>{data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
     
-    conteudo_html += '</table>'
+    conteudo_html += '</table><br>Atenciosamente, GETI.'
     return conteudo_html
