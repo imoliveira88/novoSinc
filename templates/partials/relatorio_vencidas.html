@@ -52,15 +52,16 @@
 
     <table id="datatable">
         <thead>
-        <tr>
-            <th>ID</th>
-            <th>CONTRATO</th>
-            <th>TÍTULO</th>
-            <th>E-MAIL</th>
-            <th>DATA</th>
-            <th>TIPO</th>
-            <th>STATUS</th>
-        </tr>
+            <tr>
+                <th>ID</th>
+                <th>CONTRATO</th>
+                <th>TÍTULO</th>
+                <th>DATA DE VENCIMENTO</th>
+                <th>E-MAIL</th>
+                <th>DATA</th>
+                <th>TIPO</th>
+                <th>STATUS</th>
+            </tr>
         </thead>
         <tbody>
             {% for cliente in clientes %}
@@ -68,6 +69,7 @@
                 <td>{{ cliente.id }}</td>
                 <td>{{ cliente.contrato }}</td>
                 <td>{{ cliente.titulo }}</td>
+                <td>{{ cliente.data_vencimento }}</td>
                 <td>{{ cliente.email }}</td>
                 <td>{{ cliente.data_envio|date:"d/m/Y H:i:s" }}</td>
                 <td>{{ cliente.tipo_envio }}</td>
@@ -76,5 +78,5 @@
             {% endfor %}
         </tbody>
     </table>
-
+    
 </div>

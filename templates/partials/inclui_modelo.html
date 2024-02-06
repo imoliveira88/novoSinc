@@ -32,15 +32,18 @@
                 <td>{{form.conteudo}}</td>
             </tr>
         </table>
+        <input type="hidden" name="emails" id="emailsProv">
         <button class="btn btn-primary" type="submit">Adicionar</button>
     </form>
 </div>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const emailInput = document.getElementById("emailInput");
         const addEmailBtn = document.getElementById("addEmailBtn");
         const emailList = document.getElementById("emailList");
+        const emailsProv = document.getElementById("emailsProv");
 
         addEmailBtn.addEventListener("click", function() {
             const email = emailInput.value.trim();
@@ -49,6 +52,9 @@
                 emailItem.textContent = email;
                 emailList.appendChild(emailItem);
                 emailInput.value = "";
+
+                // Append the email to the hidden input field value
+                emailsProv.value += email + ",";
             }
         });
     });

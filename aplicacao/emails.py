@@ -110,8 +110,15 @@ def notifica_cliente_teste(tag, cliente, espera):
 #Retirada a condicional referente ao envio de SMS
 def notificar_clientes(tag, clientes): # Era notificarClientes
     for cliente in clientes:
-        notifica_cliente(tag,cliente)
+        notifica_cliente(tag,cliente,0)
     # E-mails enviados
+    if tag == 3:
+        emails = Modelo.objects.filter(id=2).emails
+        enviar_email_relatorio('Vencidas',emails)
+    else:
+        emails = Modelo.objects.filter(id=1).emails
+        print(f'Emails {emails}')
+        enviar_email_relatorio('Próximas a vencer',emails)
 
 #Retirada a condicional referente ao envio de SMS
 def notificar_clientes_teste(tag, clientes): # Era notificarClientes
@@ -122,9 +129,11 @@ def notificar_clientes_teste(tag, clientes): # Era notificarClientes
         notifica_cliente_teste(tag,cliente,0)
     # E-mails enviados
     if tag == 3:
-        enviar_email_relatorio('Vencidas')
+        enviar_email_relatorio('Vencidas',cliente['EMAIL'])
     else:
-        enviar_email_relatorio('Próximas a vencer')
+        emails = Modelo.objects.get(id=1).emails
+        print(f'Emails {emails}')
+        enviar_email_relatorio('Próximas a vencer','igor.oliveira@copergas.com.br,jose.logiquesistemas@copergas.com.br')
     
 def trata_array(contatos):
     def is_excecao(email):
@@ -226,14 +235,17 @@ def enviar_email(tag, destinatario, cco, contexto):
         print(f"An unexpected error occurred: {e}")
         return False
 
-def enviar_email_relatorio(tag):
+def enviar_email_relatorio(tag,emails):
     
     assunto = f'SINC - Relatório de Faturas {tag}'
 
     # Create MIME message
     message = MIMEMultipart()
     message['From'] = 'sinc@copergas.com.br'
-    message['To'] = 'igor.oliveira@copergas.com.br' #', '.join(cco) TODO colocar quem está no conhecimento do modelo
+    if (emails[-1] == ','):
+        message['To'] = emails[:-1] #', '.join(cco) TODO colocar quem está no conhecimento do modelo
+    else:
+        message['To'] = emails
     message['Subject'] = assunto
 
     # Attach HTML content with inline images
@@ -320,12 +332,14 @@ def devolve_html(tag):
     
     envios = Envio.objects.filter(tipo_envio=tag, data_envio__gt=current_date).order_by('id')
 
-    conteudo_html = f'<h2>Relatório de envio de faturas de {current_date_formatted}<h2><br>'
+    conteudo_html = f'<p>Relatório de envio do SINC - {current_date_formatted}</p><br>'
 
-    conteudo_html += f'<table style="border: 2px; background: #fff7f7; padding: 2rem"><tr><th>Contrato</th><th>Título</th><th>E-mail</th><th>Data de envio</th><th>Status</th></tr>'
+    conteudo_html += f'<p>Atentar para os e-mails não enviados, pois provavelmente os e-mails de notificação não estão definidos no sistema de origem ou há e-mail inválido.</p>'
+
+    conteudo_html += f'<table style="border: 2px; background: #fff7f7; padding: 2rem"><tr><th>Contrato</th><th>Título</th><th>Data de vencimento</th><th>E-mail</th><th>Data de envio</th><th>Status</th></tr>'
     for envio in envios:
         data_envio_formatted = envio.data_envio.strftime("%d-%m-%Y")  # Format date as dd-mm-yyyy
-        conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.email}</td><td>{data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
+        conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.data_vencimento}</td><td>{envio.email}</td><td>{data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
     
-    conteudo_html += '</table><br>Atenciosamente, GETI.'
+    conteudo_html += '</table><br><p>Atenciosamente, GETI.</p>'
     return conteudo_html

@@ -58,15 +58,7 @@ def home(request):
 
         return render(request, 'pages/home.html', context)
     elif request.method == 'POST':
-        """ clientes = Envio.objects.filter(tipo_envio = "Próximas a vencer").filter(data_envio__gt=data1, data_envio__lt=data2).order_by('id')
-        total = clientes.count()
-        total_enviados = clientes.filter(status_envio='Enviado').count()
-        nao_enviados = total - total_enviados
-        context = {'clientes': clientes, 'total': total, 'total_enviados': total_enviados, 'nao_enviados': nao_enviados} """
-
         return render(request, 'pages/home.html', context)
-
-
 
     return render(request, 'pages/home.html')
 
@@ -87,9 +79,14 @@ def edita_modelo(request, id):
 
 @login_required
 def inclui_modelo(request):
-    context = {}
+    modelos = Modelo.objects.all
+    context = {'modelos': modelos}
     form = ModeloForm(request.POST or None)
     if form.is_valid():
+        emails_prov = request.POST.get('emails','')
+        print(emails_prov)
+        form.emails = emails_prov[:-1]
+        print(form.emails)
         form.save()
 
     context = {'form': form}
@@ -110,7 +107,8 @@ def sobre(request):
 
 @login_required
 def deleta_modelo(request, id):
-
+    modelos = Modelo.objects.all
+    context = {'modelos': modelos}
     try:
         obj = get_object_or_404(Modelo, id=id)
         obj.delete()
@@ -135,8 +133,18 @@ def login_view(request, *args):
 
 
     if request.user.is_authenticated:
-        return render(request, 'pages/home.html') #TODO: dashboard
-        #return redirect("aplicacao/teste.html")
+        clientes1 = Envio.objects.all().filter(tipo_envio = "Próximas a vencer").order_by('id')
+        total_proximas = clientes1.count()
+        total_enviados_proximas = clientes1.filter(status_envio = 'Enviado').count()
+        nao_enviados_proximas = total_proximas - total_enviados_proximas
+
+        clientes2 = Envio.objects.all().filter(tipo_envio = "Vencidas").order_by('id')
+        total_vencidas = clientes2.count()
+        total_enviados_vencidas = clientes2.filter(status_envio = 'Enviado').count()
+        nao_enviados_vencidas = total_vencidas - total_enviados_vencidas
+
+        context = {'total_proximas': total_proximas, 'total_enviados_proximas': total_enviados_proximas, 'nao_enviados_proximas': nao_enviados_proximas, 'total_vencidas': total_vencidas, 'total_enviados_vencidas': total_enviados_vencidas, 'nao_enviados_vencidas': nao_enviados_vencidas}
+        return render(request, 'pages/home.html')
 
     return render(request, 'login.html', context)
 
@@ -157,10 +165,6 @@ def testa_envio(request):
     return render(request, 'pages/teste.html', {'data': rows})
 
     #['pablo.logiquesistemas@copergas.com.br']
-
-def testa_envio_celery(request):
-    clientes = faturas_proximas_vencer()
-    notificar_clientes_teste(2,clientes)
 
 @login_required
 def testa_envio_proximas(request):

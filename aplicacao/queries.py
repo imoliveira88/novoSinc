@@ -1,6 +1,8 @@
 from aplicacao.date import get_data
+from datetime import datetime, timedelta
+from aplicacao.models import Envio
+from django.utils import timezone
 import cx_Oracle
-from aplicacao.mysql import set_ultima_matricula_servico
 
 def select_from_get_faturas_view():
     return (
@@ -22,6 +24,22 @@ def faturas_vencidas():
 	                                     + "ORDER BY MATRICULA")
     rows = executa_select_piramide(query)
     return rows
+
+def salva_envio(cliente, tipo):
+    tipo_envio = ""
+    if tipo == 2:
+        tipo_envio = "Próximas a vencer"
+    elif tipo == 3:
+        tipo_envio = "Vencidas"
+
+    item = Envio(contrato=cliente['MATRICULA'],email=cliente['EMAIL'],titulo=cliente['TITULO'],data_envio=timezone.now(),status_envio=cliente['STATUS'],tipo_envio=tipo_envio,data_vencimento=cliente['DATA_VENCIMENTO_FATURA'])
+    item.save()
+
+    try:
+        item.save()
+        print(f'Item {item} salvo com sucesso')
+    except mysql.connector.Error as err:
+        print(f'Erro ao salvar o item {item} com o erro {err}')
 
 def set_info_not_piramide(cliente,tag):
     constante = ""
@@ -72,7 +90,7 @@ def executa_query_piramide(query):
 # Corrigir após finalizar o mysql.py
 def salva_ultima_notificacao(cliente, tag): #Era salvaUltimaNotificacao
     
-    set_ultima_matricula_servico(cliente, tag)
+    salva_envio(cliente, tag)
     afetadas = 0
 
     if (tag == 3 or tag == 4):
@@ -82,8 +100,7 @@ def salva_ultima_notificacao(cliente, tag): #Era salvaUltimaNotificacao
 
 # Apenas para teste, não insere informações no Pirâmide
 def salva_ultima_notificacao_teste(cliente, tag): #Era salvaUltimaNotificacao
-    
-    set_ultima_matricula_servico(cliente, tag)
+    salva_envio(cliente, tag)
     afetadas = 0
 
     return afetadas

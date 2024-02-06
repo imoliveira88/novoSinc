@@ -3,7 +3,7 @@ from celery import shared_task
 from datetime import datetime
 import logging
 from aplicacao.queries import faturas_proximas_vencer, faturas_vencidas
-from aplicacao.emails import notificar_clientes_teste
+from aplicacao.emails import notificar_clientes_teste, notificar_clientes
 
 logger = logging.getLogger(__name__)
 

@@ -31,6 +31,7 @@ class Envio(models.Model):
     data_envio = models.DateTimeField('Data')
     tipo_envio = models.CharField('Tipo', max_length=20)
     status_envio = models.CharField('Status',max_length=20)
+    data_vencimento = models.CharField('Data_Vencimento',max_length=20)
 
     class Meta:
         verbose_name = 'Envio'

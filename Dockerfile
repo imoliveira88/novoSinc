@@ -15,12 +15,6 @@ RUN pip3 install gunicorn
 
 # Install dependencies
 RUN pip3 install psycopg2-binary
-RUN pip3 install django4-background-tasks
-RUN pip3 install django-jinja
-RUN pip3 install celery
-RUN pip3 install redis
-RUN pip3 install mysql-connector
-
 
 # Set up Oracle client
 COPY instantclient-basic-linux.x64-19.22.0.0.0dbru.zip /tmp/
