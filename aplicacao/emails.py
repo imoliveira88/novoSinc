@@ -66,6 +66,7 @@ def notifica_cliente(tag, cliente, espera):
             cliente['STATUS'] = 'Enviado' # E-mail enviado com sucesso
             salva_ultima_notificacao(cliente, tag) # Persistirá na tabela de envios independente do status do envio
     else:
+        cliente['STATUS'] = 'Não enviado'
         salva_ultima_notificacao(cliente, tag)
 
 def notifica_cliente_teste(tag, cliente, espera):
@@ -196,7 +197,7 @@ def enviar_email(tag, destinatario, cco, contexto):
     message = MIMEMultipart()
     message['From'] = 'sinc@copergas.com.br'
     message['To'] = destinatario
-    message['Bcc'] = ', '.join(cco)
+    #message['Bcc'] = ', '.join(cco) Retirado dia 07FEV2024 devido a erro ocorrido no dia 06FEV2024
     message['Subject'] = assunto
 
     # Attach HTML content with inline images

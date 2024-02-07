@@ -25,8 +25,8 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
         Token.objects.create(user=instance)
 
 class Envio(models.Model):
-    contrato = models.CharField('Contrato', max_length=10, blank=False)
-    email = models.CharField('E-mail', max_length=50)
+    contrato = models.CharField('Contrato', max_length=10, blank=True, null=True)
+    email = models.CharField('E-mail', max_length=1000, null=True)
     titulo = models.CharField('Titulo', max_length=20)
     data_envio = models.DateTimeField('Data')
     tipo_envio = models.CharField('Tipo', max_length=20)
@@ -46,7 +46,7 @@ class Historico(models.Model):
 class Modelo(models.Model):
     nome = models.CharField(max_length=30, unique=True)
     conteudo= models.TextField()
-    emails = models.CharField(max_length=200, unique=False)
+    emails = models.CharField(max_length=400, unique=False)
     #Campo emails: campo que armazenará endereços de e-mail que receberão relatório resumido
 
     def __str__(self):
