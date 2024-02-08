@@ -109,11 +109,11 @@ def set_info_not_piramide(cliente, tag):
     # Aviso de débito
     if (tag == 3):
         insertInfoAvisoDebito = ("BEGIN INSERT INTO PIR_ATRIBUTO_TITREC values "
-			+ "('001','" + cliente.TITULO +"', 'DT_AVDEB', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
+			+ "('001','" + cliente['TITULO'] +"', 'DT_AVDEB', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
         afetadas = executa_query_piramide(insertInfoAvisoDebito)
     else:
         insertInfoAvisoSuspensao = ("BEGIN INSERT INTO PIR_ATRIBUTO_TITREC values "
-			+ "('001','" + cliente.TITULO +"', 'DT_AVSUS', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
+			+ "('001','" + cliente['TITULO'] +"', 'DT_AVSUS', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
         afetadas = executa_query_piramide(insertInfoAvisoSuspensao)
     return afetadas
 
