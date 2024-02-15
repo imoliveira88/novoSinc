@@ -107,13 +107,23 @@ def salva_ultima_notificacao_teste(cliente, tag): #Era salvaUltimaNotificacao
 
 def set_info_not_piramide(cliente, tag):
     # Aviso de débito
-    if (tag == 3):
-        insertInfoAvisoDebito = ("BEGIN INSERT INTO PIR_ATRIBUTO_TITREC values "
-			+ "('001','" + cliente['TITULO'] +"', 'DT_AVDEB', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
-        afetadas = executa_query_piramide(insertInfoAvisoDebito)
-    else:
-        insertInfoAvisoSuspensao = ("BEGIN INSERT INTO PIR_ATRIBUTO_TITREC values "
-			+ "('001','" + cliente['TITULO'] +"', 'DT_AVSUS', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
-        afetadas = executa_query_piramide(insertInfoAvisoSuspensao)
+    afetadas = 0
+
+    try:
+        if (tag == 3):
+            insertInfoAvisoDebito = ("BEGIN INSERT INTO PIR_ATRIBUTO_TITREC values "
+			    + "('001','" + cliente['TITULO'] +"', 'DT_AVDEB', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
+            afetadas = executa_query_piramide(insertInfoAvisoDebito)
+        else:
+            insertInfoAvisoSuspensao = ("BEGIN INSERT INTO PIR_ATRIBUTO_TITREC values "
+			    + "('001','" + cliente['TITULO'] +"', 'DT_AVSUS', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
+            afetadas = executa_query_piramide(insertInfoAvisoSuspensao)
+        print('Registro inserido no Piramide')
+    except mysql.connector.Error as err:
+        print('Erro de SQL - registro já existente')
+        return 0
+
+
+    
     return afetadas
 

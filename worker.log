@@ -61,3 +61,138 @@ Traceback (most recent call last):
 django.db.utils.OperationalError: ERRO:  não pôde estender arquivo "base/17187/17617": No space left on device
 HINT:  Verifique o espaço em disco livre.
 
+[2024-02-08 21:09:30,298: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2024-02-08 21:09:30,302: INFO/MainProcess] mingle: searching for neighbors
+[2024-02-08 21:09:31,310: INFO/MainProcess] mingle: all alone
+[2024-02-08 21:09:31,329: INFO/MainProcess] celery@a56f04836776 ready.
+[2024-02-08 21:11:00,095: INFO/MainProcess] Task aplicacao.tasks.envia_notificacoes[24b25c51-356d-49c7-b8ee-5c1a4c4ecaa9] received
+[2024-02-08 21:11:00,096: WARNING/ForkPoolWorker-7] Antes da checagem de e-mails a enviar
+[2024-02-08 21:12:18,172: WARNING/ForkPoolWorker-7] Dicionário de clientes com faturas próximas a vencer setado
+[2024-02-08 21:12:18,172: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '201605736', 'CLIENTE': '5736', 'TITULO': 'REN57366', 'EMAIL': 'suzy_trinity@hotmail.com; suzy_trinity@hotmail.com', 'ID_CLIENTE': '5736', 'NOME_CLIENTE': 'SUZICLEIDE MARIA DOS SANTOS', 'EMISSAO': '11/09/2023', 'DATA_VENCIMENTO_FATURA': '10/02/2024', 'VALOR_FATURA': '190.33', 'ENDERECO': 'RUA CAMPO DE POUSO', 'NUMERO': '97', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'MARANGUAPE I', 'CEP': '53441-625', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'PAULISTA', 'TELEFONE': '(81) 33720885, (81) 986725706', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-08 21:12:21,312: INFO/ForkPoolWorker-7] E-mail enviado para suzy_trinity@hotmail.com; suzy_trinity@hotmail.com
+[2024-02-08 21:12:21,333: WARNING/ForkPoolWorker-7] Item Envio object (4704) salvo com sucesso
+[2024-02-08 21:12:21,334: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '201706303', 'CLIENTE': '6303', 'TITULO': 'REN6303.2', 'EMAIL': 'protaniasanches@hotmail.com; protaniasanches@hotmail.com', 'ID_CLIENTE': '6303', 'NOME_CLIENTE': 'FRANSCISCO ALVES DE SOUZA', 'EMISSAO': '26/01/2024', 'DATA_VENCIMENTO_FATURA': '10/02/2024', 'VALOR_FATURA': '200.63', 'ENDERECO': 'AVENIDA BERNARDO VIEIRA DE MELO', 'NUMERO': '4535', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'CANDEIAS', 'CEP': '54440-620', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'JABOATAO DOS GUARARAPES', 'TELEFONE': '(81) 32226525, (81) 32246273', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-08 21:12:21,560: INFO/ForkPoolWorker-7] E-mail enviado para protaniasanches@hotmail.com; protaniasanches@hotmail.com
+[2024-02-08 21:12:21,578: WARNING/ForkPoolWorker-7] Item Envio object (4705) salvo com sucesso
+[2024-02-08 21:12:21,578: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '202101754', 'CLIENTE': '36925', 'TITULO': 'REN36925.2', 'EMAIL': 'carolinaluna18@hotmail.com; carolinaluna18@hotmail.com; carolinaluna18@hotmail.com; carolinaluna18@hotmail.com; carolinaluna18@hotmail.com', 'ID_CLIENTE': '280070', 'NOME_CLIENTE': 'A C S LUNA RESTAURANTE LTDA', 'EMISSAO': '23/01/2024', 'DATA_VENCIMENTO_FATURA': '10/02/2024', 'VALOR_FATURA': '399.32', 'ENDERECO': 'RUA JORNALISTA TRAJANO CHACON', 'NUMERO': '352', 'IDPERFILFATURAMENTO': 3, 'BAIRRO': 'ILHA DO LEITE', 'CEP': '50070-410', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': '(81) 998972363, (81) 998972363, (81) 998972363, (81) 998972363, (81) 998972363', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-08 21:12:24,563: INFO/ForkPoolWorker-7] E-mail enviado para carolinaluna18@hotmail.com; carolinaluna18@hotmail.com; carolinaluna18@hotmail.com; carolinaluna18@hotmail.com; carolinaluna18@hotmail.com
+[2024-02-08 21:12:24,569: WARNING/ForkPoolWorker-7] Item Envio object (4706) salvo com sucesso
+[2024-02-08 21:12:24,569: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'ND', 'MATRICULA': '202300005', 'CLIENTE': '42754', 'TITULO': 'ND GFIN 004/2023', 'EMAIL': 'EVIVIANEADV@GMAIL.COM; EVIVIANEADV@GMAIL.COM', 'ID_CLIENTE': '301477', 'NOME_CLIENTE': 'DOLCE VITA DOCERIA E BISTRÔ LTDA', 'EMISSAO': '05/02/2024', 'DATA_VENCIMENTO_FATURA': '10/02/2024', 'VALOR_FATURA': '840.23', 'ENDERECO': 'RUA MANOEL HONORATO DA COSTA', 'NUMERO': '555', 'IDPERFILFATURAMENTO': 3, 'BAIRRO': 'VILA DA FÁBRICA', 'CEP': '54759-475', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CAMARAGIBE', 'TELEFONE': '(81) 999753431, (81) 999753431', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-08 21:12:27,563: INFO/ForkPoolWorker-7] E-mail enviado para EVIVIANEADV@GMAIL.COM; EVIVIANEADV@GMAIL.COM
+[2024-02-08 21:12:27,569: WARNING/ForkPoolWorker-7] Item Envio object (4707) salvo com sucesso
+[2024-02-08 21:12:27,569: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '202300250', 'CLIENTE': '15651', 'TITULO': '800432.GAS', 'EMAIL': 'francisco@niagro.com.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'NIAGRO NICHIREI DO BRASIL AGRICOLA LTDA', 'EMISSAO': '31/01/2024', 'DATA_VENCIMENTO_FATURA': '10/02/2024', 'VALOR_FATURA': '48,073.86', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'PETROLINA', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-08 21:12:30,565: INFO/ForkPoolWorker-7] E-mail enviado para francisco@niagro.com.br
+[2024-02-08 21:12:30,591: WARNING/ForkPoolWorker-7] Item Envio object (4708) salvo com sucesso
+[2024-02-08 21:12:30,593: WARNING/ForkPoolWorker-7] Emails igor.oliveira@copergas.com.br,sinc.comercial@copergas.com.br,sinc.residencial@copergas.com.br,sinc.veicular@copergas.com.br,sinc.industrial@copergas.com.br
+[2024-02-08 21:12:30,594: WARNING/ForkPoolWorker-7] /usr/local/lib/python3.10/dist-packages/django/db/models/fields/__init__.py:1535: RuntimeWarning: DateTimeField Envio.data_envio received a naive datetime (2024-02-08 00:00:00) while time zone support is active.
+  warnings.warn(
+
+[2024-02-08 21:12:30,868: WARNING/ForkPoolWorker-7] Após envio dos e-mails de notificação de faturas próximas a vencer e início do dicionário de clientes com faturas vencidas
+[2024-02-08 21:14:26,065: WARNING/ForkPoolWorker-7] Dicionário de clientes com faturas vencidas setado
+[2024-02-08 21:14:26,065: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '199600029', 'CLIENTE': '29', 'TITULO': '799988.GAS', 'EMAIL': None, 'ID_CLIENTE': None, 'NOME_CLIENTE': 'ARLANXEO BRASIL S.A', 'EMISSAO': '30/01/2024', 'DATA_VENCIMENTO_FATURA': '07/02/2024', 'VALOR_FATURA': '1,415,680.19', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CABO DE SANTO AGOSTINHO', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-08 21:14:26,068: WARNING/ForkPoolWorker-7] Item Envio object (4709) salvo com sucesso
+[2024-02-08 21:14:26,131: ERROR/ForkPoolWorker-7] Task aplicacao.tasks.envia_notificacoes[24b25c51-356d-49c7-b8ee-5c1a4c4ecaa9] raised unexpected: IntegrityError(<cx_Oracle._Error object at 0x7f8d417ebc70>)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/trace.py", line 477, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/trace.py", line 760, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/app/aplicacao/tasks.py", line 45, in envia_notificacoes
+    notificar_clientes(3,clientes)
+  File "/app/aplicacao/emails.py", line 114, in notificar_clientes
+    notifica_cliente(tag,cliente,0)
+  File "/app/aplicacao/emails.py", line 70, in notifica_cliente
+    salva_ultima_notificacao(cliente, tag)
+  File "/app/aplicacao/queries.py", line 97, in salva_ultima_notificacao
+    afetadas = set_info_not_piramide(cliente, tag)
+  File "/app/aplicacao/queries.py", line 113, in set_info_not_piramide
+    afetadas = executa_query_piramide(insertInfoAvisoDebito)
+  File "/app/aplicacao/queries.py", line 84, in executa_query_piramide
+    cursor.execute(query)
+cx_Oracle.IntegrityError: ORA-00001: unique constraint (PIRAMIDE.PK_PIR_ATRIBUTO_TITREC) violated
+ORA-06512: at line 1
+[2024-02-15 20:24:08,350: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2024-02-15 20:24:08,352: INFO/MainProcess] mingle: searching for neighbors
+[2024-02-15 20:24:09,359: INFO/MainProcess] mingle: all alone
+[2024-02-15 20:24:09,371: INFO/MainProcess] celery@674e138de766 ready.
+[2024-02-15 20:28:00,095: INFO/MainProcess] Task aplicacao.tasks.envia_notificacoes[1ab8a4f4-191d-4f37-b169-cdb301bc19de] received
+[2024-02-15 20:28:00,096: WARNING/ForkPoolWorker-7] Antes da checagem de e-mails a enviar
+[2024-02-15 20:29:32,981: WARNING/ForkPoolWorker-7] Dicionário de clientes com faturas próximas a vencer setado
+[2024-02-15 20:29:33,070: WARNING/ForkPoolWorker-7] Emails igor.oliveira@copergas.com.br,sinc.comercial@copergas.com.br,sinc.residencial@copergas.com.br,sinc.veicular@copergas.com.br,sinc.industrial@copergas.com.br
+[2024-02-15 20:29:33,071: WARNING/ForkPoolWorker-7] /usr/local/lib/python3.10/dist-packages/django/db/models/fields/__init__.py:1535: RuntimeWarning: DateTimeField Envio.data_envio received a naive datetime (2024-02-15 00:00:00) while time zone support is active.
+  warnings.warn(
+
+[2024-02-15 20:29:36,123: WARNING/ForkPoolWorker-7] Após envio dos e-mails de notificação de faturas próximas a vencer e início do dicionário de clientes com faturas vencidas
+[2024-02-15 20:31:44,319: WARNING/ForkPoolWorker-7] Dicionário de clientes com faturas vencidas setado
+[2024-02-15 20:31:44,319: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '199900055', 'CLIENTE': '55', 'TITULO': '800519.GAS', 'EMAIL': 'carlos.lima@cocacolagr.com.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'NORSA REFRIGERANTES LTDA', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '61,573.96', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CABO DE SANTO AGOSTINHO', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:47,362: INFO/ForkPoolWorker-7] E-mail enviado para carlos.lima@cocacolagr.com.br
+[2024-02-15 20:31:47,381: WARNING/ForkPoolWorker-7] Item Envio object (4710) salvo com sucesso
+[2024-02-15 20:31:47,454: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:47,454: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '200000063', 'CLIENTE': '63', 'TITULO': '800518.GAS', 'EMAIL': 'genival.silva@saintgobain.com', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'SAINT - GOBAIN DO BRASIL PRODUTOS IND. E PARA CONST. LTDA.', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '35,704.58', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'ABREU E LIMA', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:47,685: INFO/ForkPoolWorker-7] E-mail enviado para genival.silva@saintgobain.com
+[2024-02-15 20:31:47,690: WARNING/ForkPoolWorker-7] Item Envio object (4711) salvo com sucesso
+[2024-02-15 20:31:47,762: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:47,762: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '200100077', 'CLIENTE': '77', 'TITULO': '800517.GAS', 'EMAIL': 'cinthiag@asanet.com.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'ASA INDÚSTRIA E COMÉRCIO LTDA', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '54,758.62', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:47,991: INFO/ForkPoolWorker-7] E-mail enviado para cinthiag@asanet.com.br
+[2024-02-15 20:31:47,996: WARNING/ForkPoolWorker-7] Item Envio object (4712) salvo com sucesso
+[2024-02-15 20:31:48,047: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:48,047: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '200500196', 'CLIENTE': '196', 'TITULO': '800511.GAS', 'EMAIL': 'nordestealuminio@ig.com.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'NORAL - NORDESTE ALUMÍNIO', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '166,227.85', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'JABOATAO DOS GUARARAPES', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:48,274: INFO/ForkPoolWorker-7] E-mail enviado para nordestealuminio@ig.com.br
+[2024-02-15 20:31:48,280: WARNING/ForkPoolWorker-7] Item Envio object (4713) salvo com sucesso
+[2024-02-15 20:31:48,327: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:48,327: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '201100503', 'CLIENTE': '503', 'TITULO': '800500.GAS', 'EMAIL': 'nordical@nordical.ind.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'FAL - FABRICA DE ALIMENTOS EIRELI', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '21,924.86', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'GRAVATÁ', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:51,357: INFO/ForkPoolWorker-7] E-mail enviado para nordical@nordical.ind.br
+[2024-02-15 20:31:51,363: WARNING/ForkPoolWorker-7] Item Envio object (4714) salvo com sucesso
+[2024-02-15 20:31:51,417: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:51,418: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '201100636', 'CLIENTE': '636', 'TITULO': '800498.GAS', 'EMAIL': 'gerengenharia@rfonte.com.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'INDÚSTRIAS REUNIDAS RAYMUNDO DA FONTE S/A', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '82,119.51', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'PAULISTA', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:51,657: INFO/ForkPoolWorker-7] E-mail enviado para gerengenharia@rfonte.com.br
+[2024-02-15 20:31:51,663: WARNING/ForkPoolWorker-7] Item Envio object (4715) salvo com sucesso
+[2024-02-15 20:31:51,720: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:51,721: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '201605519', 'CLIENTE': '5519', 'TITULO': 'RENE5519.3', 'EMAIL': 'mmmacario@hotmail.com; mmmacario@hotmail.com', 'ID_CLIENTE': '5519', 'NOME_CLIENTE': 'ARNALDO DELMONDES OLIVEIRA', 'EMISSAO': '13/12/2023', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '150.31', 'ENDERECO': 'RUA LE PARC', 'NUMERO': '100', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'IMBIRIBEIRA', 'CEP': '51160-035', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': '(81) 987422371, (81) 999192737', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:51,997: INFO/ForkPoolWorker-7] E-mail enviado para mmmacario@hotmail.com; mmmacario@hotmail.com
+[2024-02-15 20:31:52,001: WARNING/ForkPoolWorker-7] Item Envio object (4716) salvo com sucesso
+[2024-02-15 20:31:52,050: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:52,050: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'DEBC', 'MATRICULA': '201605544', 'CLIENTE': '5544', 'TITULO': '795082.GAS', 'EMAIL': 'abraaos@uol.com.br; abraaos@uol.com.br', 'ID_CLIENTE': '5544', 'NOME_CLIENTE': 'ANGELA DA SILVA VIEIRA DOS SANTOS', 'EMISSAO': '19/01/2024', 'DATA_VENCIMENTO_FATURA': '12/02/2024', 'VALOR_FATURA': '114.79', 'ENDERECO': 'ALAMEDA DAS MANGABAS', 'NUMERO': '88', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'PAIVA', 'CEP': '54522-080', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CABO DE SANTO AGOSTINHO', 'TELEFONE': '(81) 988599722, (81) 988911299', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:52,277: INFO/ForkPoolWorker-7] E-mail enviado para abraaos@uol.com.br; abraaos@uol.com.br
+[2024-02-15 20:31:52,282: WARNING/ForkPoolWorker-7] Item Envio object (4717) salvo com sucesso
+[2024-02-15 20:31:52,332: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:52,332: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '201800938', 'CLIENTE': '9534', 'TITULO': 'REN9534.3', 'EMAIL': 'VITOREDSON915@GMAIL.COM; VITOREDSON915@GMAIL.COM', 'ID_CLIENTE': '196223', 'NOME_CLIENTE': 'EDSON VICTOR BELO DE ANDRADE', 'EMISSAO': '13/12/2023', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '42.11', 'ENDERECO': 'AVENIDA DOUTOR LUIZ DE ANDRADE LIMA NETO', 'NUMERO': '297', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'ALBERTO MAIA', 'CEP': '54771-680', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CAMARAGIBE', 'TELEFONE': '(81) 986611857, (81) 998993855', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:52,557: INFO/ForkPoolWorker-7] E-mail enviado para VITOREDSON915@GMAIL.COM; VITOREDSON915@GMAIL.COM
+[2024-02-15 20:31:52,562: WARNING/ForkPoolWorker-7] Item Envio object (4718) salvo com sucesso
+[2024-02-15 20:31:52,614: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:52,614: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'DEBC', 'MATRICULA': '201801204', 'CLIENTE': '9783', 'TITULO': '796890.GAS', 'EMAIL': 'RUTELUIZA_1@HOTMAIL.COM; RUTELUIZA_1@HOTMAIL.COM', 'ID_CLIENTE': '199168', 'NOME_CLIENTE': 'RUTE LUIZA DE FRANCA', 'EMISSAO': '23/01/2024', 'DATA_VENCIMENTO_FATURA': '12/02/2024', 'VALOR_FATURA': '19.01', 'ENDERECO': 'AVENIDA ULISSES MONTARROYOS', 'NUMERO': '6053', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'CANDEIAS', 'CEP': '54440-570', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'JABOATAO DOS GUARARAPES', 'TELEFONE': '(81) 985502717, (81) 986163089', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:55,558: INFO/ForkPoolWorker-7] E-mail enviado para RUTELUIZA_1@HOTMAIL.COM; RUTELUIZA_1@HOTMAIL.COM
+[2024-02-15 20:31:55,562: WARNING/ForkPoolWorker-7] Item Envio object (4719) salvo com sucesso
+[2024-02-15 20:31:55,615: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:55,615: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'DEBC', 'MATRICULA': '201902292', 'CLIENTE': '13052', 'TITULO': '788585.GAS', 'EMAIL': 'CLEYBERSOARES@GMAIL.COM', 'ID_CLIENTE': '235938', 'NOME_CLIENTE': 'CLEYBER VIRGILIO SOARES COSTA', 'EMISSAO': '16/01/2024', 'DATA_VENCIMENTO_FATURA': '12/02/2024', 'VALOR_FATURA': '19.08', 'ENDERECO': 'AVENIDA ANTÔNIO CABRAL DE SOUZA', 'NUMERO': '350', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'VILA TORRES GALVÃO', 'CEP': '53403-610', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'PAULISTA', 'TELEFONE': '(81) 997332585', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:55,841: INFO/ForkPoolWorker-7] E-mail enviado para CLEYBERSOARES@GMAIL.COM
+[2024-02-15 20:31:55,850: WARNING/ForkPoolWorker-7] Item Envio object (4720) salvo com sucesso
+[2024-02-15 20:31:55,909: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:55,909: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '201912660', 'CLIENTE': '12660', 'TITULO': '800479.GAS', 'EMAIL': 'flocomil@hotmail.com', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'FLOCOMIL INDUSTRIAL EIRELI-ME', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '11,170.33', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:58,949: INFO/ForkPoolWorker-7] E-mail enviado para flocomil@hotmail.com
+[2024-02-15 20:31:58,954: WARNING/ForkPoolWorker-7] Item Envio object (4721) salvo com sucesso
+[2024-02-15 20:31:59,002: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:59,003: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '202115635', 'CLIENTE': '15635', 'TITULO': '800476.GAS', 'EMAIL': None, 'ID_CLIENTE': None, 'NOME_CLIENTE': 'SMALT BRASIL PRODUTOS PARA CERÂMICA LTDA', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '88,994.98', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'IGARASSU', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:31:59,005: WARNING/ForkPoolWorker-7] Item Envio object (4722) salvo com sucesso
+[2024-02-15 20:31:59,052: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:31:59,052: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '202201472', 'CLIENTE': '14304', 'TITULO': '800477.GAS', 'EMAIL': 'silvio@aluvid.com.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'METALFLEX INDUSTRIA E COMERCIO DE ALUMINIO E VIDROS LTDA', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '115,525.98', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:32:02,098: INFO/ForkPoolWorker-7] E-mail enviado para silvio@aluvid.com.br
+[2024-02-15 20:32:02,103: WARNING/ForkPoolWorker-7] Item Envio object (4723) salvo com sucesso
+[2024-02-15 20:32:02,196: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:32:02,196: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '202215649', 'CLIENTE': '15649', 'TITULO': '800482.GAS', 'EMAIL': None, 'ID_CLIENTE': None, 'NOME_CLIENTE': 'QUÍMICA AMPARO', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '3,625.60', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'ITAPISSUMA', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:32:02,199: WARNING/ForkPoolWorker-7] Item Envio object (4724) salvo com sucesso
+[2024-02-15 20:32:02,267: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:32:02,268: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '202300550', 'CLIENTE': '44503', 'TITULO': '800470.GAS', 'EMAIL': 'contabilidade@ssmdobrasil.com.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'SSM SOLUCOES METALICAS PARA ENERGIAS RENOVAVEIS LTDA', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '68.73', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'JABOATAO DOS GUARARAPES', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:32:05,319: INFO/ForkPoolWorker-7] E-mail enviado para contabilidade@ssmdobrasil.com.br
+[2024-02-15 20:32:05,325: WARNING/ForkPoolWorker-7] Item Envio object (4725) salvo com sucesso
+[2024-02-15 20:32:05,406: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:32:05,406: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '202301360', 'CLIENTE': '46721', 'TITULO': '800523.GAS', 'EMAIL': 'manoel.diniz@lafepe.pe.gov', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'LABORATORIO FARMACEUTICO DO ESTADO DE PERNAMBUCO GOVERNADOR MIGUEL ARRAES S/A - LAFEPE', 'EMISSAO': '06/02/2024', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '10,956.89', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:32:05,651: INFO/ForkPoolWorker-7] E-mail enviado para manoel.diniz@lafepe.pe.gov
+[2024-02-15 20:32:05,657: WARNING/ForkPoolWorker-7] Item Envio object (4726) salvo com sucesso
+[2024-02-15 20:32:05,726: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:32:05,726: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '202400008', 'CLIENTE': '47588', 'TITULO': '791421.GAS', 'EMAIL': 'julianaqc2@hotmail.com', 'ID_CLIENTE': '7014', 'NOME_CLIENTE': 'JULIANA QUINTAS CALDAS', 'EMISSAO': '17/01/2023', 'DATA_VENCIMENTO_FATURA': '14/02/2024', 'VALOR_FATURA': '19.12', 'ENDERECO': 'RUA MARIA CAROLINA', 'NUMERO': '816', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'BOA VIAGEM', 'CEP': '51020-220', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': '(81) 998544494', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-15 20:32:08,775: INFO/ForkPoolWorker-7] E-mail enviado para julianaqc2@hotmail.com
+[2024-02-15 20:32:08,781: WARNING/ForkPoolWorker-7] Item Envio object (4727) salvo com sucesso
+[2024-02-15 20:32:08,857: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-15 20:32:09,109: WARNING/ForkPoolWorker-7] Após envio dos e-mails de notificação de faturas vencidas
+[2024-02-15 20:32:09,111: INFO/ForkPoolWorker-7] Task aplicacao.tasks.envia_notificacoes[1ab8a4f4-191d-4f37-b169-cdb301bc19de] succeeded in 249.018520556s: None
