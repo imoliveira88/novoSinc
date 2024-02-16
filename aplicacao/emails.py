@@ -32,7 +32,7 @@ TAG_FATURA_VENCIDA = 3
 TAG_AVISO_SUSPENSAO = 4
 
 def notifica_cliente(tag, cliente, espera):
-    espera_atual = 0
+    espera_atual = espera
     if (tag != 2 and (validar_valor_no_array(cliente['IDPERFILFATURAMENTO'], ['30000009', '3']) )):
         #console.log("ADICIONANDO GRUPO DE COLABORADORES COMERCIAL!")
         colaboradores = GFIN + COLABORADORES_COMERCIAL
@@ -69,7 +69,7 @@ def notifica_cliente(tag, cliente, espera):
         salva_ultima_notificacao(cliente, tag)
 
 def notifica_cliente_teste(tag, cliente, espera):
-    espera_atual = 0
+    espera_atual = espera
     colaboradores = ''
     if (tag != 2 and (validar_valor_no_array(cliente['IDPERFILFATURAMENTO'], ['30000009', '3']) )):
         #console.log("ADICIONANDO GRUPO DE COLABORADORES COMERCIAL!")
