@@ -49,7 +49,7 @@ def notifica_cliente(tag, cliente, espera):
         #console.log("NENHUM GRUPO DE COLABORADOR ADICIONADO!")
         colaboradores = GFIN
     print(f'Cliente atual -> {cliente}')
-    if  (cliente['EMAIL'] != None):
+    if  (cliente['EMAIL'] != None or cliente['EMAIL'] != ''):
         # Refatorar enviar_email de modo a fazer um tratamento de exceção que fará o papel do callback; "err" é booleano
         #err = enviar_email(tag, cliente.CONTATO, colaboradores, cliente) # Produção
         err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
