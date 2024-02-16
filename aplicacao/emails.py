@@ -94,8 +94,7 @@ def notifica_cliente_teste(tag, cliente, espera):
         err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
 
         if err:
-            print(err)
-            print('Oversending: aguardando 15 segundos para tentar novamente.')
+            print(f'Oversending: aguardando 15 segundos para tentar novamente. Erro: {err}')
             time.sleep(15) # Aguarda 15 segundos antes de tentar reenviar
             espera_atual = espera + 15
             notifica_cliente(tag, cliente, espera_atual)
