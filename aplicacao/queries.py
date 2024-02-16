@@ -41,18 +41,6 @@ def salva_envio(cliente, tipo):
     except mysql.connector.Error as err:
         print(f'Erro ao salvar o item {item} com o erro {err}')
 
-def set_info_not_piramide(cliente,tag):
-    constante = ""
-    if (tag == 3): #Caso do aviso de débito
-        constante += ("BEGIN INSERT INTO PIR_ATRIBUTO_TITREC values "
-                   + "('001','" + cliente.TITULO +"', 'DT_AVDEB', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
-
-    else: #Caso do aviso de suspensão
-        constante += ("BEGIN INSERT INTO PIR_ATRIBUTO_TITREC values "
-                   + "('001','" + cliente.TITULO +"', 'DT_AVSUS', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
-    afetadas = executa_query_piramide(constante)
-    return afetadas
-
 # Responsável por executar SELECT
 def executa_select_piramide(query):
     connection = cx_Oracle.connect(
@@ -62,13 +50,13 @@ def executa_select_piramide(query):
     )
     cursor = connection.cursor()
     cursor.execute(query)
-    
+
     # Fetch column names
     columns = [col[0] for col in cursor.description]
 
     # Fetch all rows as a list of dictionaries
     rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
-    
+
     cursor.close()
     connection.close()
     return rows
@@ -89,7 +77,7 @@ def executa_query_piramide(query):
 
 # Corrigir após finalizar o mysql.py
 def salva_ultima_notificacao(cliente, tag): #Era salvaUltimaNotificacao
-    
+
     salva_envio(cliente, tag)
     afetadas = 0
 
@@ -119,11 +107,11 @@ def set_info_not_piramide(cliente, tag):
 			    + "('001','" + cliente['TITULO'] +"', 'DT_AVSUS', '00000015', '" + get_data(1,"/") + "'); COMMIT; END;")
             afetadas = executa_query_piramide(insertInfoAvisoSuspensao)
         print('Registro inserido no Piramide')
-    except mysql.connector.Error as err:
-        print('Erro de SQL - registro já existente')
+    except cx_Oracle.DatabaseError as erro:
+        print(f'Erro de SQL - registro já existente {erro}')
         return 0
 
 
-    
+
     return afetadas
 
