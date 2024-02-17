@@ -20,7 +20,7 @@ logger.setLevel(logging.INFO)
 
 GFIN = ['sinc@copergas.com.br', 'caixa.sinc@copergas.com.br']
 
-# COLABORADORES QUE VÃO RECEBER UMA CÓPIA POR ESTAREM NO GRUPO DE EMAIL 
+# COLABORADORES QUE VÃO RECEBER UMA CÓPIA POR ESTAREM NO GRUPO DE EMAIL
 COLABORADORES_COMERCIAL =   ['sinc.comercial@copergas.com.br']
 COLABORADORES_RESIDENCIAL = ['sinc.residencial@copergas.com.br']
 COLABORADORES_VEICULAR =    ['sinc.veicular@copergas.com.br']
@@ -55,11 +55,12 @@ def notifica_cliente(tag, cliente, espera):
         err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
 
         if err:
-            print(f'Oversending: aguardando 15 segundos para tentar novamente. Erro: {err}')
-            time.sleep(15) # Aguarda 15 segundos antes de tentar reenviar
-            espera_atual = espera + 15
+            print(f'Oversending: aguardando 25 segundos para tentar novamente. Erro: {err}')
+            time.sleep(25) # Aguarda 15 segundos antes de tentar reenviar
+            espera_atual = espera + 25
             notifica_cliente(tag, cliente, espera_atual)
-            if espera_atual > 45:
+            if espera_atual > 75:
+                cliente['STATUS'] = 'Não enviado - problema SMTP'
                 salva_ultima_notificacao(cliente, tag) # Caso tenha falhado três vezes, passa para o próximo cliente, evitando loop infinito
         else:
             cliente['STATUS'] = 'Enviado' # E-mail enviado com sucesso
@@ -93,16 +94,18 @@ def notifica_cliente_teste(tag, cliente, espera):
         err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
 
         if err:
-            print(f'Oversending: aguardando 15 segundos para tentar novamente. Erro: {err}')
-            time.sleep(15) # Aguarda 15 segundos antes de tentar reenviar
-            espera_atual = espera + 15
+            print(f'Oversending: aguardando 25 segundos para tentar novamente. Erro: {err}')
+            time.sleep(25) # Aguarda 15 segundos antes de tentar reenviar
+            espera_atual = espera + 25
             notifica_cliente(tag, cliente, espera_atual)
-            if espera_atual > 45:
+            if espera_atual > 75:
+                cliente['STATUS'] = 'Não enviado - Problema SMTP'
                 salva_ultima_notificacao_teste(cliente, tag) # Caso tenha falhado três vezes, passa para o próximo cliente, evitando loop infinito
         else:
             cliente['STATUS'] = 'Enviado' # E-mail enviado com sucesso
             salva_ultima_notificacao_teste(cliente, tag) # Persistirá na tabela de envios independente do status do envio
     else:
+        cliente['STATUS'] = 'Não enviado'
         salva_ultima_notificacao_teste(cliente, tag)
 
 
@@ -133,7 +136,7 @@ def notificar_clientes_teste(tag, clientes): # Era notificarClientes
         emails = Modelo.objects.get(id=1).emails
         print(f'Emails {emails}')
         enviar_email_relatorio('Próximas a vencer','igor.oliveira@copergas.com.br,jose.logiquesistemas@copergas.com.br')
-    
+
 def trata_array(contatos):
     def is_excecao(email):
         email_excecao = ['fulano@gmail.com']
@@ -177,7 +180,7 @@ def enviar_email(tag, destinatario, cco, contexto):
         caminho2_content = caminho2_file.read()
 
     assunto = ''
-    
+
     if tag == 1:
         assunto = 'Copergás - Fatura Disponível'
     elif tag == 3:
@@ -194,7 +197,9 @@ def enviar_email(tag, destinatario, cco, contexto):
     # Create MIME message
     message = MIMEMultipart()
     message['From'] = 'sinc@copergas.com.br'
-    message['To'] = destinatario
+    recipients_set = set(destinatario.split(';'))
+    recipients = list(recipients_set)
+    message['To'] = ', '.join(recipients)
     #message['Bcc'] = ', '.join(cco) Retirado dia 07FEV2024 devido a erro ocorrido no dia 06FEV2024
     message['Subject'] = assunto
 
@@ -222,10 +227,10 @@ def enviar_email(tag, destinatario, cco, contexto):
         # Setup the SMTP server
         with smtplib.SMTP('mail.copergas.com.br', 25) as server:
             # Login to the server
-            server.login('sinc', 'Ks9xKi5CClBMqAPr1iyu')
+            server.login('sinc', 'Ks9xKi5CClBMqAPr1iyu')#TODO Tentar sem autenticação
             # Send the email
             server.send_message(message)
-            logger.info(f'E-mail enviado para {destinatario}')
+            logger.info(f'E-mail enviado para {recipients}')
         return True
     except smtplib.SMTPException as e:
         print(f"SMTP Exception: {e}")
@@ -235,7 +240,7 @@ def enviar_email(tag, destinatario, cco, contexto):
         return False
 
 def enviar_email_relatorio(tag,emails):
-    
+
     assunto = f'SINC - Relatório de Faturas {tag}'
 
     # Create MIME message
@@ -328,7 +333,7 @@ def avisar_faturas_vencidas():
 def devolve_html(tag):
     current_date = timezone.now().date()  # Get the current date
     current_date_formatted = current_date.strftime("%d-%m-%Y")
-    
+
     envios = Envio.objects.filter(tipo_envio=tag, data_envio__gt=current_date).order_by('id')
 
     conteudo_html = f'<p>Relatório de envio do SINC - {current_date_formatted}</p><br>'
@@ -339,6 +344,6 @@ def devolve_html(tag):
     for envio in envios:
         data_envio_formatted = envio.data_envio.strftime("%d-%m-%Y")  # Format date as dd-mm-yyyy
         conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.data_vencimento}</td><td>{envio.email}</td><td>{data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
-    
+
     conteudo_html += '</table><br><p>Atenciosamente, GETI.</p>'
     return conteudo_html

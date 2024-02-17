@@ -6,22 +6,26 @@ import cx_Oracle
 
 def select_from_get_faturas_view():
     return (
-        "SELECT CODDOC, MATRICULA, CLIENTE, TITULO, EMAIL, ID AS ID_CLIENTE, NOME_CLIENTE,"
-        + "TO_CHAR(EMISSAO, 'DD/MM/YYYY') AS EMISSAO, TO_CHAR(VENCIMENTO, 'DD/MM/YYYY') as DATA_VENCIMENTO_FATURA, TO_CHAR(VALOR, 'FM999G999G990D90') as VALOR_FATURA,"
-        + "ENDERECO, NUMERO, IDPERFILFATURAMENTO, BAIRRO, CEP, UF_CLIENTE, CIDADE_CLIENTE, TELEFONE, 'CELULAR' AS TIPOTELEFONE,"
-        + "CASE WHEN FORMAMEDICAO ='DIARIA' THEN '72 Horas' ELSE '30 Dias' END AS TEMPO "
-        + "FROM piramide.view_sinc_inadimplencia_fim"
-    )
+        """SELECT CODDOC, MATRICULA, CLIENTE, TITULO, EMAIL, ID AS ID_CLIENTE, NOME_CLIENTE,
+        TO_CHAR(EMISSAO, 'DD/MM/YYYY') AS EMISSAO, TO_CHAR(VENCIMENTO, 'DD/MM/YYYY') as DATA_VENCIMENTO_FATURA, TO_CHAR(VALOR, 'FM999G999G990D90') as VALOR_FATURA,
+        ENDERECO, NUMERO, IDPERFILFATURAMENTO, BAIRRO, CEP, UF_CLIENTE, CIDADE_CLIENTE, TELEFONE, 'CELULAR' AS TIPOTELEFONE,
+        CASE WHEN FORMAMEDICAO ='DIARIA' THEN '72 Horas' ELSE '30 Dias' END AS TEMPO
+        FROM piramide.view_sinc_inadimplencia_fim"""
+    )#Ver quais campos realmente são necessários
 
 def faturas_proximas_vencer():
-    query = (select_from_get_faturas_view() + " WHERE (to_date(CURRENT_DATE, 'DD/MM/YYY') = VENCIMENTO - 2) ORDER BY MATRICULA")
+    #adicional = " WHERE (to_date(CURRENT_DATE, 'DD/MM/YYY') = VENCIMENTO - 2)" Alterado 17FEV2024
+    adicional = " WHERE SYSDATE < VENCIMENTO - INTERVAL '2' DAY)" #TODO Fazer teste na segunda
+    query = f'{select_from_get_faturas_view()} {adicional}'
     rows = executa_select_piramide(query)
     return rows
 
 def faturas_vencidas():
-    query = (select_from_get_faturas_view() + " WHERE (to_date(CURRENT_DATE, 'DD/MM/YYY')) = PIRAMIDE.SETDATANOTIFICACAO_SINC(CODDOC, vencimento, CIDADE_CLIENTE)"
-                                         + " AND CLIENTE NOT IN ('105', '151','152','153', '426') "
-	                                     + "ORDER BY MATRICULA")
+    #adicional = """WHERE (to_date(CURRENT_DATE, 'DD/MM/YYY')) = PIRAMIDE.SETDATANOTIFICACAO_SINC(CODDOC, vencimento, CIDADE_CLIENTE)
+    #            AND CLIENTE NOT IN ('105', '151','152','153', '426')""" Alterado 17FEV2024
+    adicional = """WHERE SYSDATE > VENCIMENTO + INTERVAL '2' DAY
+                AND CLIENTE NOT IN ('105', '151','152','153', '426')"""
+    query = f'{select_from_get_faturas_view()} {adicional}'
     rows = executa_select_piramide(query)
     return rows
 
@@ -33,13 +37,13 @@ def salva_envio(cliente, tipo):
         tipo_envio = "Vencidas"
 
     item = Envio(contrato=cliente['MATRICULA'],email=cliente['EMAIL'],titulo=cliente['TITULO'],data_envio=timezone.now(),status_envio=cliente['STATUS'],tipo_envio=tipo_envio,data_vencimento=cliente['DATA_VENCIMENTO_FATURA'])
-    item.save()
+    #item.save() 17FEV2024 já salva no try, correto? TODO
 
     try:
         item.save()
         print(f'Item {item} salvo com sucesso')
-    except mysql.connector.Error as err:
-        print(f'Erro ao salvar o item {item} com o erro {err}')
+    except Exception as err:
+        print(f'Erro ao salvar o item {item}. Erro {err}')
 
 # Responsável por executar SELECT
 def executa_select_piramide(query):
