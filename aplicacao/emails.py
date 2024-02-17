@@ -137,28 +137,6 @@ def notificar_clientes_teste(tag, clientes): # Era notificarClientes
         print(f'Emails {emails}')
         enviar_email_relatorio('Próximas a vencer','igor.oliveira@copergas.com.br,jose.logiquesistemas@copergas.com.br')
 
-def trata_array(contatos):
-    def is_excecao(email):
-        email_excecao = ['fulano@gmail.com']
-        email = email.split('; ')
-
-        # Compare if all exceptions are in some client's email
-        for excecao in email_excecao:
-            if excecao in email:
-                return True
-        return False
-
-    for contato in contatos:
-        contato['STATUS'] = False # Valor da key STATUS inicialmente setada para False
-        if contato['EMAIL'] is not None and not is_excecao(contato['EMAIL']):
-            contato['NOT'] = 'EMAIL'
-            contato['CONTATO'] = contato['EMAIL']
-        else:
-            contato['NOT'] = 'NULL'
-            contato['CONTATO'] = contato['']
-
-    return contatos
-
 def validar_valor_no_array(val, array):
     for a in array:
         if(a == val):
@@ -318,7 +296,7 @@ def avisar_prox_vencer():
     if rows.len > 0:
         clientes = rows
         afetadas = rows.len
-        notificar_clientes(TAG_FATURA_PROX_VENCER, trata_array(clientes))
+        notificar_clientes(TAG_FATURA_PROX_VENCER, clientes)
 
 # AVISO DE FATURA VENCIDA
 def avisar_faturas_vencidas():
@@ -326,7 +304,7 @@ def avisar_faturas_vencidas():
     if rows.len > 0:
         clientes = rows
         afetadas = rows.len
-        notificar_clientes(TAG_FATURA_VENCIDA, trata_array(clientes))
+        notificar_clientes(TAG_FATURA_VENCIDA, clientes)
 
 #"tag" pode ser "VENCIDAS" OU "PRÓXIMAS A VENCER"
 #Deve ser colocada uma lógica de exceção para tratar a tag
