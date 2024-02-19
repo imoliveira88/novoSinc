@@ -177,7 +177,7 @@ def enviar_email(tag, destinatario, cco, contexto):
     message['From'] = 'sinc@copergas.com.br'
     recipients_set = set(destinatario.split(';'))
     recipients = list(recipients_set)
-    message['To'] = ', '.join(recipients)
+    message['To'] = ','.join(recipients)
     #message['Bcc'] = ', '.join(cco) Retirado dia 07FEV2024 devido a erro ocorrido no dia 06FEV2024
     message['Subject'] = assunto
 

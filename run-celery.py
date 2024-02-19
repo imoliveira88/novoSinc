@@ -16,7 +16,7 @@ app.conf.broker_connection_retry_on_startup = True
 app.conf.beat_schedule = {
     'envia_notificacoes_teste': {
         'task': 'aplicacao.tasks.envia_notificacoes',
-        'schedule': crontab(minute='21', hour='18', day_of_week='*'),  # It runs 14:40 every day
+        'schedule': crontab(minute='31', hour='18', day_of_week='*'),  # It runs 14:40 every day
     },
 }
 

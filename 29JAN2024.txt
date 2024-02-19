@@ -1728,9 +1728,10 @@ Atenciosamente,
 - Chamados App (x)
 - BENVINDA DOCERIA ROTA C22 PCS NULO - Consistido
 
-docker build -t queryhelper .
-docker run -p 8000:8000 -d queryhelper
+docker build -t sinc .
+docker run -p 8000:8000 -d sinc
 docker exec -it your_container_name_or_id bash
+docker system prune
 
 celery -A  run-celery worker --loglevel=info --logfile=worker.log -E
 

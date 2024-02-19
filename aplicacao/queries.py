@@ -14,17 +14,16 @@ def select_from_get_faturas_view():
     )#Ver quais campos realmente são necessários
 
 def faturas_proximas_vencer():
-    #adicional = " WHERE (to_date(CURRENT_DATE, 'DD/MM/YYY') = VENCIMENTO - 2)" Alterado 17FEV2024
-    adicional = " WHERE SYSDATE < VENCIMENTO - INTERVAL '2' DAY)" #TODO Fazer teste na segunda
+    adicional = " WHERE (to_date(CURRENT_DATE, 'DD/MM/YYY') = VENCIMENTO - 2)" #Alterado 17FEV2024
+    #adicional = " WHERE (SYSDATE < VENCIMENTO - INTERVAL '2' DAY) AND (SYSDATE > VENCIMENTO - INTERVAL '1' DAY)" #TODO Fazer teste na segunda
     query = f'{select_from_get_faturas_view()} {adicional}'
     rows = executa_select_piramide(query)
     return rows
 
 def faturas_vencidas():
-    #adicional = """WHERE (to_date(CURRENT_DATE, 'DD/MM/YYY')) = PIRAMIDE.SETDATANOTIFICACAO_SINC(CODDOC, vencimento, CIDADE_CLIENTE)
-    #            AND CLIENTE NOT IN ('105', '151','152','153', '426')""" Alterado 17FEV2024
-    adicional = """WHERE SYSDATE > VENCIMENTO + INTERVAL '2' DAY
-                AND CLIENTE NOT IN ('105', '151','152','153', '426')"""
+    adicional = """WHERE (to_date(CURRENT_DATE, 'DD/MM/YYY')) = PIRAMIDE.SETDATANOTIFICACAO_SINC(CODDOC, vencimento, CIDADE_CLIENTE)
+                 AND CLIENTE NOT IN ('105','151','152','153','426')""" #Alterado 17FEV2024
+    #adicional = " WHERE SYSDATE > VENCIMENTO + INTERVAL '2' DAY AND CLIENTE NOT IN ('105', '151','152','153', '426')"
     query = f'{select_from_get_faturas_view()} {adicional}'
     rows = executa_select_piramide(query)
     return rows
