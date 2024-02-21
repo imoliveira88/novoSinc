@@ -112,7 +112,8 @@ def notifica_cliente_teste(tag, cliente, espera):
 #Retirada a condicional referente ao envio de SMS
 def notificar_clientes(tag, clientes): # Era notificarClientes
     for cliente in clientes:
-        notifica_cliente(tag,cliente,0)
+        if not ja_enviado(cliente,tag):
+            notifica_cliente(tag,cliente,0) #Adicionado 21FEV2024
     # E-mails enviados
     if tag == 3:
         emails = Modelo.objects.get(id=2).emails
@@ -147,6 +148,13 @@ def read_file_content(file_path):
     with open(file_path, 'rb') as file:
         return file.read()
 
+def ja_enviado(cliente,tag):
+    envios = Envio.objects.filter(tipo_envio=tag,titulo=cliente['TITULO'])
+    if envios.count() > 0:
+        return True
+    return False
+
+
 def enviar_email(tag, destinatario, cco, contexto):
     caminho1_path = f'{STATIC_ROOT}/images/logo-coper2.png'
     caminho2_path = f'{STATIC_ROOT}/images/2-via-ico.png'
@@ -175,7 +183,8 @@ def enviar_email(tag, destinatario, cco, contexto):
     # Create MIME message
     message = MIMEMultipart()
     message['From'] = 'sinc@copergas.com.br'
-    recipients_set = set(destinatario.split(';'))
+    destinatarios = destinatario.replace(" ","") #Alteração em 21FEV2024 - Objetivo: excluir espaços vazios na string de e-mails
+    recipients_set = set(destinatarios.split(';'))
     recipients = list(recipients_set)
     message['To'] = ','.join(recipients)
     #message['Bcc'] = ', '.join(cco) Retirado dia 07FEV2024 devido a erro ocorrido no dia 06FEV2024
@@ -320,7 +329,7 @@ def devolve_html(tag):
 
     conteudo_html += f'<table style="border: 2px; background: #fff7f7; padding: 2rem"><tr><th>Contrato</th><th>Título</th><th>Data de vencimento</th><th>E-mail</th><th>Data de envio</th><th>Status</th></tr>'
     for envio in envios:
-        data_envio_formatted = envio.data_envio.strftime("%d-%m-%Y")  # Format date as dd-mm-yyyy
+        data_envio_formatted = envio.data_envio.strftime("%d-%m-%Y")
         conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.data_vencimento}</td><td>{envio.email}</td><td>{data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
 
     conteudo_html += '</table><br><p>Atenciosamente, GETI.</p>'

@@ -114,7 +114,5 @@ def set_info_not_piramide(cliente, tag):
         print(f'Erro de SQL - registro já existente {erro}')
         return 0
 
-
-
     return afetadas
 
