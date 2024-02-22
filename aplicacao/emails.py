@@ -191,7 +191,7 @@ def enviar_email(tag, destinatario, cco, contexto):
     message['Subject'] = assunto
 
     # Attach HTML content with inline images
-    html_content = render_email_template_tabela(tag, contexto) #28DEZ - Estava render_email_template
+    html_content = render_email_template_tabela(tag, contexto)
     message.attach(MIMEText(html_content, 'html'))
 
     # Attach inline images
