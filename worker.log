@@ -1973,3 +1973,50 @@ cx_Oracle.DatabaseError: ORA-00920: invalid relational operator
 [2024-02-22 20:45:27,627: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
 [2024-02-22 20:45:27,871: WARNING/ForkPoolWorker-7] Após envio dos e-mails de notificação de faturas vencidas
 [2024-02-22 20:45:27,874: INFO/ForkPoolWorker-7] Task aplicacao.tasks.envia_notificacoes[4eef33a7-9ea6-4ebb-a4e2-96c8a7a5f5f2] succeeded in 207.77884488299992s: None
+[2024-02-23 20:48:56,548: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2024-02-23 20:48:56,552: INFO/MainProcess] mingle: searching for neighbors
+[2024-02-23 20:48:57,559: INFO/MainProcess] mingle: all alone
+[2024-02-23 20:48:57,570: INFO/MainProcess] celery@1c46ba58123b ready.
+[2024-02-23 20:50:00,063: INFO/MainProcess] Task aplicacao.tasks.envia_notificacoes[b66eb95b-bce2-4304-b03f-f27a63f2693d] received
+[2024-02-23 20:50:00,064: WARNING/ForkPoolWorker-7] Antes da checagem de e-mails a enviar
+[2024-02-23 20:51:22,371: WARNING/ForkPoolWorker-7] Dicionário de clientes com faturas próximas a vencer setado
+[2024-02-23 20:51:22,457: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '202200663', 'CLIENTE': '39927', 'TITULO': 'REN399271', 'EMAIL': 'lipedrumer@hotmail.com; lipedrumer@hotmail.com', 'ID_CLIENTE': '291331', 'NOME_CLIENTE': 'ANDRE FELIPE DE SOUSA 06647818456', 'EMISSAO': '25/01/2024', 'DATA_VENCIMENTO_FATURA': '25/02/2024', 'VALOR_FATURA': '532.36', 'ENDERECO': 'AVENIDA BERNARDO VIEIRA DE MELO', 'NUMERO': '4958', 'IDPERFILFATURAMENTO': 3, 'BAIRRO': 'CANDEIAS', 'CEP': '54430-770', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'JABOATAO DOS GUARARAPES', 'TELEFONE': '(81) 999565043, (81) 999565043', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-23 20:51:28,330: INFO/ForkPoolWorker-7] E-mail enviado para ['lipedrumer@hotmail.com']
+[2024-02-23 20:51:28,357: WARNING/ForkPoolWorker-7] Item Envio object (5202) salvo com sucesso
+[2024-02-23 20:51:28,359: WARNING/ForkPoolWorker-7] Emails igor.oliveira@copergas.com.br,sinc.comercial@copergas.com.br,sinc.residencial@copergas.com.br,sinc.veicular@copergas.com.br,sinc.industrial@copergas.com.br
+[2024-02-23 20:51:28,360: WARNING/ForkPoolWorker-7] /usr/local/lib/python3.10/dist-packages/django/db/models/fields/__init__.py:1535: RuntimeWarning: DateTimeField Envio.data_envio received a naive datetime (2024-02-23 00:00:00) while time zone support is active.
+  warnings.warn(
+
+[2024-02-23 20:51:31,336: WARNING/ForkPoolWorker-7] Após envio dos e-mails de notificação de faturas próximas a vencer e início do dicionário de clientes com faturas vencidas
+[2024-02-23 20:53:26,372: WARNING/ForkPoolWorker-7] Dicionário de clientes com faturas vencidas setado
+[2024-02-23 20:53:26,374: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'BOL', 'MATRICULA': '202300297', 'CLIENTE': '43473', 'TITULO': '787462.GAS', 'EMAIL': 'yuri.neves@hotmail.com', 'ID_CLIENTE': '304620', 'NOME_CLIENTE': 'YURI DE OLIVEIRA CAROLINO NEVES', 'EMISSAO': '16/01/2024', 'DATA_VENCIMENTO_FATURA': '22/02/2024', 'VALOR_FATURA': '63.55', 'ENDERECO': 'RUA JORGE DE LIMA', 'NUMERO': '245', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'IMBIRIBEIRA', 'CEP': '51160-070', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': '(81) 992032221', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-23 20:53:32,222: INFO/ForkPoolWorker-7] E-mail enviado para ['yuri.neves@hotmail.com']
+[2024-02-23 20:53:32,241: WARNING/ForkPoolWorker-7] Item Envio object (5203) salvo com sucesso
+[2024-02-23 20:53:32,294: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-23 20:53:32,296: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'DEBC', 'MATRICULA': '201200901', 'CLIENTE': '901', 'TITULO': '787799.GAS', 'EMAIL': 'pa358@gmail.com.br; pa358@gmail.com.br', 'ID_CLIENTE': '901', 'NOME_CLIENTE': 'PEDRO AMERICO CAVALCANTI', 'EMISSAO': '16/01/2024', 'DATA_VENCIMENTO_FATURA': '20/02/2024', 'VALOR_FATURA': '127.09', 'ENDERECO': 'RUA JORGE DE LIMA', 'NUMERO': '245', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'IMBIRIBEIRA', 'CEP': '51160-070', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'RECIFE', 'TELEFONE': '(81) 34744644, (81) 999355313', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-23 20:53:32,523: INFO/ForkPoolWorker-7] E-mail enviado para ['pa358@gmail.com.br']
+[2024-02-23 20:53:32,527: WARNING/ForkPoolWorker-7] Item Envio object (5204) salvo com sucesso
+[2024-02-23 20:53:32,577: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-23 20:53:32,578: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '202201253', 'CLIENTE': '41769', 'TITULO': 'NEG41769.4', 'EMAIL': 'ROSEANNECCSALVADOR@HOTMAIL.COM; ROSEANNECCSALVADOR@HOTMAIL.COM', 'ID_CLIENTE': '265900', 'NOME_CLIENTE': 'DELICIAS MINEIRAS LTDA', 'EMISSAO': '22/11/2023', 'DATA_VENCIMENTO_FATURA': '22/02/2024', 'VALOR_FATURA': '271.21', 'ENDERECO': 'AVENIDA BERNARDO VIEIRA DE MELO', 'NUMERO': '1650', 'IDPERFILFATURAMENTO': 3, 'BAIRRO': 'PIEDADE', 'CEP': '54410-010', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'JABOATAO DOS GUARARAPES', 'TELEFONE': '(81) 997661116, (81) 997661116', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-23 20:53:35,523: INFO/ForkPoolWorker-7] E-mail enviado para ['ROSEANNECCSALVADOR@HOTMAIL.COM']
+[2024-02-23 20:53:35,527: WARNING/ForkPoolWorker-7] Item Envio object (5205) salvo com sucesso
+[2024-02-23 20:53:35,569: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-23 20:53:35,571: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '200100075', 'CLIENTE': '75', 'TITULO': 'RENTOP94317', 'EMAIL': 'julio.lima@pamesa.com.br; alexandre.pocas@pamesa.com.br; moises.torres@pamesa.com.br; contasapagar@pamesa.com.br', 'ID_CLIENTE': '75', 'NOME_CLIENTE': 'PAMESA DO BRASIL S.A.', 'EMISSAO': '23/10/2023', 'DATA_VENCIMENTO_FATURA': '22/02/2024', 'VALOR_FATURA': '14,626.51', 'ENDERECO': 'Tronco Distribuidor Rodoviário Norte', 'NUMERO': '1414', 'IDPERFILFATURAMENTO': 20020329, 'BAIRRO': 'Suape', 'CEP': '54500000', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CABO DE SANTO AGOSTINHO', 'TELEFONE': '81988140175', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '72 Horas'}
+[2024-02-23 20:53:35,798: INFO/ForkPoolWorker-7] E-mail enviado para ['contasapagar@pamesa.com.br', 'alexandre.pocas@pamesa.com.br', 'moises.torres@pamesa.com.br', 'julio.lima@pamesa.com.br']
+[2024-02-23 20:53:35,801: WARNING/ForkPoolWorker-7] Item Envio object (5206) salvo com sucesso
+[2024-02-23 20:53:35,850: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-23 20:53:35,851: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '200100075', 'CLIENTE': '75', 'TITULO': 'RENTOP94317', 'EMAIL': 'pamesa@pamesa.com.br', 'ID_CLIENTE': None, 'NOME_CLIENTE': 'PAMESA DO BRASIL S.A.', 'EMISSAO': '23/10/2023', 'DATA_VENCIMENTO_FATURA': '22/02/2024', 'VALOR_FATURA': '14,626.51', 'ENDERECO': None, 'NUMERO': None, 'IDPERFILFATURAMENTO': None, 'BAIRRO': None, 'CEP': None, 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CABO DE SANTO AGOSTINHO', 'TELEFONE': None, 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-23 20:53:36,073: INFO/ForkPoolWorker-7] E-mail enviado para ['pamesa@pamesa.com.br']
+[2024-02-23 20:53:36,077: WARNING/ForkPoolWorker-7] Item Envio object (5207) salvo com sucesso
+[2024-02-23 20:53:36,128: WARNING/ForkPoolWorker-7] Erro de SQL - registro já existente ORA-00001: unique constraint (PIRAMIDE.PK_PIR_ATRIBUTO_TITREC) violated
+ORA-06512: at line 1
+[2024-02-23 20:53:36,132: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '201708054', 'CLIENTE': '8092', 'TITULO': 'RENE8092.2.1', 'EMAIL': 'freirejane237@gmail.com; freirejane237@gmail.com; freirevalter1@gmail.com; freirevalter1@gmail.com', 'ID_CLIENTE': '180572', 'NOME_CLIENTE': 'VALTER DO NASCIMENTO FREIRE', 'EMISSAO': '21/02/2024', 'DATA_VENCIMENTO_FATURA': '22/02/2024', 'VALOR_FATURA': '379.50', 'ENDERECO': 'AVENIDA DOUTOR LUIZ DE ANDRADE LIMA NETO', 'NUMERO': '297', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'ALBERTO MAIA', 'CEP': '54771-680', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CAMARAGIBE', 'TELEFONE': '(81) 34456036, (81) 34456036, (81) 987095230, (81) 987095230', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-23 20:53:39,073: INFO/ForkPoolWorker-7] E-mail enviado para ['freirejane237@gmail.com', 'freirevalter1@gmail.com']
+[2024-02-23 20:53:39,076: WARNING/ForkPoolWorker-7] Item Envio object (5208) salvo com sucesso
+[2024-02-23 20:53:39,141: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-23 20:53:39,143: WARNING/ForkPoolWorker-7] Cliente atual -> {'CODDOC': 'REN', 'MATRICULA': '201708322', 'CLIENTE': '8299', 'TITULO': 'UNI8299', 'EMAIL': 'clovis.coco@gmail.com; clovis.coco@gmail.com', 'ID_CLIENTE': '183350', 'NOME_CLIENTE': 'CLOVIS FERNANDO RODRIGUES DE ANDRADE FREITAS', 'EMISSAO': '21/02/2024', 'DATA_VENCIMENTO_FATURA': '22/02/2024', 'VALOR_FATURA': '102.16', 'ENDERECO': 'AVENIDA DOUTOR LUIZ DE ANDRADE LIMA NETO', 'NUMERO': '297', 'IDPERFILFATURAMENTO': 1, 'BAIRRO': 'ALBERTO MAIA', 'CEP': '54771-680', 'UF_CLIENTE': 'PE', 'CIDADE_CLIENTE': 'CAMARAGIBE', 'TELEFONE': '(81) 987289722, (81) 998058433', 'TIPOTELEFONE': 'CELULAR', 'TEMPO': '30 Dias'}
+[2024-02-23 20:53:42,175: INFO/ForkPoolWorker-7] E-mail enviado para ['clovis.coco@gmail.com']
+[2024-02-23 20:53:42,179: WARNING/ForkPoolWorker-7] Item Envio object (5209) salvo com sucesso
+[2024-02-23 20:53:42,231: WARNING/ForkPoolWorker-7] Registro inserido no Piramide
+[2024-02-23 20:53:42,454: WARNING/ForkPoolWorker-7] Após envio dos e-mails de notificação de faturas vencidas
+[2024-02-23 20:53:42,456: INFO/ForkPoolWorker-7] Task aplicacao.tasks.envia_notificacoes[b66eb95b-bce2-4304-b03f-f27a63f2693d] succeeded in 222.4113769480001s: None
