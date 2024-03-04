@@ -1762,6 +1762,15 @@ novoSinc
 - Criar e-mail de relatório de envio
 - Criar interface para inclusão de endereços de e-mail para recebimento relatórios de envio (contendo clientes, tipo do alerta, valor, data)
 
+SINC
+
+- Backlog:
+	inserir cadastro de agendamentos - uma abordagem seria puxar horários do banco de dados
+	fazer tratamento de exceção para casos de exceção SQL (x)
+	no e-mail de relatório, não exibir tabela se não houver linhas retornadas pela consulta
+	exibir nome do cliente/ponto de consumo no relatório de e-mails enviados
+        resolver problema de SMTP Exception: {'': (501, b'5.1.3 Invalid address'), '@petroqu': (501, b'5.1.3 Invalid address')}
+
 Correções
 
 - Criação da trigger para corrigir sequence de prestação de contas
