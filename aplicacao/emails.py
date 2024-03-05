@@ -1,6 +1,7 @@
 import os
 import time
 import smtplib
+import re
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
@@ -46,21 +47,21 @@ def notifica_cliente(tag, cliente, espera):
         #console.log("ADICIONANDO GRUPO DE COLABORADORES INDUSTRIAL!")
         colaboradores = GFIN + COLABORADORES_INDUSTRIAL
     else:
-        #console.log("NENHUM GRUPO DE COLABORADOR ADICIONADO!")
         colaboradores = GFIN
     print(f'Cliente atual -> {cliente}')
-    if  (cliente['EMAIL'] is not None and cliente['EMAIL'] != ''):
+    if  (cliente['EMAIL'] is not None and cliente['EMAIL'] != '' and email_valido(cliente['EMAIL'])):
         # Refatorar enviar_email de modo a fazer um tratamento de exceção que fará o papel do callback; "err" é booleano
         #err = enviar_email(tag, cliente.CONTATO, colaboradores, cliente) # Produção
         err = not enviar_email(tag, cliente['EMAIL'],'', cliente) # Teste
 
         if err:
             print(f'Oversending: aguardando 25 segundos para tentar novamente. Erro: {err}')
-            time.sleep(25) # Aguarda 15 segundos antes de tentar reenviar
+            time.sleep(25) # Aguarda 25 segundos antes de tentar reenviar
             espera_atual = espera + 25
+            print(f'Espera atual: {espera_atual}')
             notifica_cliente(tag, cliente, espera_atual)
             if espera_atual > 75:
-                cliente['STATUS'] = 'Não enviado - problema SMTP'
+                cliente['STATUS'] = 'Não enviado'
                 salva_ultima_notificacao(cliente, tag) # Caso tenha falhado três vezes, passa para o próximo cliente, evitando loop infinito
         else:
             cliente['STATUS'] = 'Enviado' # E-mail enviado com sucesso
@@ -68,6 +69,16 @@ def notifica_cliente(tag, cliente, espera):
     else:
         cliente['STATUS'] = 'Não enviado'
         salva_ultima_notificacao(cliente, tag)
+
+def email_valido(email):
+    # Regular expression pattern for validating email addresses
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    
+    # Check if the email matches the pattern
+    if re.match(pattern, email):
+        return True
+    else:
+        return False
 
 def notifica_cliente_teste(tag, cliente, espera):
     espera_atual = espera
@@ -322,15 +333,19 @@ def devolve_html(tag):
     current_date_formatted = current_date.strftime("%d-%m-%Y")
 
     envios = Envio.objects.filter(tipo_envio=tag, data_envio__gt=current_date).order_by('id')
+    numero_envios = envios.count()
 
-    conteudo_html = f'<p>Relatório de envio do SINC - {current_date_formatted}</p><br>'
+    conteudo_html = f'<p><b>Relatório de envio do SINC - {current_date_formatted}</b></p>'
 
-    conteudo_html += f'<p>Atentar para os e-mails não enviados, pois provavelmente os e-mails de notificação não estão definidos no sistema de origem ou há e-mail inválido.</p>'
-
-    conteudo_html += f'<table style="border: 2px; background: #fff7f7; padding: 2rem"><tr><th>Contrato</th><th>Título</th><th>Data de vencimento</th><th>E-mail</th><th>Data de envio</th><th>Status</th></tr>'
-    for envio in envios:
-        data_envio_formatted = envio.data_envio.strftime("%d-%m-%Y")
-        conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.titulo}</td><td>{envio.data_vencimento}</td><td>{envio.email}</td><td>{data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
+    if numero_envios > 0:
+        conteudo_html += f'<p>Atentar para os e-mails não enviados: cheque se os e-mails de notificação estão definidos e se há e-mail inválido.</p>'
+        conteudo_html += f'<p>Sendo qual for o caso, é indicado que corrija os e-mails tanto do Pirâmide como no GGAS.</p>'
+        conteudo_html += f'<table style="border: 2px; background: #fff7f7; padding: 2rem"><tr><th>Contrato</th><th>Cliente</th><th>Título</th><th>Data de vencimento</th><th>E-mail</th><th>Data de envio</th><th>Status</th></tr>'
+        for envio in envios:
+            data_envio_formatted = envio.data_envio.strftime("%d-%m-%Y")
+            conteudo_html += f'<tr><td>{envio.contrato}</td><td>{envio.cliente}</td><td>{envio.titulo}</td><td>{envio.data_vencimento}</td><td>{envio.email}</td><td>{data_envio_formatted}</td><td>{envio.status_envio}</td></tr>'
+    else:
+        conteudo_html += f'<p>Não há envios previstos para a data de hoje.</p>'
 
     conteudo_html += '</table><br><p>Atenciosamente, GETI.</p>'
     return conteudo_html

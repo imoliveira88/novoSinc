@@ -27,6 +27,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 class Envio(models.Model):
     contrato = models.CharField('Contrato', max_length=10, blank=True, null=True)
     email = models.CharField('E-mail', max_length=1000, null=True)
+    cliente = models.CharField('Cliente', max_length=100, null=True)
     titulo = models.CharField('Titulo', max_length=20)
     data_envio = models.DateTimeField('Data')
     tipo_envio = models.CharField('Tipo', max_length=20)

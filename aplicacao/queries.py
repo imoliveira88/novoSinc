@@ -35,14 +35,15 @@ def salva_envio(cliente, tipo):
     elif tipo == 3:
         tipo_envio = "Vencidas"
 
-    item = Envio(contrato=cliente['MATRICULA'],email=cliente['EMAIL'],titulo=cliente['TITULO'],data_envio=timezone.now(),status_envio=cliente['STATUS'],tipo_envio=tipo_envio,data_vencimento=cliente['DATA_VENCIMENTO_FATURA'])
+    item = Envio(contrato=cliente['MATRICULA'],email=cliente['EMAIL'],cliente=cliente['NOME_CLIENTE'],titulo=cliente['TITULO'],data_envio=timezone.now(),status_envio=cliente['STATUS'],tipo_envio=tipo_envio,data_vencimento=cliente['DATA_VENCIMENTO_FATURA'])
     #item.save() 17FEV2024 já salva no try, correto? TODO
 
     try:
         item.save()
-        print(f'Item {item} salvo com sucesso')
+        nome_cliente = cliente['TITULO']
+        print(f'Informações do envio de e-mail referente ao título {nome_cliente} salvas com sucesso')
     except Exception as err:
-        print(f'Erro ao salvar o item {item}. Erro {err}')
+        print(f'Erro na tentativa de envio de e-mail referente ao título {nome_cliente}. Erro {err}')
 
 # Responsável por executar SELECT
 def executa_select_piramide(query):
