@@ -349,3 +349,92 @@ def devolve_html(tag):
 
     conteudo_html += '</table><br><p>Atenciosamente, GETI.</p>'
     return conteudo_html
+
+def devolve_string_emails(arquivo):
+    emails = []
+    try:
+        with open(arquivo, 'r') as file:
+            for line in file:
+                email = line.strip()  # Remove leading/trailing whitespaces and newlines
+                emails.append(email)
+    except FileNotFoundError:
+        print(f"File '{filename}' not found.")
+    return emails
+
+# Método recupera modelo de e-mails constante em na tabela Modelo
+def render_email_template_tabela_geral(modelo_email, contexto):
+    # Retrieve the Modelo object based on the provided tag
+    modelos_path = os.path.join(BASE_DIR, 'templates/modelos')
+    templates_env = Environment(loader=FileSystemLoader(modelos_path))
+
+    template_name = f'{modelo_email}.html'
+    modelo = Modelo.objects.get(nome=template_name)
+
+    # Use the Django template engine to render the template
+    template = templates_env.from_string(modelo.conteudo)
+    html_content = template.render(contexto)
+
+    return html_content
+
+#Envia e-mails de acordo com o modelo, contexto e assunto definidos
+def enviar_email_geral(destinatario, cco, contexto, assunto_email, modelo): #TODO Atentar ao BCC, visto que está com o cco. Verificar funcionamento correto
+    caminho1_path = f'{STATIC_ROOT}/images/logo-coper2.png'
+    caminho2_path = f'{STATIC_ROOT}/images/2-via-ico.png'
+
+    with open(caminho1_path, 'rb') as caminho1_file:
+        caminho1_content = caminho1_file.read()
+
+    with open(caminho2_path, 'rb') as caminho2_file:
+        caminho2_content = caminho2_file.read()
+
+    assunto = assunto_email
+
+    contexto['DATA_EXTENSA'] = formatar_data_por_extenso(get_data(0, '/'))
+    contexto['CAMINHO1'] = 'cid:logo-coper2.png'
+    contexto['CAMINHO2'] = 'cid:2-via-ico.png'
+
+    # Create MIME message
+    message = MIMEMultipart()
+    message['From'] = 'sinc@copergas.com.br'
+    destinatarios = destinatario.replace(" ","") #Alteração em 21FEV2024 - Objetivo: excluir espaços vazios na string de e-mails
+    recipients_set = set(destinatarios.split(';'))
+    recipients = list(recipients_set)
+    message['To'] = ','.join(recipients)
+    message['Bcc'] = cco
+    message['Subject'] = assunto
+
+    # Attach HTML content with inline images
+    html_content = render_email_template_tabela_geral(modelo, contexto)
+    message.attach(MIMEText(html_content, 'html'))
+
+    # Attach inline images
+    image1 = MIMEImage(caminho1_content)
+    image1.add_header('Content-ID', '<logo-coper2.png>')
+    message.attach(image1)
+
+    image2 = MIMEImage(caminho2_content)
+    image2.add_header('Content-ID', '<2-via-ico.png>')
+    message.attach(image2)
+
+    message['Return-Receipt-To'] = 'sinc@copergas.com.br'
+    message['Disposition-Notification-To'] = 'sinc@copergas.com.br'
+    message['DSN'] = 'SiNC 0'
+    message['Return'] = 'headers'
+    message['Notify'] = 'success, failure, delay'
+    message['Recipient'] = 'sinc@copergas.com.br'
+
+    try:
+        # Setup the SMTP server
+        with smtplib.SMTP('mail.copergas.com.br', 25) as server:
+            # Login to the server
+            server.login('sinc', 'Ks9xKi5CClBMqAPr1iyu')#TODO Tentar sem autenticação
+            # Send the email
+            server.send_message(message)
+            logger.info(f'E-mail enviado para {recipients}')
+        return True
+    except smtplib.SMTPException as e:
+        print(f"Exceção SMTP: {e}")
+        return False
+    except Exception as e:
+        print(f"Um erro inesperado ocorreu: {e}")
+        return False
