@@ -1773,3 +1773,19 @@ Watching for file changes with StatReloader
 "GET /aplicacao/historico_logins HTTP/1.1" 200 8359
 "GET /aplicacao/logout HTTP/1.1" 302 0
 "GET / HTTP/1.1" 200 5066
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 5066
+"GET /static/js/datatables_portugues.js HTTP/1.1" 200 867
+"GET /static/css/styles.css HTTP/1.1" 200 7897
+"GET /static/images/copergas-sinc-sf.png HTTP/1.1" 200 46814
+"GET /static/images/fundo-coper.jpg HTTP/1.1" 200 791979
+"GET /static/favicon-16x16.png HTTP/1.1" 200 720
+"GET /static/apple-touch-icon.png HTTP/1.1" 200 14801
+"POST / HTTP/1.1" 200 7724
+"GET /aplicacao/relatorio_proximas HTTP/1.1" 200 98672
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /aplicacao/edita_modelo/1/ HTTP/1.1" 200 19768
+"GET /aplicacao/modelos HTTP/1.1" 200 10266
+"GET /aplicacao/inclui_modelo HTTP/1.1" 200 8271
+"GET /aplicacao/historico_logins HTTP/1.1" 200 10015
+"GET /aplicacao/sobre HTTP/1.1" 200 6337
