@@ -1,0 +1,35 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<div class="container-lista">
+    <h2>Enviar notificações</h2>
+    <form method="POST" id="notifica" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="cabeca-modelo" align="center">
+            <tr>
+                <td>Arquivo com e-mails</td>
+                <td><input type="file" name="myfile"><button type="submit">Upload</button></td>
+            </tr>
+            <tr>
+                <td>Preview do conteúdo do arquivo</td>
+                <td>
+                    {% if content %}
+                        <pre>{{ content }}</pre>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>Modelo de e-mail</td>
+                <td>
+                    <select name="model">
+                        {% for nome in modelos %}
+                        <option value="{{ nome }}">{{ nome }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" type="submit">Enviar notificações</button>
+    </form>
+</div>
+

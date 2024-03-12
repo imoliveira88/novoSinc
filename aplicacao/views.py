@@ -268,3 +268,14 @@ def modelos(request):
 # Método destinado a retornar com "ativo" caso o Novo Sinc esteja rodando. Útil para o Zabbix
 def status(request):
     return JsonResponse({'status': 'ativo', 'message': 'O Novo SINC está rodando!'})
+
+def file_upload(request):
+    content = None
+    modelos = Modelo.objects.values_list('nome', flat=True)  # Query to get all names from Modelo table
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        # Read the content of the file and split it by commas
+        content = myfile.read().decode('utf-8')
+        content = ','.join(content.split())  # Split content by whitespace and join with commas
+
+    return render(request, 'envia_notificacoes.html', {'content': content, 'modelos': modelos})

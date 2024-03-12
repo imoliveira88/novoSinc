@@ -20,12 +20,12 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
+
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
@@ -61,6 +61,7 @@
         // Get the form elements
         var formProximas = document.getElementById('proximas');
         var formVencidas = document.getElementById('vencidas');
+        var formNotifica = document.getElementById('notifica');
 
         // Attach event listener to the "Simular envio" button in the form with ID "proximas"
         formProximas.addEventListener('submit', function (event) {
@@ -72,6 +73,11 @@
         formVencidas.addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent the default form submission
             submitForm('{% url "teste_envio_vencidas" %}'); // Call the function to submit the form
+        });
+
+        formNotifica.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            submitForm('{% url "notifica_geral" %}'); // Call the function to submit the form
         });
 
         // Define the function to submit the form

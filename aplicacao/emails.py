@@ -73,7 +73,7 @@ def notifica_cliente(tag, cliente, espera):
 def email_valido(email):
     # Regular expression pattern for validating email addresses
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    
+
     # Check if the email matches the pattern
     if re.match(pattern, email):
         return True
@@ -376,10 +376,16 @@ def render_email_template_tabela_geral(modelo_email, contexto):
 
     return html_content
 
+def notificar_geral(modelo, emails, assunto): # Era notificarClientes
+    for email in emails:
+        enviar_email_geral(email,'igor.oliveira@copergas.com.br', assunto, modelo) #Adicionado 21FEV2024
+
 #Envia e-mails de acordo com o modelo, contexto e assunto definidos
-def enviar_email_geral(destinatario, cco, contexto, assunto_email, modelo): #TODO Atentar ao BCC, visto que está com o cco. Verificar funcionamento correto
+def enviar_email_geral(destinatario, cco, assunto_email, modelo): #TODO Atentar ao BCC, visto que está com o cco. Verificar funcionamento correto
     caminho1_path = f'{STATIC_ROOT}/images/logo-coper2.png'
     caminho2_path = f'{STATIC_ROOT}/images/2-via-ico.png'
+
+    contexto = []
 
     with open(caminho1_path, 'rb') as caminho1_file:
         caminho1_content = caminho1_file.read()
